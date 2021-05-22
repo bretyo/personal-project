@@ -41,7 +41,7 @@ massive({
 // AUTH
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login',authCtrl.login)
-app.get('/auth/me', authCtrl.getUser)
+// app.get('/auth/me', authCtrl.getUser)  -- potentially don't need this one. if logged in still, i'll still have that info.
 app.put('/auth/change_pwd', authCtrl.changePassword)
 app.delete('/auth/logout', authCtrl.logout)
 app.delete('/auth/delete', authCtrl.deleteUser)
