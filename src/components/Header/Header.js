@@ -2,10 +2,12 @@ import './Header.css'
 import {useState} from 'react'
 import Register from '../Register/Register';
 import SignIn from '../SignIn/SignIn';
-const Header=()=>{
+import { Link } from 'react-router-dom';
+const Header=(props)=>{
     const [logging, setLogging] = useState(false)
     const [registering, setRegistering] = useState(false);
     const [signingIn, setSigningIn] = useState(false)
+    //Temp local loggedIn state for Header
 
     const handleLogToggle=()=>{
         if(signingIn || registering){
@@ -30,9 +32,9 @@ const Header=()=>{
     return(
         <header>
             <div className='header-container'>
-                <h1>BretBox</h1>
-                <h2>Join Game</h2>
-                <h2>Start Game</h2>
+                <Link to='/'><h1>BretBox</h1></Link>
+                <Link to='/join'><h2>Join Game</h2></Link>
+                <Link to='/games'><h2>Start Game</h2></Link>
                 <div>
                     <button onClick={handleLogToggle}>Sign In/Register</button>
                     {
