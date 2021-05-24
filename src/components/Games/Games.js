@@ -1,8 +1,13 @@
-const Games =()=>{
+import {useState, useEffect} from 'react'
+
+const Games =(props)=>{
+
+    
+    console.log(props)
     return(
-        <div>
+        <ul>
             Games
-        </div>
+        </ul>
     )
 }
 export default Games

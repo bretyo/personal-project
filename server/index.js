@@ -7,6 +7,7 @@ const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env;
 
 //controllers
 const authCtrl = require('./controllers/authController')
+const gamesCtrl = require('./controllers/gameController')
 
 // App instance
 const app = express();
@@ -45,3 +46,6 @@ app.post('/auth/login',authCtrl.login)
 app.put('/auth/change_pwd', authCtrl.changePassword)
 app.delete('/auth/logout', authCtrl.logout)
 app.delete('/auth/delete', authCtrl.deleteUser)
+
+// GAMES
+app.get('/api/games', gamesCtrl.getGames)

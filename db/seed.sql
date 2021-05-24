@@ -9,6 +9,8 @@ CREATE TABLE bbox_games(
     game_id SERIAL PRIMARY KEY,
     game_name VARCHAR(100),
     game_description VARCHAR(1500),
+    game_players_min int,
+    game_players_max int,
     game_total_plays int
 );
 
