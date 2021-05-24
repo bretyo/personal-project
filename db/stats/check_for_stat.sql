@@ -1,1 +1,3 @@
 -- THIS IS TO SEE IF USER HAS A STAT IN A PARTICULAR GAME
+SELECT * FROM bbox_stats
+WHERE user_id = $1 AND game_id = $2;

@@ -8,6 +8,10 @@ const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env;
 //controllers
 const authCtrl = require('./controllers/authController')
 const gamesCtrl = require('./controllers/gameController')
+const statCtrl = require('./controllers/statController')
+
+// MiddleWare
+const statMiddleware = require('./middleware/statMiddleware');
 
 // App instance
 const app = express();
@@ -49,4 +53,10 @@ app.delete('/auth/delete', authCtrl.deleteUser)
 
 // GAMES
 app.get('/api/games', gamesCtrl.getGames)
-app.put('/api/games/:id', gamesCtrl.addPlay, gamesCtrl.getGames)
+app.put('/api/games/:game_id', gamesCtrl.addPlay, gamesCtrl.getGames)
+
+// STATS
+app.get('/api/stats', statMiddleware.usersOnly,statCtrl.getStats)
+app.get('/api/stats/:game_id', statMiddleware.usersOnly,statCtrl.checkForStat)
+app.post('/api/stats/:game_id', statMiddleware.usersOnly, statCtrl.addNewStat)
+app.put('/api/stats/:game_id', statMiddleware.usersOnly)
