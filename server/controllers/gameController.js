@@ -6,5 +6,16 @@ module.exports = {
             return res.status(500).send('Something went wrong, please refresh page!')
         }
         res.status(200).send(games)
+    },
+    addPlay: async(req,res, next)=>{
+        const db = req.app.get('db')
+        const {id} = req.params
+        try {
+            await db.games.add_to_plays(id)
+        } catch (err) {
+            console.log(err)
+            return res.status(500).send(err)
+        }
+        next();
     }
 }

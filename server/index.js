@@ -49,3 +49,4 @@ app.delete('/auth/delete', authCtrl.deleteUser)
 
 // GAMES
 app.get('/api/games', gamesCtrl.getGames)
+app.put('/api/games/:id', gamesCtrl.addPlay, gamesCtrl.getGames)

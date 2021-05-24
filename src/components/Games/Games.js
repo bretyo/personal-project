@@ -10,9 +10,9 @@ const Games =(props)=>{
     
     useEffect(()=>{
         dispatch(setSelectedGame(-1))
-    }, [])
+    }, [dispatch])
 
-    console.log(games)
+    // console.log(games)
     return(
         <div className='games-container'>
             {

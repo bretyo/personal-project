@@ -9,9 +9,8 @@ module.exports={
         }
         const salt = bcrypt.genSaltSync();
         const hash = bcrypt.hashSync(password, salt);
-        console.log(hash)
         const [user] = await db.auth.register_user(email, hash)
-        delete user.password
+        delete user.user_password
         req.session.user = user;
         return res.status(200).send(req.session.user)
     },
@@ -28,7 +27,7 @@ module.exports={
             console.log('password incorrect error!')
             return res.status(401).send('Password Incorrect!')
         }
-        delete user.password;
+        delete user.user_password;
         req.session.user = user;
         return res.status(200).send(req.session.user);
 
@@ -75,7 +74,7 @@ module.exports={
         const hash = bcrypt.hashSync(newPassword, salt);
         
         const [_user] = await db.auth.change_password(user.user_id, hash)
-        delete _user.password
+        delete _user.user_password
         req.session.user = _user;
         return res.status(200).send(req.session.user)
     }

@@ -8,6 +8,7 @@ import { setGames } from './redux/gameReducer'
 // GLOBAL STATE FOR GAME
 function App(props) {
   const {games} = useSelector(store=>store.gameReducer)
+  // const {user} = useSelector(store=>store.authReducer)
   const dispatch = useDispatch();
 
   useEffect(()=>{
@@ -19,7 +20,7 @@ function App(props) {
       console.log(err)
     });
 }, [dispatch])
-  console.log(games)
+  // console.log(user)
   return (
     <div className="App">
       <Header/>

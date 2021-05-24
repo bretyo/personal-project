@@ -3,6 +3,7 @@ import {useState} from 'react'
 import Register from '../Register/Register';
 import SignIn from '../SignIn/SignIn';
 import { Link } from 'react-router-dom';
+
 const Header=(props)=>{
     const [logging, setLogging] = useState(false)
     const [registering, setRegistering] = useState(false);
@@ -18,17 +19,17 @@ const Header=(props)=>{
         else setLogging(!logging)
     }
 
-    const handleRegister=()=>{
+    const toggleRegister=()=>{
         setLogging(false)
         setRegistering(true)
     }
 
-    const handleSignIn=()=>{
+    const toggleSignIn=()=>{
         setLogging(false)
         setSigningIn(true)
     }
 
-    console.log(logging)
+    // console.log(logging)
     return(
         <header>
             <div className='header-container'>
@@ -36,12 +37,12 @@ const Header=(props)=>{
                 <Link to='/join'><h2>Join Game</h2></Link>
                 <Link to='/games'><h2>Start Game</h2></Link>
                 <div>
-                    <button onClick={handleLogToggle}>Sign In/Register</button>
+                    <button onClick={handleLogToggle}>{logging || registering || signingIn? 'Cancel' : 'Sign In/Register'}</button>
                     {
                         logging&&(
                             <div>
-                                <button onClick={handleRegister}>Register New Account</button>
-                                <button onClick={handleSignIn} >Sign In with Existing</button>
+                                <button onClick={toggleRegister}>Register New Account</button>
+                                <button onClick={toggleSignIn} >Sign In with Existing</button>
                             </div>
                         )
                     }
