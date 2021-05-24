@@ -30,6 +30,9 @@ export default function gameReducer(state=initialState, action){
             return {...state, games: action.payload};
 
         case SET_SELECTED_GAME:
+            if(action.payload===-1){
+                return {...state}
+            }
             return {...state, selectedGame: state.games[action.payload]}
 
         default:
