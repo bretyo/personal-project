@@ -9,6 +9,7 @@ const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env;
 const authCtrl = require('./controllers/authController')
 const gamesCtrl = require('./controllers/gameController')
 const statCtrl = require('./controllers/statController')
+const promptCtrl = require('./controllers/promptController')
 
 // MiddleWare
 const statMiddleware = require('./middleware/statMiddleware');
@@ -48,6 +49,7 @@ app.post('/auth/register', authCtrl.register)
 app.post('/auth/login',authCtrl.login)
 // app.get('/auth/me', authCtrl.getUser)  -- potentially don't need this one. if logged in still, i'll still have that info.
 app.put('/auth/change_pwd', authCtrl.changePassword)
+app.put('/auth/change_username', authCtrl.changeUsername)
 app.delete('/auth/logout', authCtrl.logout)
 app.delete('/auth/delete', authCtrl.deleteUser)
 
@@ -55,8 +57,11 @@ app.delete('/auth/delete', authCtrl.deleteUser)
 app.get('/api/games', gamesCtrl.getGames)
 app.put('/api/games/:game_id', gamesCtrl.addPlay, gamesCtrl.getGames)
 
+// PROMPTS
+app.get('/api/prompts/:game_id', promptCtrl.getPrompts)
+
 // STATS
 app.get('/api/stats', statMiddleware.usersOnly,statCtrl.getStats)
 app.get('/api/stats/:game_id', statMiddleware.usersOnly,statCtrl.checkForStat)
 app.post('/api/stats/:game_id', statMiddleware.usersOnly, statCtrl.addNewStat)
-app.put('/api/stats/:game_id', statMiddleware.usersOnly)
+app.put('/api/stats/:game_id', statMiddleware.usersOnly, statCtrl.updateStat)

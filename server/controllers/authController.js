@@ -77,5 +77,17 @@ module.exports={
         delete _user.user_password
         req.session.user = _user;
         return res.status(200).send(req.session.user)
+    },
+    changeUsername: async(req,res)=>{
+        const {user} = req.session;
+        const {username} = req.body;
+        const db = req.app.get('db')
+        if(!user){
+            return res.status(511).send('User not logged in')
+        }
+        const [_user] = await db.auth.change_username(user.user_id, username);
+        delete _user.user_password;
+        req.session.user = _user;
+        return res.status(200).send(req.session.user);
     }
 }

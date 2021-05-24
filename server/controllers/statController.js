@@ -41,7 +41,7 @@ module.exports={
         const db = req.app.get('db');
         const {game_id} = req.params;
         const {user} = req.session;
-        const {wins, score} = req.body;
+        const {wins, score} = req.body.stat;
         try {
             await db.stats.update_stat(user.user_id, game_id, wins, score)
             res.sendStatus(200);
