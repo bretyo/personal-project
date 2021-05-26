@@ -17,6 +17,9 @@ const statMiddleware = require('./middleware/statMiddleware');
 // App instance
 const app = express();
 
+// Socket instance
+
+
 // Top level middleware
 app.use(express.json());
 app.use(
@@ -38,7 +41,6 @@ massive({
 .then(db=>{
     app.set('db', db)
     console.log('DATABASE CONNECTED')
-    app.listen(SERVER_PORT,()=>console.log(`Server listening on port ${SERVER_PORT}`))
 })
 .catch(err=>console.log(err))
 
@@ -65,3 +67,19 @@ app.get('/api/stats', statMiddleware.usersOnly,statCtrl.getStats)
 app.get('/api/stats/:game_id', statMiddleware.usersOnly,statCtrl.checkForStat)
 app.post('/api/stats/:game_id', statMiddleware.usersOnly, statCtrl.addNewStat)
 app.put('/api/stats/:game_id', statMiddleware.usersOnly, statCtrl.updateStat)
+
+const io = require('socket.io')(app.listen(SERVER_PORT,()=>console.log(`Server listening on port ${SERVER_PORT}`)),{cors: {origin: true}})
+
+// ----------- SOCKET HANDLERS -----------
+const registerGameHandlers = require("./handlers/gameHandler");
+const registerRoomHandlers = require("./handlers/roomHandler")
+
+const onConnection = (socket) => {
+    registerGameHandlers(io, socket);
+    registerRoomHandlers(io,socket);
+    socket.on('disconnect', ()=>{
+        console.log(`Socket ${socket.id} disconnected` )
+    })
+}
+
+io.on("connection", onConnection);
