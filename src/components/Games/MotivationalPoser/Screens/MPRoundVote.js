@@ -4,7 +4,7 @@ const MPRoundVote=(props)=>{
 
     useEffect(() => {
         const timeout = setTimeout(() => {
-            props.switchScreen(2)    }, 3000);  
+            props.switchScreen(props.nextScreen)    }, 3000);  
         return () => {
             clearTimeout(timeout)
         };

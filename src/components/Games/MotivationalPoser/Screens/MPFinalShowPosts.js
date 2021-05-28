@@ -3,7 +3,7 @@ import { useEffect } from "react";
 const MPFinalShowPosts=(props)=>{
     useEffect(() => {
         const timeout = setTimeout(() => {
-            props.switchScreen(8)    }, 3000);  
+            props.switchScreen(props.nextScreen)    }, 3000);  
         return () => {
             clearTimeout(timeout)
         };

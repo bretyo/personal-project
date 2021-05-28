@@ -5,25 +5,27 @@ import MPRoundTwo from "./Rounds/MPRoundTwo";
 
 const MPRoundsScreen=(props)=>{
     const [screen, setScreen] = useState()
-
+    const {round} = props
     useEffect(() => {
-        handleScreenLoad(props.round)
+        handleScreenLoad(round)
+        // console.log(round)
     },[]);
 
-    const handleScreenLoad=(index)=>{
-        setScreen(screens[index])
+    const handleScreenLoad=(round)=>{
+        console.log({round})
+        setScreen(round)
     }
 
-    const screens=[
-        {name: 'round-1', screen: <MPRoundOne switchScreen={props.switchScreen} />},
-        {name: 'round-2', screen: <MPRoundTwo switchScreen={props.switchScreen} />},
-        {name: 'final-round', screen: <MPFinalRound switchScreen={props.switchScreen} /> }
-    ]
+    const screens={
+        round_1: {name:'round_1', screen: <MPRoundOne nextScreen='show' switchScreen={props.switchScreen} />},
+        round_2: {name:'round_2', screen: <MPRoundTwo nextScreen='show' switchScreen={props.switchScreen} />},
+        final_round: {name:'final_round', screen: <MPFinalRound nextScreen='finalshow' switchScreen={props.switchScreen} /> }
+    }
 
     return (
         <div>
             MP ROUNDS: <br/>
-            {screen}
+            {screen && screens[screen].screen}
         </div>
     )
 }

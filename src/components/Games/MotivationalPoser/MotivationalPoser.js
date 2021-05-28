@@ -10,7 +10,7 @@ import MPRoundsScreen from './Screens/MPRoundsScreen'
 import MPRoundShowPosts from './Screens/MPRoundShowPosts'
 import MPRoundVote from './Screens/MPRoundVote'
 import MPScoreboard from './Screens/MPScoreboard'
-import MPFinalRound from './Screens/Rounds/MPFinalRound'
+import MPFinalShowPosts from './Screens/MPFinalShowPosts'
 import MPFinalVote from './Screens/MPFinalVote'
 import MPWinner from './Screens/MPWinner'
 
@@ -22,38 +22,36 @@ const MotivationalPoser =()=>{
     const [socket, setSocket] = useState(null)
     const {selectedGame, games} = useSelector(store=>store.gameReducer)
     const dispatch = useDispatch();
-
-    
+        
+        
     useEffect(()=>{
         dispatch(setSelectedGame(0))
-        setScreen(screens['start'].screen)
-    }, [dispatch, games])
-    
+        setScreen('start')
+    }, [dispatch, games, setScreen])
     
     const switchScreen=(name)=>{
-        setScreen(screens[name].screen)
+        setScreen(name)
     }
-    
-    
+        
     const screens = {
-        start:  {screen: <MPStartScreen nextScreen='intro' switchScreen={switchScreen} setRound={setRound} players={players} setPlayers={setPlayers} />},
-        intro: {screen: <MPIntroScreen switchScreen={switchScreen} players={players} setPlayers={setPlayers}  />},
-        tutorial:  {screen: <MPTutorialScreen switchScreen={switchScreen} />},
-        rounds: {screen: <MPRoundsScreen switchScreen={switchScreen} round={round} />},
-        show: {screen: <MPRoundShowPosts switchScreen={switchScreen} />},
-        vote: {screen: <MPRoundVote switchScreen={switchScreen} players={players} setPlayers={setPlayers} />},
-        scoreboard: {screen: <MPScoreboard switchScreen={switchScreen} setRound={setRound} round={round} players={players} />},
-        finalshow: {screen: <MPFinalRound switchScreen={switchScreen} />},
-        finalvote: {screen: <MPFinalVote switchScreen={switchScreen} />},
-        winner: {screen: <MPWinner switchScreen={switchScreen} players={players} />},
-        credits: {screen: <MPCredits switchScreen={switchScreen} players={players} />}
+        start:  {name: 'start', screen:<MPStartScreen nextScreen='intro' switchScreen={switchScreen} setRound={setRound} players={players} setPlayers={setPlayers} />},
+        intro: {name: 'intro', screen: <MPIntroScreen nextScreen='tutorial' switchScreen={switchScreen} players={players} setPlayers={setPlayers}  />},
+        tutorial:  {name: 'tutorial', screen: <MPTutorialScreen nextScreen='rounds' switchScreen={switchScreen} />},
+        rounds: {name: 'rounds', screen: <MPRoundsScreen switchScreen={switchScreen} round={round} />},
+        show: {name:'show', screen: <MPRoundShowPosts nextScreen='vote' switchScreen={switchScreen} />},
+        vote: {name:'vote', screen: <MPRoundVote nextScreen='scoreboard' switchScreen={switchScreen} players={players} setPlayers={setPlayers} />},
+        scoreboard: {name:'scoreboard', screen: <MPScoreboard switchScreen={switchScreen} setRound={setRound} round={round} players={players} />},
+        finalshow: {name:'finalshow', screen: <MPFinalShowPosts nextScreen='finalvote' switchScreen={switchScreen} />},
+        finalvote: {name:'finalvote', screen: <MPFinalVote nextScreen='scoreboard' switchScreen={switchScreen} />},
+        winner: {name:'winner', screen: <MPWinner nextScreen='credits' switchScreen={switchScreen} players={players} />},
+        credits: {name:'credits', screen: <MPCredits switchScreen={switchScreen} players={players} />}
     }
-
-
-    console.log(players)
+        
+        
+    // console.log(`round: ${round}`)
     return(
         <div>
-            {screen}
+            {screen && screens[screen].screen}
         </div>
     )
 }

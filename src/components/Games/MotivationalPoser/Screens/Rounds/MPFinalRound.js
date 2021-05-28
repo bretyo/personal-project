@@ -4,7 +4,7 @@ const MPFinalRound=(props)=>{
 
     useEffect(() => {
         const timeout = setTimeout(() => {
-            props.switchScreen(7)    }, 3000);  
+            props.switchScreen(props.nextScreen)    }, 3000);  
         return () => {
             clearTimeout(timeout)
         };

@@ -4,7 +4,7 @@ const MPTutorialScreen=(props)=>{
 
     useEffect(() => {
         const timeout = setTimeout(() => {
-            props.switchScreen(3)    }, 3000);  
+            props.switchScreen(props.nextScreen)    }, 3000);  
         return () => {
             clearTimeout(timeout)
         };
