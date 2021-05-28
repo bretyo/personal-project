@@ -15,10 +15,10 @@ function App(props) {
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    if(!socket){
-      setSocket(io.connect())
+    // if(!socket){
+    //   setSocket(io.connect())
 
-    }
+    // }
 
     axios.get('/api/games')
     .then(res=>{
@@ -27,6 +27,11 @@ function App(props) {
     .catch(err=>{
       console.log(err)
     });
+
+  //   return()=>{
+  //     socket.disconnect()
+  //     setSocket(null)
+  // }
 }, [dispatch])
   // console.log(user)
   return (

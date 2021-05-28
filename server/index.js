@@ -75,6 +75,7 @@ const registerGameHandlers = require("./handlers/gameHandler");
 const registerRoomHandlers = require("./handlers/roomHandler")
 
 const onConnection = (socket) => {
+    console.log(`Socket: ${socket.id} connected`)
     registerGameHandlers(io, socket);
     registerRoomHandlers(io,socket);
     socket.on('disconnect', ()=>{

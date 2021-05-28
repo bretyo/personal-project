@@ -15,13 +15,26 @@ import MPFinalVote from './Screens/MPFinalVote'
 import MPWinner from './Screens/MPWinner'
 
 const MotivationalPoser =()=>{
-    const [playerCount,setPCount] = useState(0) // This exists so i can quickly save this to state when receiving an attempt to join instead of sending another emit and waiting on that before raising the player count.
     const [players, setPlayers] = useState([]) // This keeps track of players names, score
     const [round, setRound] = useState(0)
     const [screen,setScreen] = useState(null)
     const [socket, setSocket] = useState(null)
     const {selectedGame, games} = useSelector(store=>store.gameReducer)
     const dispatch = useDispatch();
+
+    useEffect(()=>{
+        if(!socket){
+            setSocket(io.connect())
+
+        } //<---- to check if socket is already connected
+        return()=>{
+            if(socket){
+                socket.disconnect()
+                setSocket(null)
+
+            }
+        }
+    }, [socket])
         
         
     useEffect(()=>{
@@ -34,7 +47,7 @@ const MotivationalPoser =()=>{
     }
         
     const screens = {
-        start:  {name: 'start', screen:<MPStartScreen nextScreen='intro' switchScreen={switchScreen} setRound={setRound} players={players} setPlayers={setPlayers} />},
+        start:  {name: 'start', screen:<MPStartScreen setSocket={setSocket} socket={socket} selectedGame={selectedGame} nextScreen='intro' switchScreen={switchScreen} setRound={setRound} players={players} setPlayers={setPlayers} />},
         intro: {name: 'intro', screen: <MPIntroScreen nextScreen='tutorial' switchScreen={switchScreen} players={players} setPlayers={setPlayers}  />},
         tutorial:  {name: 'tutorial', screen: <MPTutorialScreen nextScreen='rounds' switchScreen={switchScreen} />},
         rounds: {name: 'rounds', screen: <MPRoundsScreen switchScreen={switchScreen} round={round} />},
