@@ -25,6 +25,9 @@ export function setSelectedGame(gameId){
 
 // Reducer
 export default function gameReducer(state=initialState, action){
+    // console.log('games state: ', state.games)
+    // console.log('type:', action.type)
+    // console.log('selected game: ', action.payload)
     switch(action.type){
         case SET_GAMES:
             return {...state, games: action.payload};

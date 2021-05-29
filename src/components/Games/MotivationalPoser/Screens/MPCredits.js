@@ -8,7 +8,7 @@ const MPCredits=(props)=>{
             {props.players &&  props.players.map(player=>{
                 return (
                     <div key={player.playerNum}>
-                        <h2>{player.user_name}</h2>
+                        <h2>{player.username}</h2>
                         <p>{player.score}</p>
                     </div>
                 )

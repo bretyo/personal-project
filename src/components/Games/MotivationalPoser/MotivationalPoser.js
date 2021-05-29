@@ -19,7 +19,7 @@ const MotivationalPoser =()=>{
     const [round, setRound] = useState(0)
     const [screen,setScreen] = useState(null)
     const [socket, setSocket] = useState(null)
-    const {selectedGame, games} = useSelector(store=>store.gameReducer)
+    const {games} = useSelector(store=>store.gameReducer)
     const dispatch = useDispatch();
 
     useEffect(()=>{
@@ -38,16 +38,15 @@ const MotivationalPoser =()=>{
         
         
     useEffect(()=>{
-        dispatch(setSelectedGame(0))
         setScreen('start')
-    }, [dispatch, games, setScreen])
+    }, [setScreen])
     
     const switchScreen=(name)=>{
         setScreen(name)
     }
         
     const screens = {
-        start:  {name: 'start', screen:<MPStartScreen setSocket={setSocket} socket={socket} selectedGame={selectedGame} nextScreen='intro' switchScreen={switchScreen} setRound={setRound} players={players} setPlayers={setPlayers} />},
+        start:  {name: 'start', screen:<MPStartScreen setSocket={setSocket} socket={socket}  nextScreen='intro' switchScreen={switchScreen} setRound={setRound} players={players} setPlayers={setPlayers} />},
         intro: {name: 'intro', screen: <MPIntroScreen nextScreen='tutorial' switchScreen={switchScreen} players={players} setPlayers={setPlayers}  />},
         tutorial:  {name: 'tutorial', screen: <MPTutorialScreen nextScreen='rounds' switchScreen={switchScreen} />},
         rounds: {name: 'rounds', screen: <MPRoundsScreen switchScreen={switchScreen} round={round} />},
@@ -61,7 +60,7 @@ const MotivationalPoser =()=>{
     }
         
         
-    // console.log(`round: ${round}`)
+    // console.log({selectedGame})
     return(
         <div>
             {screen && screens[screen].screen}

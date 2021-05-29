@@ -1,16 +1,33 @@
-import { useEffect, useState } from "react"
-import { Socket } from "socket.io"
+import { useCallback, useEffect, useRef, useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import {setSelectedGame} from '../../../../redux/gameReducer'
 
 const MPStartScreen=(props)=>{
-    const {socket, setRound, switchScreen, nextScreen, players, selectedGame} = props
-    
-    const startCountdown=()=>{
-        setRound('round_1')
-        switchScreen(nextScreen)
-    }
+    const {socket, setRound, switchScreen, nextScreen, setPlayers ,players} = props
+    const {selectedGame, games} = useSelector(store=>store.gameReducer)
+    const dispatch = useDispatch();
+
+// ------------SELECTED GAME HANDLER----------
+
+    useEffect(()=>{
+        dispatch(setSelectedGame(0))
+    },[games, dispatch]) // <--- KEEP TRACK OF GAMES BECAUSE THE GAMES ARRAY LOADS EMPTY AT FIRST
+
+    const playersRef = useRef(players)
+    useEffect(()=>{
+        playersRef.current=players
+    })
+
+    const selectedGameRef = useRef(selectedGame);
+    useEffect(()=>{
+        selectedGameRef.current = selectedGame;
+    })
+
+// -------------CODE GENERATOR---------------
     
     const [code, setCode] = useState(null)
     useEffect(()=>{
+        
         const generateCode=(_code, num)=>{
             if(num<=0){
                 return _code;
@@ -20,28 +37,80 @@ const MPStartScreen=(props)=>{
             return generateCode(_code, num-1);
         }
         setCode(generateCode('',5))
-    }, [])
+    }, []) // <--- MUST KEEP TRACK OF SELECTED GAME BECAUSE IT WON'T UPDATE THE ROOM CODE IN THE FRONT END
+
 // -----------SOCKET HANDLERS------------
     useEffect(()=>{
-        if(selectedGame){
+        if(selectedGame === selectedGameRef.current){
             socket.emit('start-room', {code})
         }
-    }, [selectedGame, socket, code])
+    }, [socket, code]) // <--- 
 
     useEffect(()=>{
-        if(socket){
-            
+        //function 
+        const loginAttemptChecks= body=>{
+            // console.log('players: ',playersRef.current.length)
+            // console.log('selected game max: ', selectedGameRef.current.game_players_max)
+            // console.log('body: ', body)
+            // checks if any joined player has the same username
+            let nameTaken = false;
+            playersRef.current && playersRef.current.forEach(player=>{
+                // console.log(player)
+                if(player.username === body.username){
+                    (nameTaken = true);
+                } 
+            })
+            if(nameTaken) return {success: false, msg: 'Username Taken.'}
+    
+            // responds false if room max has been met
+            if(playersRef.current.length === selectedGameRef.current.game_players_max){
+                // console.log('Players Ref: ', {playersRef})
+                // console.log('selected game: ', {selectedGame})
+                return {success: false, msg: 'Room Full.'}
+            } 
+    
+            // Adds player to players array
+            setPlayers(prevPlayers=>[...prevPlayers, {...body, score: 0}]);
+    
+            // Returns confirmation for player to be added to room
+            return {success: true, msg: 'Successfully Joined!'}
+    
+        }
 
+
+        if(socket){
+            // Players on Join component attempt to join room
             socket.on('attempt-join-room', (body)=>{
-                // if players.length !== game_players_max: add player to players; emit join player
-                socket.emit('confirm-join', body)
-                console.log(body);
+                
+
+                // Invokes login Attempts
+                const response = loginAttemptChecks(body);
+                console.log(response)
+                if(response.success===true){
+                    socket.emit('confirm-join', {...body, ...response}) 
+                } 
+                else{
+                    socket.emit('reject-join', {...body, ...response})
+                }
+                
+                console.log({...body, ...response});
             })
         }
-    }, [socket])
+    }, [socket, playersRef])
 
 
-    console.log(socket)
+    // --------------FUNCTIONS---------------
+
+    const startCountdown=()=>{
+        setRound('round_1')
+        switchScreen(nextScreen)
+    }
+
+    
+
+
+    console.log(playersRef.current.length)
+    selectedGame && console.log(selectedGame.game_players_max)
     return(
         <div>
             {selectedGame ? (

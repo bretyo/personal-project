@@ -5,7 +5,7 @@ import {setSelectedGame} from '../../redux/gameReducer'
 const GameEntry=(props)=>{
     const {selectedGame} = useSelector(store=>store.gameReducer)
     const dispatch = useDispatch();
-    // console.log(selectedGame)
+    console.log(props)
     return(
         <li>
             {props.game&&(
