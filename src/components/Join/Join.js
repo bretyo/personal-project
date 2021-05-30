@@ -30,6 +30,11 @@ const Join =()=>{
                 window.alert(body.msg)
             })
 
+            socket.on('leave-room', ()=>{
+                socket.emit('leave-room-relay', code)
+                setJoined(false)
+            })
+
         }
 
 
@@ -44,8 +49,8 @@ const Join =()=>{
     }, [socket])
 
     const handleUsernameChanges=(text)=>{
-        if(text.length > 12){
-            text = text.slice(0, 12)
+        if(text.length > 10){
+            text = text.slice(0, 10)
         }
         setUsername(text)
     }

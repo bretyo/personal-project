@@ -1,3 +1,4 @@
+import './MotivationalPoser.css'
 import {useEffect, useState} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import {setSelectedGame} from '../../../redux/gameReducer'
@@ -19,6 +20,7 @@ const MotivationalPoser =()=>{
     const [round, setRound] = useState(0)
     const [screen,setScreen] = useState(null)
     const [socket, setSocket] = useState(null)
+    const [room,setRoom] = useState('')
     const {games} = useSelector(store=>store.gameReducer)
     const dispatch = useDispatch();
 
@@ -29,12 +31,20 @@ const MotivationalPoser =()=>{
         } //<---- to check if socket is already connected
         return()=>{
             if(socket){
+                socket.emit('force-players-leave')
                 socket.disconnect()
                 setSocket(null)
 
             }
         }
     }, [socket])
+
+    /// This useEffect is for disconnecting players from a room when the host's room code changes
+    useEffect(()=>{
+        if(socket){
+            socket.emit('force-players-leave')
+        }
+    },[room])
         
         
     useEffect(()=>{
@@ -46,8 +56,8 @@ const MotivationalPoser =()=>{
     }
         
     const screens = {
-        start:  {name: 'start', screen:<MPStartScreen setSocket={setSocket} socket={socket}  nextScreen='intro' switchScreen={switchScreen} setRound={setRound} players={players} setPlayers={setPlayers} />},
-        intro: {name: 'intro', screen: <MPIntroScreen nextScreen='tutorial' switchScreen={switchScreen} players={players} setPlayers={setPlayers}  />},
+        start:  {name: 'start', screen:<MPStartScreen setRoom={setRoom} setSocket={setSocket} socket={socket}  nextScreen='intro' switchScreen={switchScreen} setRound={setRound} players={players} setPlayers={setPlayers} />},
+        intro: {name: 'intro', screen: <MPIntroScreen nextScreen='credits' switchScreen={switchScreen} players={players} setPlayers={setPlayers}  />},
         tutorial:  {name: 'tutorial', screen: <MPTutorialScreen nextScreen='rounds' switchScreen={switchScreen} />},
         rounds: {name: 'rounds', screen: <MPRoundsScreen switchScreen={switchScreen} round={round} />},
         show: {name:'show', screen: <MPRoundShowPosts nextScreen='vote' switchScreen={switchScreen} />},
@@ -56,11 +66,11 @@ const MotivationalPoser =()=>{
         finalshow: {name:'finalshow', screen: <MPFinalShowPosts nextScreen='finalvote' switchScreen={switchScreen} />},
         finalvote: {name:'finalvote', screen: <MPFinalVote nextScreen='scoreboard' switchScreen={switchScreen} />},
         winner: {name:'winner', screen: <MPWinner nextScreen='credits' switchScreen={switchScreen} players={players} />},
-        credits: {name:'credits', screen: <MPCredits switchScreen={switchScreen} players={players} />}
+        credits: {name:'credits', screen: <MPCredits switchScreen={switchScreen} players={players} setPlayers={setPlayers}/>}
     }
         
         
-    // console.log({selectedGame})
+    socket && console.log(room)
     return(
         <div>
             {screen && screens[screen].screen}

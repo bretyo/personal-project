@@ -1,11 +1,21 @@
 const MPCredits=(props)=>{
+    const{players, setPlayers, switchScreen} = props
+    console.log(players)
 
-    console.log(props.players)
+    const playAgain=()=>{
+        setPlayers(prevPlayers=>{
+            prevPlayers.forEach(player => {
+                player.score=0
+            });
+            return [...prevPlayers]
+        })
+        switchScreen('intro')
+    }
 
     return(
         <div>
-            FINISH SCREEN YO
-            {props.players &&  props.players.map(player=>{
+            CREDITS SCREEN YO
+            {players &&  players.map(player=>{
                 return (
                     <div key={player.playerNum}>
                         <h2>{player.user_name}</h2>
@@ -13,6 +23,8 @@ const MPCredits=(props)=>{
                     </div>
                 )
             })}
+            <button onClick={()=>window.location.reload()}>Start Over? (New Players)</button>
+            <button onClick={playAgain}>Play Again? (Same Players)</button>
         </div>
     )
 }

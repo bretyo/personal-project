@@ -1,11 +1,11 @@
 module.exports=(io, socket)=>{
-    const attemptJoin = (body)=>{
-        io.to(body.code).emit('attempt-join-room', body.player)
-    }
-
     const startRoom = (body)=>{
         socket.join(body.code)
         console.log(`room ${body.code} started`)
+    }
+
+    const attemptJoin = (body)=>{
+        io.to(body.code).emit('attempt-join-room', body.player)
     }
 
     const confirmJoin = (body)=>{
@@ -23,9 +23,19 @@ module.exports=(io, socket)=>{
         console.log('player successfully joined!')
     }
 
+    const forcePlayersLeave=(room)=>{
+        socket.to(room).emit('leave-room')
+    }
+
+    const leaveRoomRelay=(room)=>{
+        socket.leave(room)
+    }
+
     socket.on('start-room', startRoom)
     socket.on('attempt-join', attemptJoin)
     socket.on('confirm-join', confirmJoin)
     socket.on('player-join', playerJoin)
     socket.on('reject-join', rejectJoin)
+    socket.on('force-players-leave', forcePlayersLeave)
+    socket.on('leave-room-relay', leaveRoomRelay)
 }

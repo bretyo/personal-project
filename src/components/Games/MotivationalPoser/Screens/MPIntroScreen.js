@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 
 const MPIntroScreen=(props)=>{
+    const{players, setPlayers, switchScreen} = props
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -18,6 +19,14 @@ const MPIntroScreen=(props)=>{
     return(
         <div>
             Intro Screen
+            {players &&  players.map(player=>{
+                return (
+                    <div key={player.user_name}>
+                        <h2>{player.user_name}</h2>
+                        <p>{player.score}</p>
+                    </div>
+                )
+            })}
         </div>
     )
 }
