@@ -9,17 +9,18 @@ module.exports=(io, socket)=>{
     }
 
     const confirmJoin = (body)=>{
-        console.log('confirm join!')
-        io.to(body.id).emit('join-room')
+        console.log(body.msg)
+        io.to(body.id).emit('join-room', body)
+    }
+
+    const rejectJoin=(body)=>{
+        console.log(body.msg)
+        io.to(body.id).emit('join-failed', body)
     }
 
     const playerJoin=(code)=>{
         socket.join(code)
         console.log('player successfully joined!')
-    }
-
-    const rejectJoin=(body)=>{
-        console.log(body.msg)
     }
 
     socket.on('start-room', startRoom)
