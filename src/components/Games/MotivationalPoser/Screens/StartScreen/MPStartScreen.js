@@ -4,6 +4,7 @@ import {setSelectedGame} from '../../../../../redux/gameReducer'
 import axios from 'axios'
 import MPPlayerDisplay from "./MPPlayerDisplay"
 import badwordsRegExp from 'badwords/regexp'
+import atk from './Atk_DM004.mp3'
 
 const MPStartScreen=(props)=>{
     const {setRoom,socket, setRound, switchScreen, nextScreen, setPlayers ,players} = props
@@ -117,6 +118,7 @@ const MPStartScreen=(props)=>{
     selectedGame && console.log(selectedGame.game_players_max)
     let utterance = new SpeechSynthesisUtterance("If i wasn't human, don't you think i'd tell you?");
     utterance.rate= 1.25;
+    const audioatk=new Audio(atk)
 
     return(
         <div>
@@ -136,6 +138,8 @@ const MPStartScreen=(props)=>{
                     {/* <button onClick={()=>socket.emit('start-room', {code})}>Join room test</button> */}
                     {/* <button onClick={()=>window.location.reload()}>Refresh page test</button> */}
                     <button onClick={()=>speechSynthesis.speak(utterance)}>Text to speech test</button>
+                    <button onClick={()=>speechSynthesis.cancel()}>Cancel speech test</button>
+                    {/* <button onClick={()=>audioatk.play()} >Audio Test</button> */}
                 </div>
             ) : 
                 <h2>Loading...</h2>
