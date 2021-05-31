@@ -1,11 +1,41 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
+import {createApi} from 'unsplash-js'
+import {MY_ACCESS_KEY} from '../../../../unsplashKey'
+import test_data from '../../../../reTest.json'
 
 const MPIntroScreen=(props)=>{
-    const{players, setPlayers, switchScreen} = props
+    const{players, setPlayers, switchScreen, nextScreen, images, setImages, selectedGame} = props
+    const imagesRef=useRef(images)
+
+    const unsplash = createApi({ accessKey: MY_ACCESS_KEY });
+    const handleUnsplashTest=()=>{
+        console.log(MY_ACCESS_KEY)
+        unsplash.photos.getRandom({
+            count: 30,
+          })
+          .then(res=>{
+              console.log(res.response)
+          })
+          .catch(err=>{
+              console.log(err)
+          })
+    }
+
+    useEffect(()=>{
+        // checks if there's enough images for the game
+        if(images.length < players.length * 2 + 2){
+            // Gets the images from the api ** TEMP GETTING TEST DATA TO PREVENT API CHOKE
+            setImages(prevImgs=>[...prevImgs, ...test_data])
+        }
+    },[])
+
+    useEffect(()=>{
+        imagesRef.current = images;
+    })
 
     useEffect(() => {
         const timeout = setTimeout(() => {
-            props.switchScreen(props.nextScreen)    }, 3000);  
+            switchScreen(nextScreen)    }, 3000);  
         return () => {
             // props.setPlayers([...props.players, props.players[0] = {
             //     user_name: 'fartboi',
@@ -15,7 +45,7 @@ const MPIntroScreen=(props)=>{
             clearTimeout(timeout)
         };
     },[]);
-    
+    console.log(imagesRef)
     return(
         <div>
             Intro Screen

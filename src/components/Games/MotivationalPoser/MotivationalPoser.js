@@ -21,7 +21,8 @@ const MotivationalPoser =()=>{
     const [screen,setScreen] = useState(null)
     const [socket, setSocket] = useState(null)
     const [room,setRoom] = useState('')
-    const {games} = useSelector(store=>store.gameReducer)
+    const [images,setImages] = useState('')
+    const {selectedGame} = useSelector(store=>store.gameReducer)
     const dispatch = useDispatch();
 
     useEffect(()=>{
@@ -57,7 +58,7 @@ const MotivationalPoser =()=>{
         
     const screens = {
         start:  {name: 'start', screen:<MPStartScreen setRoom={setRoom} setSocket={setSocket} socket={socket}  nextScreen='intro' switchScreen={switchScreen} setRound={setRound} players={players} setPlayers={setPlayers} />},
-        intro: {name: 'intro', screen: <MPIntroScreen nextScreen='credits' switchScreen={switchScreen} players={players} setPlayers={setPlayers}  />},
+        intro: {name: 'intro', screen: <MPIntroScreen selectedGame={selectedGame} images={images} setImages={setImages} nextScreen='credits' switchScreen={switchScreen} players={players} setPlayers={setPlayers}  />},
         tutorial:  {name: 'tutorial', screen: <MPTutorialScreen nextScreen='rounds' switchScreen={switchScreen} />},
         rounds: {name: 'rounds', screen: <MPRoundsScreen switchScreen={switchScreen} round={round} />},
         show: {name:'show', screen: <MPRoundShowPosts nextScreen='vote' switchScreen={switchScreen} />},

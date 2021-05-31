@@ -2,8 +2,12 @@ import {useState, useEffect} from 'react'
 import {useSelector} from 'react-redux'
 // import axios from 'axios'
 import io from 'socket.io-client'
+import { createApi } from 'unsplash-js';
+import {MY_ACCESS_KEY} from '../../unsplashKey'
+
 
 const Join =()=>{
+    
     const[user_name, setUsername] = useState('');
     const[code,setCode] = useState('');
     const [joined, setJoined]= useState(false)
@@ -64,7 +68,32 @@ const Join =()=>{
 
         //if statment with client join-game or error
     }
-    console.log({user})
+
+    // function saveText(text, filename){
+    //     var a = document.createElement('a');
+    //     a.setAttribute('href', 'data:text/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(text)));
+    //     a.setAttribute('download', filename);
+    //     a.click()
+    //   }
+    // const unsplash = createApi({ accessKey: MY_ACCESS_KEY });
+    // const handleUnsplashTest=()=>{
+    //     console.log(MY_ACCESS_KEY)
+    //     unsplash.photos.getRandom({
+    //         count: 30,
+    //         collectionIds:['vRNcKbAK9uQ']
+    //       })
+    //       .then(res=>{
+    //           console.log(res.response)
+    //           saveText(res.response, 'reTest.json')
+    //       })
+    //       .catch(err=>{
+    //           console.log(err)
+    //       })
+    // }
+
+    
+
+    console.log()
     return(
         <div>
             {!joined?
@@ -76,6 +105,7 @@ const Join =()=>{
             :
                 waiting? <h2>{waitText}</h2> : {screen}
             }
+            {/* <button onClick={handleUnsplashTest}>Testing the Unsplash get</button> */}
 
         </div>
     )
