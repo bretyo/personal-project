@@ -58,8 +58,8 @@ const MotivationalPoser =()=>{
     }
         
     const screens = {
-        start:  {name: 'start', screen:<MPStartScreen setRoom={setRoom} setSocket={setSocket} socket={socket}  nextScreen='intro' switchScreen={switchScreen} setRound={setRound} />},
-        intro: {name: 'intro', screen: <MPIntroScreen selectedGame={selectedGame} images={images} setImages={setImages} nextScreen='credits' switchScreen={switchScreen}  />},
+        start:  {name: 'start', screen:<MPStartScreen setRoom={setRoom} setSocket={setSocket} socket={socket}  nextScreen='intro' switchScreen={switchScreen} />},
+        intro: {name: 'intro', screen: <MPIntroScreen setRound={setRound} nextScreen='tutorial' switchScreen={switchScreen}  />},
         tutorial:  {name: 'tutorial', screen: <MPTutorialScreen nextScreen='rounds' switchScreen={switchScreen} />},
         rounds: {name: 'rounds', screen: <MPRoundsScreen images={images} switchScreen={switchScreen} round={round} />},
         show: {name:'show', screen: <MPRoundShowPosts nextScreen='vote' switchScreen={switchScreen} />},

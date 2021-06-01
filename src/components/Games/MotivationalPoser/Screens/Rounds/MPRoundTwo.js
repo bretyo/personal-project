@@ -2,13 +2,13 @@ import { useEffect } from "react";
 
 const MPRoundTwo=(props)=>{
 
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            props.switchScreen(props.nextScreen)    }, 3000);  
-        return () => {
-            clearTimeout(timeout)
-        };
-    },[]);
+    // useEffect(() => {
+    //     const timeout = setTimeout(() => {
+    //         props.switchScreen(props.nextScreen)    }, 3000);  
+    //     return () => {
+    //         clearTimeout(timeout)
+    //     };
+    // },[]);
 
     return(
         <div>

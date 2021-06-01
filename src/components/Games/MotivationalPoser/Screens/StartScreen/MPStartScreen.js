@@ -107,7 +107,6 @@ const MPStartScreen=(props)=>{
     // --------------FUNCTIONS---------------
 
     const startCountdown=()=>{
-        setRound('round_1')
         switchScreen(nextScreen)
     }
 

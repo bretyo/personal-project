@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setPrompts } from '../../../../redux/gameReducer'
 
 const MPIntroScreen=(props)=>{
-    const{switchScreen, nextScreen, selectedGame} = props
+    const{switchScreen, nextScreen, setRound} = props
     const{players, prompts} = useSelector(store=>store.gameReducer)
     const dispatch = useDispatch();
 
@@ -25,6 +25,7 @@ const MPIntroScreen=(props)=>{
     }
 
     useEffect(()=>{
+        setRound('round_1')
         // checks if there's enough images for the game
         if(prompts.images.length < players.length * 2 + 2){
             // Gets the images from the api ** TEMP GETTING TEST DATA TO PREVENT API CHOKE
