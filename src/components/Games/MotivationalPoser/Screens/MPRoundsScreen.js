@@ -23,7 +23,10 @@ const MPRoundsScreen=(props)=>{
     useEffect(()=>{
         const timeout = setTimeout(()=>{
             (roundStarted&& count > 0) && setCount(count-1)
-            !count && switchScreen('show')//<-- NEED TO FIX THIS, BECAUSE ON THE FINAL ROUND IT DOESN'T GO TO THE CORRECT SCREEN AFTER FINAL ROUND. ALSO NEED TO ADD A TRANSITION STATE
+            if(!count){
+                socket.emit('round-end-server', {roomId})
+                switchScreen('show')//<-- NEED TO FIX THIS, BECAUSE ON THE FINAL ROUND IT DOESN'T GO TO THE CORRECT SCREEN AFTER FINAL ROUND. ALSO NEED TO ADD A TRANSITION STATE
+            }
         }, 1000)
         console.log(count)
         return()=>{

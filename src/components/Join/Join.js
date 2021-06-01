@@ -41,7 +41,7 @@ const Join =()=>{
                 setJoined(false)
             })
 
-            socket.on('prompt-to-join',(body)=>{
+            socket.on('receive-prompt',(body)=>{
                 console.log(body)
                 setPrompt(body)
                 if(body.game==='MP'){
@@ -51,9 +51,17 @@ const Join =()=>{
                 // !screen && setWaiting(true)
             })
 
+            socket.on('round-end-client',()=>{
+                setWaiting(true);
+                //I will emit the image and prompt with no answer
+                // socket.emit
+            })
+
         }
 
-
+        const sendResponse=(response)=>{
+            // emit to gameID the response, which will be the prompt with an added Answer key
+        }
 
         return()=>{
             if(socket){
