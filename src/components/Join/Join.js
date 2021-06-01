@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux'
 import io from 'socket.io-client'
 import { createApi } from 'unsplash-js';
 import {MY_ACCESS_KEY} from '../../unsplashKey'
+import MPPrompt from './MotivationalPoser/MPPrompt';
 
 
 const Join =()=>{
@@ -13,8 +14,9 @@ const Join =()=>{
     const [joined, setJoined]= useState(false)
     const [waiting, setWaiting] = useState(true)
     const [waitText,setWaitText]=useState('');
-    const [screen,setScreen] = useState('')
+    const [screen,setScreen] = useState(null)
     const {user} = useSelector(store=>store.authReducer)
+    const [prompt, setPrompt] = useState({})
 
     // ---------- SOCKET HANDLERS ------------
     const [socket, setSocket] = useState(null)
@@ -24,10 +26,10 @@ const Join =()=>{
 
         }
         else{
-            socket.on('join-room',()=>{
+            socket.on('join-room',(body)=>{
                 setWaitText('Successfully Joined!')
                 setJoined(true)
-                socket.emit('player-join')
+                socket.emit('player-join', body.code)
             })
 
             socket.on('join-failed',(body)=>{
@@ -37,6 +39,16 @@ const Join =()=>{
             socket.on('leave-room', ()=>{
                 socket.emit('leave-room-relay', code)
                 setJoined(false)
+            })
+
+            socket.on('prompt-to-join',(body)=>{
+                console.log(body)
+                setPrompt(body)
+                if(body.game==='MP'){
+                    setScreen('MP_Prompt')
+                }
+                setWaiting(false)
+                // !screen && setWaiting(true)
             })
 
         }
@@ -91,9 +103,11 @@ const Join =()=>{
     //       })
     // }
 
-    
+    const screens = {
+        MP_Prompt: {name: 'MP_Prompt', screen: <MPPrompt setWaiting={setWaiting} prompt={prompt} />}
+    }
 
-    console.log()
+    console.log(waiting)
     return(
         <div>
             {!joined?
@@ -103,7 +117,7 @@ const Join =()=>{
                     <button onClick={handleJoin} >Join Game</button>
                 </div>)
             :
-                waiting? <h2>{waitText}</h2> : {screen}
+                waiting? <h2>{waitText}</h2> : screens[screen].screen
             }
             {/* <button onClick={handleUnsplashTest}>Testing the Unsplash get</button> */}
 

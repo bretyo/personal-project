@@ -89,7 +89,7 @@ const MPStartScreen=(props)=>{
                 console.log(body)
 
                 // Invokes login Attempts
-                const response = loginAttemptChecks(body);
+                const response = loginAttemptChecks(body.player);
                 console.log(response)
                 if(response.success===true){
                     socket.emit('confirm-join', {...body, ...response}) 

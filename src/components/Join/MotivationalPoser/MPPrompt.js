@@ -1,20 +1,21 @@
 import axios from 'axios'
 import {useState, useEffect} from 'react'
-const MPPrompt=()=>{
-    const[image,setImage] = useState('');
-    const[prompt,setPrompt] = useState('');
+const MPPrompt=(props)=>{
+    const {setWaiting, prompt} = props
+    const[response, setResponse] = useState('');
     const[input,setInput] = useState('');
     const[prompt1,setPrompt1] = useState(true);
 
-    useEffect(()=>{
-        if(!image){
-            axios.get()
-        }
-    },[image])
+    const handleResponse=()=>{
+        setWaiting(true)
+    }
 
     return(
         <div>
-
+            MP PROMPT!
+            <img src={prompt.image} />
+            <p>{prompt.prompt}</p>
+            <button onClick={handleResponse} >Send</button>
         </div>
     )
 }

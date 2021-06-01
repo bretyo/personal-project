@@ -2,8 +2,13 @@ require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
 const session = require('express-session')
+const fetch = require('node-fetch');
 
-const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env;
+
+
+
+const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT, UNSPLASH_KEY} = process.env;
+
 
 //controllers
 const authCtrl = require('./controllers/authController')
@@ -41,6 +46,22 @@ massive({
 .then(db=>{
     app.set('db', db)
     console.log('DATABASE CONNECTED')
+    const io = require('socket.io')(app.listen(SERVER_PORT,()=>console.log(`Server listening on port ${SERVER_PORT}`)),{cors: {origin: true}})
+    
+    // ----------- SOCKET HANDLERS -----------
+    const registerGameHandlers = require("./handlers/gameHandler");
+    const registerRoomHandlers = require("./handlers/roomHandler")
+    
+    const onConnection = (socket) => {
+        console.log(`Socket: ${socket.id} connected`)
+        registerGameHandlers(io, socket);
+        registerRoomHandlers(io,socket);
+        socket.on('disconnect', ()=>{
+            console.log(`Socket ${socket.id} disconnected` )
+        })
+    }
+    
+    io.on("connection", onConnection);
 })
 .catch(err=>console.log(err))
 
@@ -68,19 +89,5 @@ app.get('/api/stats/:game_id', statMiddleware.usersOnly,statCtrl.checkForStat)
 app.post('/api/stats/:game_id', statMiddleware.usersOnly, statCtrl.addNewStat)
 app.put('/api/stats/:game_id', statMiddleware.usersOnly, statCtrl.updateStat)
 
-const io = require('socket.io')(app.listen(SERVER_PORT,()=>console.log(`Server listening on port ${SERVER_PORT}`)),{cors: {origin: true}})
 
-// ----------- SOCKET HANDLERS -----------
-const registerGameHandlers = require("./handlers/gameHandler");
-const registerRoomHandlers = require("./handlers/roomHandler")
 
-const onConnection = (socket) => {
-    console.log(`Socket: ${socket.id} connected`)
-    registerGameHandlers(io, socket);
-    registerRoomHandlers(io,socket);
-    socket.on('disconnect', ()=>{
-        console.log(`Socket ${socket.id} disconnected` )
-    })
-}
-
-io.on("connection", onConnection);

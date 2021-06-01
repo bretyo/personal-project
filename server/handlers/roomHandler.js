@@ -5,22 +5,22 @@ module.exports=(io, socket)=>{
     }
 
     const attemptJoin = (body)=>{
-        io.to(body.code).emit('attempt-join-room', body.player)
+        io.to(body.code).emit('attempt-join-room', body)
     }
 
     const confirmJoin = (body)=>{
         console.log(body.msg)
-        io.to(body.id).emit('join-room', body)
+        io.to(body.player.id).emit('join-room', body)
     }
 
     const rejectJoin=(body)=>{
         console.log(body.msg)
-        io.to(body.id).emit('join-failed', body)
+        io.to(body.player.id).emit('join-failed', body)
     }
 
     const playerJoin=(code)=>{
         socket.join(code)
-        console.log('player successfully joined!')
+        console.log(`player successfully joined room ${code}!`)
     }
 
     const forcePlayersLeave=(room)=>{
