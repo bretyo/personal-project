@@ -5,11 +5,15 @@ import MPRoundTwo from "./Rounds/MPRoundTwo";
 
 const MPRoundsScreen=(props)=>{
     const [screen, setScreen] = useState()
-    const {round} = props
+    const {round, players, setPlayers} = props
     useEffect(() => {
         handleScreenLoad(round)
         // console.log(round)
     },[]);
+
+    useEffect(()=>{
+        
+    },[round])
 
     const handleScreenLoad=(round)=>{
         console.log({round})

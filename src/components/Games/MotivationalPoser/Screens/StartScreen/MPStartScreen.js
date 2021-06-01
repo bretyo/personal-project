@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import {setSelectedGame} from '../../../../../redux/gameReducer'
+import {setSelectedGame, setPlayers} from '../../../../../redux/gameReducer'
 import axios from 'axios'
 import MPPlayerDisplay from "./MPPlayerDisplay"
 import badwordsRegExp from 'badwords/regexp'
 import atk from './Atk_DM004.mp3'
 
 const MPStartScreen=(props)=>{
-    const {setRoom,socket, setRound, switchScreen, nextScreen, setPlayers ,players} = props
-    const {selectedGame, games} = useSelector(store=>store.gameReducer)
+    const {setRoom,socket, setRound, switchScreen, nextScreen} = props
+    const {selectedGame, games, players} = useSelector(store=>store.gameReducer)
     const dispatch = useDispatch();
 
 // ------------SELECTED GAME HANDLER----------
@@ -75,7 +75,7 @@ const MPStartScreen=(props)=>{
 
     
             // Adds player to players array
-            setPlayers(prevPlayers=>[...prevPlayers, {...body, score: 100, profileURL : `https://robohash.org/${body.id}.png`}]);
+            dispatch(setPlayers([...playersRef.current, {...body, score: 100, profileURL : `https://robohash.org/${body.id}.png`}]))
     
             // Returns confirmation for player to be added to room
             return {success: true, msg: 'Successfully Joined!'}
@@ -120,6 +120,7 @@ const MPStartScreen=(props)=>{
     utterance.rate= 1.25;
     const audioatk=new Audio(atk)
 
+    console.log(players)
     return(
         <div>
             {selectedGame ? (
@@ -128,7 +129,7 @@ const MPStartScreen=(props)=>{
                         <h2>Motivational Parsers</h2>
                         <h3>Code: {code}</h3>
                         <h3>Players: {players.length}/{selectedGame.game_players_max}</h3>
-                        {players.length >= selectedGame.game_players_min && <button onClick={startCountdown}>Start Game</button>}
+                        { /*players.length >= selectedGame.game_players_min &&*/ <button onClick={startCountdown}>Start Game</button> }
                     </section>
                     <section className='player-display-section'>
                         {players && players.map(player=>{

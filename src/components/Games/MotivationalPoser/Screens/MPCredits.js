@@ -1,23 +1,34 @@
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { setPlayers, setPrompts } from "../../../../redux/gameReducer"
+
 const MPCredits=(props)=>{
-    const{players, setPlayers, switchScreen} = props
+    const{switchScreen} = props
+    const{players,prompts} = useSelector(store=>store.gameReducer)
+    const dispatch = useDispatch()
     console.log(players)
 
     const playAgain=()=>{
-        setPlayers(prevPlayers=>{
+        let prevPlayers = [...players]
             prevPlayers.forEach(player => {
                 player.score=0
             });
-            return [...prevPlayers]
-        })
+            console.log(prevPlayers)
+        dispatch(setPlayers(prevPlayers))
+        
         switchScreen('intro')
     }
+
+    useEffect(()=>{
+        dispatch(setPrompts({...prompts, images: [...prompts.images.slice(players.length * 2 + 2)]}))// <-- the math takes into account the players amount for all three rounds as well as the intro picture
+    },[])
 
     return(
         <div>
             CREDITS SCREEN YO
             {players &&  players.map(player=>{
                 return (
-                    <div key={player.playerNum}>
+                    <div key={player.user_name}>
                         <h2>{player.user_name}</h2>
                         <p>{player.score}</p>
                     </div>

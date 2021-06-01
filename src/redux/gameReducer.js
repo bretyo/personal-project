@@ -1,12 +1,18 @@
 // initial State
 const initialState = {
     games: [],
-    selectedGame: {}
+    selectedGame: {},
+    players: [],
+    prompts: {
+        images: []
+    }
 }
 
 // Action Types
 const SET_GAMES = 'SET_GAMES'
 const SET_SELECTED_GAME = 'SET_SELECTED_GAME'
+const SET_PLAYERS = 'SET_PLAYERS'
+const SET_PROMPTS = 'SET_PROMPTS'
 
 // Action Builders
 export function setGames(games){
@@ -20,6 +26,20 @@ export function setSelectedGame(gameId){
     return{
         type: SET_SELECTED_GAME,
         payload: gameId
+    }
+}
+
+export function setPlayers(players){
+    return{
+        type: SET_PLAYERS,
+        payload: players
+    }
+}
+
+export function setPrompts(prompts){
+    return{
+        type: SET_PROMPTS,
+        payload: prompts
     }
 }
 
@@ -37,6 +57,12 @@ export default function gameReducer(state=initialState, action){
                 return {...state}
             }
             return {...state, selectedGame: state.games[action.payload]}
+
+        case SET_PLAYERS:
+            return {...state, players: action.payload}
+
+        case SET_PROMPTS:
+            return {...state, prompts: action.payload}
 
         default:
             return state;
