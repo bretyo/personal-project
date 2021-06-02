@@ -33,7 +33,7 @@ const MPStartScreen=(props)=>{
     useEffect(()=>{
         
         const generateCode=(_code, num)=>{
-            console.log('code: ' + _code, 'num: ' + num)
+            // console.log('code: ' + _code, 'num: ' + num)
             if(num<=0){
                 if(_code.match(badwordsRegExp)){
                     return generateCode('', 6)
@@ -86,11 +86,11 @@ const MPStartScreen=(props)=>{
         if(socket){
             // Players on Join component attempt to join room
             socket.on('attempt-join-room', (body)=>{
-                console.log(body)
+                // console.log(body)
 
                 // Invokes login Attempts
                 const response = loginAttemptChecks(body.player);
-                console.log(response)
+                // console.log(response)
                 if(response.success===true){
                     socket.emit('confirm-join', {...body, ...response}) 
                 } 
@@ -98,7 +98,7 @@ const MPStartScreen=(props)=>{
                     socket.emit('reject-join', {...body, ...response})
                 }
                 
-                console.log({...body, ...response});
+                // console.log({...body, ...response});
             })
         }
     }, [socket])
@@ -110,16 +110,35 @@ const MPStartScreen=(props)=>{
         switchScreen(nextScreen)
     }
 
-    
+    const handleUnsplashTest=()=>{
+        // console.log(MY_ACCESS_KEY)
+        axios.get('/api/images')
+          .then(res=>{
+              console.log(res.data.response)
+          })
+          .catch(err=>{
+              console.log(err)
+          })
+    }
+
+    const handlePromptsTest=()=>{
+        axios.get('/api/prompts/1')
+        .then(res=>{
+            console.log(res.data)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
 
 
     // console.log(badwordsRegExp)
-    selectedGame && console.log(selectedGame.game_players_max)
+    // selectedGame && console.log(selectedGame.game_players_max)
     let utterance = new SpeechSynthesisUtterance("If i wasn't human, don't you think i'd tell you?");
     utterance.rate= 1.25;
     const audioatk=new Audio(atk)
 
-    console.log(players)
+    // console.log(players)
     return(
         <div>
             {selectedGame ? (
@@ -140,6 +159,7 @@ const MPStartScreen=(props)=>{
                     <button onClick={()=>speechSynthesis.speak(utterance)}>Text to speech test</button>
                     <button onClick={()=>speechSynthesis.cancel()}>Cancel speech test</button>
                     {/* <button onClick={()=>audioatk.play()} >Audio Test</button> */}
+                    <button onClick={handlePromptsTest}>prompts Test</button>
                 </div>
             ) : 
                 <h2>Loading...</h2>

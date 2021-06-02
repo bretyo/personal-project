@@ -2,8 +2,6 @@ import {useState, useEffect} from 'react'
 import {useSelector} from 'react-redux'
 // import axios from 'axios'
 import io from 'socket.io-client'
-import { createApi } from 'unsplash-js';
-import {MY_ACCESS_KEY} from '../../unsplashKey'
 import MPPrompt from './MotivationalPoser/MPPrompt';
 
 

@@ -4,6 +4,7 @@ const initialState = {
     selectedGame: {},
     players: [],
     prompts: {
+        prompts: [],
         images: []
     }
 }
@@ -45,9 +46,9 @@ export function setPrompts(prompts){
 
 // Reducer
 export default function gameReducer(state=initialState, action){
-    // console.log('games state: ', state.games)
-    // console.log('type:', action.type)
-    // console.log('selected game: ', action.payload)
+    console.log('prompts state: ', state.prompts)
+    console.log('type:', action.type)
+    console.log('payload: ', action.payload)
     switch(action.type){
         case SET_GAMES:
             return {...state, games: action.payload};
@@ -62,7 +63,12 @@ export default function gameReducer(state=initialState, action){
             return {...state, players: action.payload}
 
         case SET_PROMPTS:
-            return {...state, prompts: action.payload}
+            if(action.payload.images){
+                return {...state, prompts: {...state.prompts, images: action.payload.images}}
+            }
+            else{
+                return {...state, prompts: {...state.prompts, prompts: action.payload.prompts}}
+            }
 
         default:
             return state;

@@ -1,7 +1,7 @@
 module.exports = (io,socket)=>{
     const sendPrompt=(body)=>{
         console.log(body)
-        io.to(body.roomId).emit('receive-prompt', body)
+        io.to(body.playerId).emit('receive-prompt', body.prompt)
     }
     
     const roundEnd=(body)=>{

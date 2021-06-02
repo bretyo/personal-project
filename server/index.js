@@ -2,12 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
 const session = require('express-session')
-const fetch = require('node-fetch');
 
+const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env;
 
-
-
-const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT, UNSPLASH_KEY} = process.env;
 
 
 //controllers
@@ -82,12 +79,11 @@ app.put('/api/games/:game_id', gamesCtrl.addPlay, gamesCtrl.getGames)
 
 // PROMPTS
 app.get('/api/prompts/:game_id', promptCtrl.getPrompts)
+// UNSPLASH
+app.get('/api/images', promptCtrl.getImages)
 
 // STATS
 app.get('/api/stats', statMiddleware.usersOnly,statCtrl.getStats)
 app.get('/api/stats/:game_id', statMiddleware.usersOnly,statCtrl.checkForStat)
 app.post('/api/stats/:game_id', statMiddleware.usersOnly, statCtrl.addNewStat)
 app.put('/api/stats/:game_id', statMiddleware.usersOnly, statCtrl.updateStat)
-
-
-
