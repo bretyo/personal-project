@@ -12,7 +12,12 @@ module.exports = (io,socket)=>{
         io.to(body.gameSocketId).emit('send-host-response', body)
     }
 
+    const serverSendClientsVotes=(body)=>{
+        socket.to(body.answers[0].roomId).emit('server-send-clients-votes', body)
+    }
+
     socket.on('send-prompt', sendPrompt)
     socket.on('round-end-server', roundEnd)
     socket.on('client-send-response', sendHostResponse)
+    socket.on('host-send-votes',serverSendClientsVotes)
 }

@@ -3,6 +3,7 @@ import {useSelector} from 'react-redux'
 // import axios from 'axios'
 import io from 'socket.io-client'
 import MPPrompt from './MotivationalPoser/MPPrompt';
+import MPVote from './MotivationalPoser/MPVote';
 
 
 const Join =()=>{
@@ -15,6 +16,7 @@ const Join =()=>{
     const [screen,setScreen] = useState(null)
     const {user} = useSelector(store=>store.authReducer)
     const [prompt, setPrompt] = useState({})
+    const [answers, setAnswers] = useState([])
 
     // ---------- SOCKET HANDLERS ------------
     const [socket, setSocket] = useState(null)
@@ -47,6 +49,15 @@ const Join =()=>{
                 }
                 setWaiting(false)
                 // !screen && setWaiting(true)
+            })
+
+            socket.on('server-send-clients-votes',body=>{
+                console.log(body)
+                setAnswers(body.answers)
+                if(body.answers[0].game==='MP'){
+                    setScreen('MP_Vote')
+                }
+                setWaiting(false)
             })
 
             socket.on('round-end-client',()=>{
@@ -92,33 +103,16 @@ const Join =()=>{
         setWaiting(true)
     }
 
-    // function saveText(text, filename){
-    //     var a = document.createElement('a');
-    //     a.setAttribute('href', 'data:text/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(text)));
-    //     a.setAttribute('download', filename);
-    //     a.click()
-    //   }
-    // const unsplash = createApi({ accessKey: MY_ACCESS_KEY });
-    // const handleUnsplashTest=()=>{
-    //     console.log(MY_ACCESS_KEY)
-    //     unsplash.photos.getRandom({
-    //         count: 30,
-    //         collectionIds:['vRNcKbAK9uQ']
-    //       })
-    //       .then(res=>{
-    //           console.log(res.response)
-    //           saveText(res.response, 'reTest.json')
-    //       })
-    //       .catch(err=>{
-    //           console.log(err)
-    //       })
-    // }
-
-    const screens = {
-        MP_Prompt: {name: 'MP_Prompt', screen: <MPPrompt sendResponse={sendResponse} setWaiting={setWaiting} prompt={prompt} />}
+    const handleVote=(vote)=>{
+        console.log(vote)
     }
 
-    console.log(waiting)
+    const screens = {
+        MP_Prompt: {name: 'MP_Prompt', screen: <MPPrompt sendResponse={sendResponse} setWaiting={setWaiting} prompt={prompt} />},
+        MP_Vote: {name: 'MP_Vote', screen: <MPVote my_name={user_name} handleVote={handleVote} answers={answers} />}
+    }
+
+    console.log(screen)
     return(
         <div>
             {!joined?

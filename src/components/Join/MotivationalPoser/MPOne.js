@@ -5,11 +5,12 @@ const MPOne=(props)=>{
     const {promptArr, sendResponse} = props
 
     const handleSend=()=>{
-        sendResponse([
+        //----------- THE REASON FOR MAKING THE SINGLE RESPONSE AN ARRAY IS FOR CONTINUITY FOR THE MPVOTEENTRY IN JOIN.
+        sendResponse([[
             promptArr[0],
             userInput,
             promptArr[1]
-        ].join(''))
+        ].join('')])
     }
     return(
         <div>

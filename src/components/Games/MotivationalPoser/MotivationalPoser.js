@@ -61,7 +61,7 @@ const MotivationalPoser =()=>{
         tutorial:  {name: 'tutorial', screen: <MPTutorialScreen nextScreen='rounds' switchScreen={switchScreen} />},
         rounds: {name: 'rounds', screen: <MPRoundsScreen setAnswers={setAnswers} roomId={room} socket={socket} images={images} switchScreen={switchScreen} round={round} />},
         show: {name:'show', screen: <MPRoundShowPosts answers={round==='round_1'? answers.round1 : round==='round_2' ? answers.round2 : answers.finalRound} nextScreen='vote' switchScreen={switchScreen} />},
-        vote: {name:'vote', screen: <MPRoundVote answers={round==='round_1'? answers.round1 : round==='round_2' ? answers.round2 : answers.finalRound} nextScreen='scoreboard' switchScreen={switchScreen} />},
+        vote: {name:'vote', screen: <MPRoundVote socket={socket} answers={round==='round_1'? answers.round1 : round==='round_2' ? answers.round2 : answers.finalRound} nextScreen='scoreboard' switchScreen={switchScreen} />},
         scoreboard: {name:'scoreboard', screen: <MPScoreboard switchScreen={switchScreen} setRound={setRound} round={round} />},
         finalshow: {name:'finalshow', screen: <MPFinalShowPosts nextScreen='finalvote' switchScreen={switchScreen} />},
         finalvote: {name:'finalvote', screen: <MPFinalVote nextScreen='scoreboard' switchScreen={switchScreen} />},
