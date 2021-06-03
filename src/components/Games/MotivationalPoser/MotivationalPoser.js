@@ -24,6 +24,8 @@ const MotivationalPoser =()=>{
     const {selectedGame, players} = useSelector(store=>store.gameReducer)// This keeps track of players names, score
     const dispatch = useDispatch();
 
+    
+
     useEffect(()=>{
         if(!socket){
             setSocket(io.connect())
@@ -31,23 +33,14 @@ const MotivationalPoser =()=>{
         } //<---- to check if socket is already connected
         return()=>{
             if(socket){
-                socket.emit('force-players-leave')
+                // The below two lines disconnect players from the room
+                socket.emit('force-players-leave', room)
                 dispatch(setPlayers([]))
                 socket.disconnect()
                 setSocket(null)
-
             }
         }
-    }, [socket])
-
-    /// This useEffect is for disconnecting players from a room when the host's room code changes
-    useEffect(()=>{
-        if(socket){
-            socket.emit('force-players-leave')
-            dispatch(setPlayers([]))
-        }
-    },[room])
-        
+    }, [socket, room])
         
     useEffect(()=>{
         setScreen('start')
@@ -68,7 +61,7 @@ const MotivationalPoser =()=>{
         finalshow: {name:'finalshow', screen: <MPFinalShowPosts nextScreen='finalvote' switchScreen={switchScreen} />},
         finalvote: {name:'finalvote', screen: <MPFinalVote nextScreen='scoreboard' switchScreen={switchScreen} />},
         winner: {name:'winner', screen: <MPWinner nextScreen='credits' switchScreen={switchScreen} players={players} />},
-        credits: {name:'credits', screen: <MPCredits  switchScreen={switchScreen} />}
+        credits: {name:'credits', screen: <MPCredits socket={socket} room={room} switchScreen={switchScreen} />}
     }
         
         

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { setPlayers, setPrompts } from "../../../../redux/gameReducer"
 
 const MPCredits=(props)=>{
-    const{switchScreen} = props
+    const{switchScreen, socket, room} = props
     const{players,prompts} = useSelector(store=>store.gameReducer)
     const dispatch = useDispatch()
     console.log(players)
@@ -17,6 +17,11 @@ const MPCredits=(props)=>{
         dispatch(setPlayers(prevPlayers))
         
         switchScreen('intro')
+    }
+
+    const newGame=()=>{
+        socket.emit('force-players-leave', room)
+        window.location.reload()
     }
 
     useEffect(()=>{
@@ -34,7 +39,7 @@ const MPCredits=(props)=>{
                     </div>
                 )
             })}
-            <button onClick={()=>window.location.reload()}>Start Over? (New Players)</button>
+            <button onClick={newGame}>Start Over? (New Players)</button>
             <button onClick={playAgain}>Play Again? (Same Players)</button>
         </div>
     )

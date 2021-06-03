@@ -1,6 +1,9 @@
 module.exports=(io, socket)=>{
     const startRoom = (body)=>{
+        // socket.id = 'server_host' +socket.id 
         socket.join(body.code)
+        socket.join(body.code + 'host')
+        console.log(socket.id)
         console.log(`room ${body.code} started`)
     }
 
@@ -24,6 +27,7 @@ module.exports=(io, socket)=>{
     }
 
     const forcePlayersLeave=(room)=>{
+        console.log('room: ',room)
         socket.to(room).emit('leave-room')
     }
 
@@ -38,4 +42,10 @@ module.exports=(io, socket)=>{
     socket.on('reject-join', rejectJoin)
     socket.on('force-players-leave', forcePlayersLeave)
     socket.on('leave-room-relay', leaveRoomRelay)
+    socket.on('disconnecting',()=>{
+        const [socketid, roomNum, hostroom] = socket.rooms
+        console.log(roomNum)
+        hostroom && forcePlayersLeave(roomNum)
+        
+    })
 }

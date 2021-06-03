@@ -53,8 +53,11 @@ massive({
         console.log(`Socket: ${socket.id} connected`)
         registerGameHandlers(io, socket);
         registerRoomHandlers(io,socket);
+        
+
         socket.on('disconnect', ()=>{
             console.log(`Socket ${socket.id} disconnected` )
+            
         })
     }
     

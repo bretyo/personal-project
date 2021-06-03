@@ -50,7 +50,7 @@ const MPStartScreen=(props)=>{
 
 // -----------SOCKET HANDLERS------------
     useEffect(()=>{
-        if(selectedGame === selectedGameRef.current){
+        if(selectedGame === selectedGameRef.current && socket){
             setRoom(code)
             socket.emit('start-room', {code})
         }
