@@ -4,14 +4,11 @@ import MPOne from './MPOne'
 import './MPPrompt.css'
 import MPTwo from './MPTwo'
 const MPPrompt=(props)=>{
-    const {setWaiting, prompt} = props
-    const[response, setResponse] = useState('');
+    const {setWaiting, prompt, sendResponse} = props
     const[input,setInput] = useState('');
     const[promptArr,setPromptArr] = useState(true);
 
-    const handleResponse=()=>{
-        setWaiting(true)
-    }
+    
 
     useEffect(()=>{
         setPromptArr(prompt.prompt.split('____'))
@@ -23,11 +20,10 @@ const MPPrompt=(props)=>{
             <img src={prompt.image} />
             {
                 prompt.prompt_type === 'MPOne'? 
-                    <MPOne promptArr={promptArr} />
+                    <MPOne promptArr={promptArr} sendResponse={sendResponse} />
                 :
-                    <MPTwo promptArr={promptArr}/>
+                    <MPTwo promptArr={promptArr} sendResponse={sendResponse}/>
             }
-            <button onClick={handleResponse} >Send</button>
         </div>
     )
 }

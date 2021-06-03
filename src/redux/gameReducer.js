@@ -46,9 +46,9 @@ export function setPrompts(prompts){
 
 // Reducer
 export default function gameReducer(state=initialState, action){
-    console.log('prompts state: ', state.prompts)
-    console.log('type:', action.type)
-    console.log('payload: ', action.payload)
+    // console.log('prompts state: ', state.prompts)
+    // console.log('type:', action.type)
+    // console.log('payload: ', action.payload)
     switch(action.type){
         case SET_GAMES:
             return {...state, games: action.payload};

@@ -50,16 +50,15 @@ const Join =()=>{
             })
 
             socket.on('round-end-client',()=>{
-                setWaiting(true);
+                !waiting && setWaiting(true);
+                socket.emit('client-send-response', {...prompt, user: {...user, user_name}})
                 //I will emit the image and prompt with no answer
                 // socket.emit
             })
 
         }
 
-        const sendResponse=(response)=>{
-            // emit to gameID the response, which will be the prompt with an added Answer key
-        }
+        
 
         return()=>{
             if(socket){
@@ -87,6 +86,12 @@ const Join =()=>{
         //if statment with client join-game or error
     }
 
+    const sendResponse=(response)=>{
+        // emit to gameID the response, which will be the prompt with an added Answer key
+        socket.emit('client-send-response', {...prompt, response, user: {...user, user_name}})
+        setWaiting(true)
+    }
+
     // function saveText(text, filename){
     //     var a = document.createElement('a');
     //     a.setAttribute('href', 'data:text/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(text)));
@@ -110,7 +115,7 @@ const Join =()=>{
     // }
 
     const screens = {
-        MP_Prompt: {name: 'MP_Prompt', screen: <MPPrompt setWaiting={setWaiting} prompt={prompt} />}
+        MP_Prompt: {name: 'MP_Prompt', screen: <MPPrompt sendResponse={sendResponse} setWaiting={setWaiting} prompt={prompt} />}
     }
 
     console.log(waiting)

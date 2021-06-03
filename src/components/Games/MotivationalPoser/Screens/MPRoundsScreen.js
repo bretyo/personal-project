@@ -7,12 +7,33 @@ import {setPrompts} from '../../../../redux/gameReducer'
 
 const MPRoundsScreen=(props)=>{
     const [screenRound, setScreenRound] = useState()
-    const [count, setCount] = useState(5); // <-- default value of count = 90
+    const [count, setCount] = useState(10); // <-- default value of count = 90
     const[roundStarted, setRoundStarted] = useState(false)
     const{prompts, players} = useSelector(store=>store.gameReducer)
     const dispatch = useDispatch();
 
-    const {round, switchScreen, socket, roomId} = props
+    const {round, switchScreen, socket, roomId, setAnswers} = props
+
+    useEffect(()=>{
+        if(socket){
+            socket.on('send-host-response', body=>{
+                console.log(body)
+                setAnswers(prevAnswers=>{
+                    if(round==='round_1'){
+                        console.log(prevAnswers)
+                        return {...prevAnswers, round1: [...prevAnswers.round1, {...body}]}
+                    }
+                    if(round==='round_2'){
+                        return {...prevAnswers, round2: [...prevAnswers.round2, {...body}]}
+                    }
+                    if(round==='final_round'){
+                        return {...prevAnswers, finalRound: [...prevAnswers.finalRound, {...body}]}
+                    }
+                })
+            })
+        }
+    },[round])
+
     useEffect(() => {
         handleScreenLoad(round)
         // console.log(round)
@@ -77,7 +98,7 @@ const MPRoundsScreen=(props)=>{
         <div>
             MP ROUNDS: <br/>
             {screenRound && screens[screenRound].screen}
-            <button onClick={startRound}>Start Round</button>
+            {!roundStarted && <button onClick={startRound}>Start Round</button>}
         </div>
     )
 }
