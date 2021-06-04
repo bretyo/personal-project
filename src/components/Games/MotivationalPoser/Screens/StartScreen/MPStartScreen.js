@@ -138,7 +138,7 @@ const MPStartScreen=(props)=>{
     utterance.rate= 1.25;
     const audioatk=new Audio(atk)
 
-    // console.log(players)
+    console.log(players)
     return(
         <div>
             {selectedGame ? (

@@ -22,10 +22,15 @@ const MotivationalPoser =()=>{
     const [room,setRoom] = useState('')
     const [images,setImages] = useState('')
     const [answers, setAnswers] = useState({
-        round1:[],
-        round2: [],
-        finalRound: []
+        round_1:[],
+        round_2: [],
+        final_round: []
     }); // This will update when players send answers
+    const [votes, setVotes] = useState({
+        round_1:[],
+        round_2:[],
+        final_round:[]
+    }) // THIS WILL KEEP TRACK OF HOW MANY PEOPLE VOTED FOR THE USER ON THE ROUND
     const {selectedGame, players} = useSelector(store=>store.gameReducer)// This keeps track of players names, score
     const dispatch = useDispatch();
 
@@ -60,17 +65,18 @@ const MotivationalPoser =()=>{
         intro: {name: 'intro', screen: <MPIntroScreen setRound={setRound} nextScreen='tutorial' switchScreen={switchScreen}  />},
         tutorial:  {name: 'tutorial', screen: <MPTutorialScreen nextScreen='rounds' switchScreen={switchScreen} />},
         rounds: {name: 'rounds', screen: <MPRoundsScreen setAnswers={setAnswers} roomId={room} socket={socket} images={images} switchScreen={switchScreen} round={round} />},
-        show: {name:'show', screen: <MPRoundShowPosts answers={round==='round_1'? answers.round1 : round==='round_2' ? answers.round2 : answers.finalRound} nextScreen='vote' switchScreen={switchScreen} />},
-        vote: {name:'vote', screen: <MPRoundVote socket={socket} answers={round==='round_1'? answers.round1 : round==='round_2' ? answers.round2 : answers.finalRound} nextScreen='scoreboard' switchScreen={switchScreen} />},
+        show: {name:'show', screen: <MPRoundShowPosts answers={round==='round_1'? answers.round_1 : round==='round_2' ? answers.round_2 : answers.final_round} nextScreen='vote' switchScreen={switchScreen} />},
+        vote: {name:'vote', screen: <MPRoundVote setVotes={setVotes} setAnswers={setAnswers} round={round} socket={socket} answers={round==='round_1'? answers.round_1 : round==='round_2' ? answers.round_2 : answers.final_round} nextScreen='scoreboard' switchScreen={switchScreen} />},
         scoreboard: {name:'scoreboard', screen: <MPScoreboard switchScreen={switchScreen} setRound={setRound} round={round} />},
         finalshow: {name:'finalshow', screen: <MPFinalShowPosts nextScreen='finalvote' switchScreen={switchScreen} />},
-        finalvote: {name:'finalvote', screen: <MPFinalVote nextScreen='scoreboard' switchScreen={switchScreen} />},
+        finalvote: {name:'finalvote', screen: <MPFinalVote  nextScreen='scoreboard' switchScreen={switchScreen} />},
         winner: {name:'winner', screen: <MPWinner nextScreen='credits' switchScreen={switchScreen} players={players} />},
         credits: {name:'credits', screen: <MPCredits answers={answers} socket={socket} room={room} switchScreen={switchScreen} />}
     }
         
         
-    socket && console.log(images)
+    // socket && console.log(images)
+    console.log(votes.round_1)
     return(
         <div>
             {screen && screens[screen].screen}

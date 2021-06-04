@@ -104,6 +104,8 @@ const Join =()=>{
     }
 
     const handleVote=(vote)=>{
+        socket.emit('client-send-vote', {vote: {...vote, fromUser: user_name}, hostId: prompt.gameSocketId})
+        setWaiting(true)
         console.log(vote)
     }
 

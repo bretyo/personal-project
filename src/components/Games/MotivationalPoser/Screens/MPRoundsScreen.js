@@ -7,7 +7,7 @@ import {setPrompts} from '../../../../redux/gameReducer'
 
 const MPRoundsScreen=(props)=>{
     const [screenRound, setScreenRound] = useState()
-    const [count, setCount] = useState(10); // <-- default value of count = 90
+    const [count, setCount] = useState(90); // <-- default value of count = 90
     const[roundStarted, setRoundStarted] = useState(false)
     const{prompts, players} = useSelector(store=>store.gameReducer)
     const dispatch = useDispatch();
@@ -17,19 +17,24 @@ const MPRoundsScreen=(props)=>{
     useEffect(()=>{
         if(socket){
             socket.on('send-host-response', body=>{
+                const player= players.find(player=>body.user.user_name===player.user_name)
+                let roundEnd = false;
+                console.log(player)
                 console.log(body)
                 setAnswers(prevAnswers=>{
+                    prevAnswers[round].length=== players.length-1 && (roundEnd = true);
                     if(round==='round_1'){
                         console.log(prevAnswers)
-                        return {...prevAnswers, round1: [...prevAnswers.round1, {...body}]}
+                        return {...prevAnswers, round_1: [...prevAnswers.round_1, {...body, user: {...player } } ] }
                     }
                     if(round==='round_2'){
-                        return {...prevAnswers, round2: [...prevAnswers.round2, {...body}]}
+                        return {...prevAnswers, round_2: [...prevAnswers.round_2, {...body, user: {...player } } ] }
                     }
                     if(round==='final_round'){
-                        return {...prevAnswers, finalRound: [...prevAnswers.finalRound, {...body}]}
+                        return {...prevAnswers, final_round: [...prevAnswers.final_round, {...body, user: {...player } } ] }
                     }
                 })
+                roundEnd && setCount(0)
             })
         }
     },[round])
@@ -62,43 +67,54 @@ const MPRoundsScreen=(props)=>{
         setScreenRound(round)
     }
 
-    const startRound=()=>{
-        setRoundStarted(true)
-        players.forEach((element,index) => {
-            let promptNum = Math.floor(Math.random() * prompts.prompts.length);
-            if(round==='round_1' || round==='round_2'){
-                socket.emit('send-prompt', 
-                {
-                    playerId: element.id,
-                    prompt:{...prompts.prompts[promptNum],
-                        gameSocketId: socket.id ,
-                    //  ^^^^ the points of gameID is for the players to send their responses directly to the game rather than to the whole room
-                        game: 'MP', 
-                        image: prompts.images[round==='round_1'? index+1: index+1+players.length].urls.raw,roomId }})
-                dispatch(setPrompts({...prompts, prompts: prompts.prompts.splice(promptNum, 1)}))
-            }
-            else{
-                socket.emit('send-prompt', {
-                    playerId: element.id,
-                    prompt:{...prompts.prompts[promptNum], gameSocketId: socket.id, game: 'MP_F', roomId}})
-                index ===players.length-1 && dispatch(setPrompts({...prompts, prompts: prompts.prompts.splice(promptNum, 1)}))
+    useEffect(()=>{
+        const startRound=()=>{
+            setRoundStarted(true)
+            players.forEach((element,index) => {
+                let promptNum = Math.floor(Math.random() * prompts.prompts.length);
+                if(round==='round_1' || round==='round_2'){
+                    socket.emit('send-prompt', 
+                    {
+                        playerId: element.id,
+                        prompt:{...prompts.prompts[promptNum],
+                            gameSocketId: socket.id ,
+                        //  ^^^^ the points of gameID is for the players to send their responses directly to the game rather than to the whole room
+                            game: 'MP', 
+                            image: prompts.images[round==='round_1'? index+1: index+1+players.length].urls.raw,roomId }})
+                    dispatch(setPrompts({...prompts, prompts: prompts.prompts.splice(promptNum, 1)}))
+                }
+                else{
+                    socket.emit('send-prompt', {
+                        playerId: element.id,
+                        prompt:{...prompts.prompts[promptNum], gameSocketId: socket.id, game: 'MP_F', roomId}})
+                    index ===players.length-1 && dispatch(setPrompts({...prompts, prompts: prompts.prompts.splice(promptNum, 1)}))
+    
+                }
+            });
+            console.log(prompts.prompts)
+        }
+        const timeout= setTimeout(()=>{
+            startRound();
+        }, 3000)
 
-            }
-        });
-        console.log(prompts.prompts)
-    }
+        return()=>{
+            clearTimeout(timeout)
+        }
+    },[])
+
+    
 
     const screens={
         round_1: {name:'round_1', screen: <MPRoundOne nextScreen='show' switchScreen={props.switchScreen} />},
         round_2: {name:'round_2', screen: <MPRoundTwo nextScreen='show' switchScreen={props.switchScreen} />},
         final_round: {name:'final_round', screen: <MPFinalRound nextScreen='finalshow' switchScreen={props.switchScreen} /> }
     }
-
+    
     return (
         <div>
             MP ROUNDS: <br/>
+            {roundStarted && <h4>{count}</h4>}
             {screenRound && screens[screenRound].screen}
-            {!roundStarted && <button onClick={startRound}>Start Round</button>}
         </div>
     )
 }

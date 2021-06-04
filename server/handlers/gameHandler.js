@@ -16,8 +16,13 @@ module.exports = (io,socket)=>{
         socket.to(body.answers[0].roomId).emit('server-send-clients-votes', body)
     }
 
+    const serverSendHostVote=(body)=>{
+        socket.to(body.hostId).emit('server-send-host-vote', body.vote)
+    }
+
     socket.on('send-prompt', sendPrompt)
     socket.on('round-end-server', roundEnd)
     socket.on('client-send-response', sendHostResponse)
     socket.on('host-send-votes',serverSendClientsVotes)
+    socket.on('client-send-vote', serverSendHostVote)
 }

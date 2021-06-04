@@ -1,10 +1,10 @@
 const MPVoteEntry=(props)=>{
-    const {image, response, handleVote, user_name} = props
+    const {handleVote, answer} = props
     return(
         <div>
-            <img src={image} alt='' />
-            <p>{response.join('')}</p>
-            <button onClick={()=>handleVote(user_name)}>Vote for Above</button>
+            <img src={answer.image} alt='' />
+            <p>{answer.response.join('')}</p>
+            <button onClick={()=>handleVote(answer)}>Vote for Above</button>
         </div>
     )
 }
