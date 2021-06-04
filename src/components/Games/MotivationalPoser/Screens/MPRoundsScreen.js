@@ -81,7 +81,7 @@ const MPRoundsScreen=(props)=>{
                             gameSocketId: socket.id ,
                         //  ^^^^ the points of gameID is for the players to send their responses directly to the game rather than to the whole room
                             game: 'MP', 
-                            image: prompts.images[round==='round_1'? index+1: index+1+players.length].urls.raw,
+                            image: prompts.images[round==='round_1'? index+1: index+1+players.length].urls.regular,
                             roomId }})
                     dispatch(setPrompts({...prompts, prompts: prompts.prompts.splice(promptNum, 1)}))// <--- this deletes the prompt from the store
                 }
@@ -91,7 +91,7 @@ const MPRoundsScreen=(props)=>{
                         prompt:{...prompts.prompts[promptNumFinal], 
                             gameSocketId: socket.id, 
                             game: 'MP', 
-                            image: prompts.images[players.length*2 + 1].urls.raw,
+                            image: prompts.images[players.length*2 + 1].urls.regular,
                             roomId}})
                     index ===players.length-1 && dispatch(setPrompts({...prompts, prompts: prompts.prompts.splice(promptNumFinal, 1)})) // <--- this deletes the prompt from the store on the last player's iteration
     
@@ -121,7 +121,7 @@ const MPRoundsScreen=(props)=>{
             MP ROUNDS: <br/>
             {roundStarted && <h4>{count}</h4>}
             {screenRound && screens[screenRound].screen}
-            {round==='final-round' && <img src={prompts.images[players.length*2 + 1].urls.raw} />}
+            {round==='final-round' && <img src={prompts.images[players.length*2 + 1].urls.regular} />}
         </div>
     )
 }

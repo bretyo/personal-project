@@ -31,14 +31,7 @@ const MPCredits=(props)=>{
     return(
         <div>
             CREDITS SCREEN YO
-            {players &&  players.map(player=>{
-                return (
-                    <div key={player.user_name}>
-                        <h2>{player.user_name}</h2>
-                        <p>{player.score}</p>
-                    </div>
-                )
-            })}
+            
             <button onClick={newGame}>Start Over? (New Players)</button>
             <button onClick={playAgain}>Play Again? (Same Players)</button>
         </div>

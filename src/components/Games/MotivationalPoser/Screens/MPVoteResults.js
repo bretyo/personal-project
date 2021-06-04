@@ -1,9 +1,9 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import MPVoteRes from "./MPVoteRes"
 
 const MPVoteResults=(props)=>{
     const {answers, votes, nextScreen, switchScreen} = props
-
+    const [scores,setScores] = useState()
     useEffect(()=>{
         const timeout = setTimeout(()=>{
             switchScreen(nextScreen)

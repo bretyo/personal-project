@@ -13,7 +13,7 @@ module.exports = (io,socket)=>{
     }
 
     const serverSendClientsVotes=(body)=>{
-        socket.to(body.answers[0].roomId).emit('server-send-clients-votes', body)
+        io.to(body.playerID).emit('server-send-clients-votes', body)
     }
 
     const serverSendHostVote=(body)=>{

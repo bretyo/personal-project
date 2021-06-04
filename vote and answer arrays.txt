@@ -47,3 +47,22 @@ profileURL: "https://robohash.org/VIzXjd-1TmHJyAm3AAAQ.png"
 score: 100
 ​​​
 user_name: "SSSGGG"
+
+
+
+Players:
+Array [ {…} ]
+​
+0: Object { user_name: "1", id: "ScFWOuA2ANzPBW_RAAAL", score: 100, … }
+​​
+id: "ScFWOuA2ANzPBW_RAAAL"
+​​
+profileURL: "https://robohash.org/ScFWOuA2ANzPBW_RAAAL.png"
+​​
+score: 100
+​​
+user_name: "1"
+​​
+<prototype>: Object { … }
+​
+length: 1
