@@ -1,0 +1,142 @@
+Date : 2021-06-03 18:32:37
+Directory : c:\Users\perso\devmtn\personal-project
+Total : 85 files,  21545 codes, 206 comments, 290 blanks, all 22041 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JSON       |          4 |     19,764 |          0 |          3 |     19,767 |
+| JavaScript |         51 |      1,549 |        139 |        233 |      1,921 |
+| CSS        |         13 |        107 |         19 |         17 |        143 |
+| SQL        |         14 |         65 |         25 |          3 |         93 |
+| Markdown   |          1 |         39 |          0 |         33 |         72 |
+| HTML       |          1 |         20 |         23 |          1 |         44 |
+| XML        |          1 |          1 |          0 |          0 |          1 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                 | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                    |         85 |     21,545 |        206 |        290 |     22,041 |
+| db                                                                                                                   |         14 |         65 |         25 |          3 |         93 |
+| db\auth                                                                                                              |          5 |         17 |          0 |          0 |         17 |
+| db\games                                                                                                             |          2 |          5 |          0 |          0 |          5 |
+| db\prompts                                                                                                           |          1 |          2 |          0 |          0 |          2 |
+| db\stats                                                                                                             |          4 |         13 |          1 |          0 |         14 |
+| public                                                                                                               |          2 |         45 |         23 |          2 |         70 |
+| server                                                                                                               |          8 |        313 |         23 |         43 |        379 |
+| server\controllers                                                                                                   |          4 |        183 |          8 |          8 |        199 |
+| server\handlers                                                                                                      |          2 |         65 |          1 |         13 |         79 |
+| server\middleware                                                                                                    |          1 |          8 |          0 |          1 |          9 |
+| src                                                                                                                  |         58 |      3,806 |        135 |        207 |      4,148 |
+| src\components                                                                                                       |         45 |      1,133 |         89 |        170 |      1,392 |
+| src\components\Account                                                                                               |          2 |          8 |          0 |          1 |          9 |
+| src\components\Dash                                                                                                  |          2 |          8 |          0 |          1 |          9 |
+| src\components\Games                                                                                                 |         22 |        725 |         76 |        106 |        907 |
+| src\components\Games\MotivationalPoser                                                                               |         19 |        653 |         75 |         99 |        827 |
+| src\components\Games\MotivationalPoser\Screens                                                                       |         17 |        550 |         73 |         85 |        708 |
+| src\components\Games\MotivationalPoser\Screens\Rounds                                                                |          3 |         27 |         21 |          9 |         57 |
+| src\components\Games\MotivationalPoser\Screens\StartScreen                                                           |          2 |        134 |         18 |         28 |        180 |
+| src\components\Header                                                                                                |          6 |        120 |          3 |         19 |        142 |
+| src\components\Header\AuthButton                                                                                     |          2 |         43 |          0 |          8 |         51 |
+| src\components\Header\UserDisplay                                                                                    |          2 |         44 |          0 |          4 |         48 |
+| src\components\Join                                                                                                  |          9 |        203 |         10 |         34 |        247 |
+| src\components\Join\MotivationalPoser                                                                                |          7 |        101 |          1 |         10 |        112 |
+| src\components\Register                                                                                              |          2 |         42 |          0 |          6 |         48 |
+| src\components\SignIn                                                                                                |          2 |         27 |          0 |          3 |         30 |
+| src\redux                                                                                                            |          3 |         85 |         11 |         16 |        112 |
++----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                             | language   | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\perso\devmtn\personal-project\README.md                                                                     | Markdown   |         39 |          0 |         33 |         72 |
+| c:\Users\perso\devmtn\personal-project\db\auth\change_password.sql                                                   | SQL        |          4 |          0 |          0 |          4 |
+| c:\Users\perso\devmtn\personal-project\db\auth\change_username.sql                                                   | SQL        |          4 |          0 |          0 |          4 |
+| c:\Users\perso\devmtn\personal-project\db\auth\check_email.sql                                                       | SQL        |          2 |          0 |          0 |          2 |
+| c:\Users\perso\devmtn\personal-project\db\auth\delete_user.sql                                                       | SQL        |          2 |          0 |          0 |          2 |
+| c:\Users\perso\devmtn\personal-project\db\auth\register_user.sql                                                     | SQL        |          5 |          0 |          0 |          5 |
+| c:\Users\perso\devmtn\personal-project\db\games\add_to_plays.sql                                                     | SQL        |          3 |          0 |          0 |          3 |
+| c:\Users\perso\devmtn\personal-project\db\games\get_games.sql                                                        | SQL        |          2 |          0 |          0 |          2 |
+| c:\Users\perso\devmtn\personal-project\db\inserts.sql                                                                | SQL        |          0 |         24 |          0 |         24 |
+| c:\Users\perso\devmtn\personal-project\db\prompts\get_prompts.sql                                                    | SQL        |          2 |          0 |          0 |          2 |
+| c:\Users\perso\devmtn\personal-project\db\seed.sql                                                                   | SQL        |         28 |          0 |          3 |         31 |
+| c:\Users\perso\devmtn\personal-project\db\stats\add_new_stat.sql                                                     | SQL        |          4 |          0 |          0 |          4 |
+| c:\Users\perso\devmtn\personal-project\db\stats\check_for_stat.sql                                                   | SQL        |          2 |          1 |          0 |          3 |
+| c:\Users\perso\devmtn\personal-project\db\stats\get_user_stats.sql                                                   | SQL        |          2 |          0 |          0 |          2 |
+| c:\Users\perso\devmtn\personal-project\db\stats\update_stat.sql                                                      | SQL        |          5 |          0 |          0 |          5 |
+| c:\Users\perso\devmtn\personal-project\package-lock.json                                                             | JSON       |     17,221 |          0 |          1 |     17,222 |
+| c:\Users\perso\devmtn\personal-project\package.json                                                                  | JSON       |         56 |          0 |          1 |         57 |
+| c:\Users\perso\devmtn\personal-project\public\index.html                                                             | HTML       |         20 |         23 |          1 |         44 |
+| c:\Users\perso\devmtn\personal-project\public\manifest.json                                                          | JSON       |         25 |          0 |          1 |         26 |
+| c:\Users\perso\devmtn\personal-project\server\controllers\authController.js                                          | JavaScript |         81 |          7 |          5 |         93 |
+| c:\Users\perso\devmtn\personal-project\server\controllers\gameController.js                                          | JavaScript |         21 |          0 |          0 |         21 |
+| c:\Users\perso\devmtn\personal-project\server\controllers\promptController.js                                        | JavaScript |         28 |          1 |          3 |         32 |
+| c:\Users\perso\devmtn\personal-project\server\controllers\statController.js                                          | JavaScript |         53 |          0 |          0 |         53 |
+| c:\Users\perso\devmtn\personal-project\server\handlers\gameHandler.js                                                | JavaScript |         23 |          0 |          5 |         28 |
+| c:\Users\perso\devmtn\personal-project\server\handlers\roomHandler.js                                                | JavaScript |         42 |          1 |          8 |         51 |
+| c:\Users\perso\devmtn\personal-project\server\index.js                                                               | JavaScript |         57 |         14 |         21 |         92 |
+| c:\Users\perso\devmtn\personal-project\server\middleware\statMiddleware.js                                           | JavaScript |          8 |          0 |          1 |          9 |
+| c:\Users\perso\devmtn\personal-project\src\App.css                                                                   | CSS        |          0 |          0 |          1 |          1 |
+| c:\Users\perso\devmtn\personal-project\src\App.js                                                                    | JavaScript |         29 |         10 |          7 |         46 |
+| c:\Users\perso\devmtn\personal-project\src\App.test.js                                                               | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\perso\devmtn\personal-project\src\components\Account\Account.css                                            | CSS        |          0 |          0 |          1 |          1 |
+| c:\Users\perso\devmtn\personal-project\src\components\Account\Account.js                                             | JavaScript |          8 |          0 |          0 |          8 |
+| c:\Users\perso\devmtn\personal-project\src\components\Dash\Dash.css                                                  | CSS        |          0 |          0 |          1 |          1 |
+| c:\Users\perso\devmtn\personal-project\src\components\Dash\Dash.js                                                   | JavaScript |          8 |          0 |          0 |          8 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\GameEntry.js                                             | JavaScript |         25 |          0 |          2 |         27 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\Games.css                                                | CSS        |         19 |          0 |          1 |         20 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\Games.js                                                 | JavaScript |         28 |          1 |          4 |         33 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\MotivationalPoser\MotivationalPoser.css                  | CSS        |         29 |          0 |          4 |         33 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\MotivationalPoser\MotivationalPoser.js                   | JavaScript |         74 |          2 |         10 |         86 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\MotivationalPoser\Screens\MPAnswerOne.js                 | JavaScript |         11 |          0 |          0 |         11 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\MotivationalPoser\Screens\MPAnswerTwo.js                 | JavaScript |         12 |          0 |          0 |         12 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\MotivationalPoser\Screens\MPCredits.js                   | JavaScript |         41 |          0 |          6 |         47 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\MotivationalPoser\Screens\MPFinalShowPosts.js            | JavaScript |         16 |          0 |          1 |         17 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\MotivationalPoser\Screens\MPFinalVote.js                 | JavaScript |         16 |          0 |          1 |         17 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\MotivationalPoser\Screens\MPIntroScreen.js               | JavaScript |         63 |         27 |          6 |         96 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\MotivationalPoser\Screens\MPRoundShowPosts.js            | JavaScript |         30 |          0 |          4 |         34 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\MotivationalPoser\Screens\MPRoundVote.js                 | JavaScript |         35 |          5 |          5 |         45 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\MotivationalPoser\Screens\MPRoundsScreen.js              | JavaScript |        104 |          2 |         15 |        121 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\MotivationalPoser\Screens\MPScoreboard.js                | JavaScript |         29 |          0 |          4 |         33 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\MotivationalPoser\Screens\MPTutorialScreen.js            | JavaScript |         16 |          0 |          3 |         19 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\MotivationalPoser\Screens\MPWinner.js                    | JavaScript |         16 |          0 |          3 |         19 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\MotivationalPoser\Screens\Rounds\MPFinalRound.js         | JavaScript |          9 |          7 |          3 |         19 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\MotivationalPoser\Screens\Rounds\MPRoundOne.js           | JavaScript |          9 |          7 |          3 |         19 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\MotivationalPoser\Screens\Rounds\MPRoundTwo.js           | JavaScript |          9 |          7 |          3 |         19 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\MotivationalPoser\Screens\StartScreen\MPPlayerDisplay.js | JavaScript |         10 |          0 |          0 |         10 |
+| c:\Users\perso\devmtn\personal-project\src\components\Games\MotivationalPoser\Screens\StartScreen\MPStartScreen.js   | JavaScript |        124 |         18 |         28 |        170 |
+| c:\Users\perso\devmtn\personal-project\src\components\Header\AuthButton\AuthButton.css                               | CSS        |          0 |          0 |          1 |          1 |
+| c:\Users\perso\devmtn\personal-project\src\components\Header\AuthButton\AuthButton.js                                | JavaScript |         43 |          0 |          7 |         50 |
+| c:\Users\perso\devmtn\personal-project\src\components\Header\Header.css                                              | CSS        |         14 |          1 |          1 |         16 |
+| c:\Users\perso\devmtn\personal-project\src\components\Header\Header.js                                               | JavaScript |         19 |          2 |          6 |         27 |
+| c:\Users\perso\devmtn\personal-project\src\components\Header\UserDisplay\UserDisplay.css                             | CSS        |          0 |          0 |          1 |          1 |
+| c:\Users\perso\devmtn\personal-project\src\components\Header\UserDisplay\UserDisplay.js                              | JavaScript |         44 |          0 |          3 |         47 |
+| c:\Users\perso\devmtn\personal-project\src\components\Join\Join.css                                                  | CSS        |          0 |          0 |          1 |          1 |
+| c:\Users\perso\devmtn\personal-project\src\components\Join\Join.js                                                   | JavaScript |        102 |          9 |         23 |        134 |
+| c:\Users\perso\devmtn\personal-project\src\components\Join\MotivationalPoser\MPFinalPrompt.js                        | JavaScript |          0 |          0 |          1 |          1 |
+| c:\Users\perso\devmtn\personal-project\src\components\Join\MotivationalPoser\MPOne.js                                | JavaScript |         21 |          1 |          2 |         24 |
+| c:\Users\perso\devmtn\personal-project\src\components\Join\MotivationalPoser\MPPrompt.css                            | CSS        |          3 |          0 |          0 |          3 |
+| c:\Users\perso\devmtn\personal-project\src\components\Join\MotivationalPoser\MPPrompt.js                             | JavaScript |         26 |          0 |          4 |         30 |
+| c:\Users\perso\devmtn\personal-project\src\components\Join\MotivationalPoser\MPTwo.js                                | JavaScript |         26 |          0 |          2 |         28 |
+| c:\Users\perso\devmtn\personal-project\src\components\Join\MotivationalPoser\MPVote.js                               | JavaScript |         14 |          0 |          1 |         15 |
+| c:\Users\perso\devmtn\personal-project\src\components\Join\MotivationalPoser\MPVoteEntry.js                          | JavaScript |         11 |          0 |          0 |         11 |
+| c:\Users\perso\devmtn\personal-project\src\components\Register\Register.css                                          | CSS        |          0 |          0 |          1 |          1 |
+| c:\Users\perso\devmtn\personal-project\src\components\Register\Register.js                                           | JavaScript |         42 |          0 |          5 |         47 |
+| c:\Users\perso\devmtn\personal-project\src\components\SignIn\SignIn.css                                              | CSS        |          0 |          0 |          1 |          1 |
+| c:\Users\perso\devmtn\personal-project\src\components\SignIn\SignIn.js                                               | JavaScript |         27 |          0 |          2 |         29 |
+| c:\Users\perso\devmtn\personal-project\src\index.css                                                                 | CSS        |         42 |         18 |          3 |         63 |
+| c:\Users\perso\devmtn\personal-project\src\index.js                                                                  | JavaScript |         19 |          3 |          4 |         26 |
+| c:\Users\perso\devmtn\personal-project\src\logo.svg                                                                  | XML        |          1 |          0 |          0 |          1 |
+| c:\Users\perso\devmtn\personal-project\src\reTest.json                                                               | JSON       |      2,462 |          0 |          0 |      2,462 |
+| c:\Users\perso\devmtn\personal-project\src\redux\authReducer.js                                                      | JavaScript |         18 |          4 |          4 |         26 |
+| c:\Users\perso\devmtn\personal-project\src\redux\gameReducer.js                                                      | JavaScript |         59 |          7 |         10 |         76 |
+| c:\Users\perso\devmtn\personal-project\src\redux\store.js                                                            | JavaScript |          8 |          0 |          2 |         10 |
+| c:\Users\perso\devmtn\personal-project\src\reportWebVitals.js                                                        | JavaScript |         12 |          0 |          2 |         14 |
+| c:\Users\perso\devmtn\personal-project\src\routes.js                                                                 | JavaScript |         15 |          0 |          1 |         16 |
+| c:\Users\perso\devmtn\personal-project\src\setupTests.js                                                             | JavaScript |          1 |          4 |          1 |          6 |
+| Total                                                                                                                |            |     21,545 |        206 |        290 |     22,041 |
++----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

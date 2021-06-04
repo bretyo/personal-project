@@ -1,0 +1,49 @@
+Array [ {…}, {…} ]
+​
+0: Object { prompt_id: 16, game_id: 1, prompt: "There’s no need to rush. What’s meant for you always ____.", … }
+​​
+game: "MP"
+​​
+gameSocketId: "JukktBzHR24JXCFIAAAC"
+​​
+game_id: 1
+​​
+image: "https://images.unsplash.com/photo-1620497772552-8b7c2ba2b5e8…UyNjB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjI4MjU3ODA&ixlib=rb-1.2.1"
+​​
+prompt: "The truest indication of gratitude is ____."
+​​
+prompt_id: 15
+​​
+prompt_type: "MPOne"
+​​
+response: Array [ "The truest indication of gratitude is ddd." ]
+​​
+roomId: "FCGKSU"
+​​
+user: Object { user_name: "FFF", id: "ZsaB_jBqiP0TZm96AAAG", score: 100, … }
+​​
+<prototype>: Object { … }
+​
+1: Object { prompt_id: 8, game_id: 1, prompt: "Happiness is not ____, it's ____.", … }
+​
+length: 2
+​
+<prototype>: Array []
+
+
+
+
+Votes:  
+Object { SSSGGG: (1) […], SSS: (1) […] }
+​
+SSS: Array [ {…} ]
+​​
+0: Object { user_name: "SSSGGG", id: "VIzXjd-1TmHJyAm3AAAQ", score: 100, … }
+​​​
+id: "VIzXjd-1TmHJyAm3AAAQ"
+​​​
+profileURL: "https://robohash.org/VIzXjd-1TmHJyAm3AAAQ.png"
+​​​
+score: 100
+​​​
+user_name: "SSSGGG"

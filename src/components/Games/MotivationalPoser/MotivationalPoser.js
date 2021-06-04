@@ -14,6 +14,7 @@ import MPScoreboard from './Screens/MPScoreboard'
 import MPFinalShowPosts from './Screens/MPFinalShowPosts'
 import MPFinalVote from './Screens/MPFinalVote'
 import MPWinner from './Screens/MPWinner'
+import MPVoteResults from './Screens/MPVoteResults'
 
 const MotivationalPoser =()=>{
     const [round, setRound] = useState(0)
@@ -66,7 +67,8 @@ const MotivationalPoser =()=>{
         tutorial:  {name: 'tutorial', screen: <MPTutorialScreen nextScreen='rounds' switchScreen={switchScreen} />},
         rounds: {name: 'rounds', screen: <MPRoundsScreen setAnswers={setAnswers} roomId={room} socket={socket} images={images} switchScreen={switchScreen} round={round} />},
         show: {name:'show', screen: <MPRoundShowPosts answers={round==='round_1'? answers.round_1 : round==='round_2' ? answers.round_2 : answers.final_round} nextScreen='vote' switchScreen={switchScreen} />},
-        vote: {name:'vote', screen: <MPRoundVote setVotes={setVotes} setAnswers={setAnswers} round={round} socket={socket} answers={round==='round_1'? answers.round_1 : round==='round_2' ? answers.round_2 : answers.final_round} nextScreen='scoreboard' switchScreen={switchScreen} />},
+        vote: {name:'vote', screen: <MPRoundVote setVotes={setVotes} setAnswers={setAnswers} round={round} socket={socket} answers={round==='round_1'? answers.round_1 : round==='round_2' ? answers.round_2 : answers.final_round} nextScreen='results' switchScreen={switchScreen} />},
+        results: {name: 'results', screen: <MPVoteResults votes={round==='round_1'? votes.round_1 : round==='round_2' ? votes.round_2 : votes.final_round} answers={round==='round_1'? answers.round_1 : round==='round_2' ? answers.round_2 : answers.final_round} nextScreen='scoreboard' switchScreen={switchScreen} />},
         scoreboard: {name:'scoreboard', screen: <MPScoreboard switchScreen={switchScreen} setRound={setRound} round={round} />},
         finalshow: {name:'finalshow', screen: <MPFinalShowPosts nextScreen='finalvote' switchScreen={switchScreen} />},
         finalvote: {name:'finalvote', screen: <MPFinalVote  nextScreen='scoreboard' switchScreen={switchScreen} />},
@@ -76,7 +78,8 @@ const MotivationalPoser =()=>{
         
         
     // socket && console.log(images)
-    console.log(votes.round_1)
+    round && console.log('Votes: ', votes.round_1)
+    round && console.log(`answers: `, answers.round_1)
     return(
         <div>
             {screen && screens[screen].screen}
