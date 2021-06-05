@@ -1,39 +1,77 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {setPlayers} from '../../../../redux/gameReducer'
 
 const MPScoreboard=(props)=>{
     const {players} = useSelector(store=>store.gameReducer)
+    const [newScores,setNewScores] = useState({})
+    const [showNewScore, setShowNewScore] = useState(false)
+    const {round, setRound, switchScreen, votes} = props
+    const dispatch= useDispatch()
+
+    
 
     useEffect(() => {
+        const changeScores=()=>{
+            const baseScore = 200
+            let winner = []
+            for (const key in votes) {
+                console.log(votes)
+                console.log(key)
+                if(!winner[0])  {winner.push(key);continue}
+                console.log(winner)
+                votes[key].length > votes[winner[0]].length ? winner = [key] : votes[key].length === votes[winner[0]].length ? winner= [...winner, key]: winner=winner;
+            }   
+
+            let newPlayers=[]
+            players.forEach((player, index)=>{
+                let newScore = votes[player.user_name].length * (round==='round_1'? baseScore : round==='round_2'? baseScore * 2 : baseScore * 3)
+                console.log(newScore)
+                if(winner.includes(player.user_name)) newScore = newScore*2;
+                const newPlayer = {...player, score: player.score + newScore}
+                newPlayers=[...newPlayers, newPlayer]
+                console.log(newPlayers)
+            })
+            dispatch(setPlayers(newPlayers))
+            
+            setShowNewScore(true)
+        }
+
+        const handleSwitchScreen=()=>{
+            if(round==='round_1'){
+                setRound('round_2')
+                switchScreen('rounds')
+            }
+            else if(round ==='round_2'){
+                setRound('final_round')
+                switchScreen('rounds')
+            }
+            else{
+                switchScreen('winner')
+            }
+        }
+
         const timeout = setTimeout(() => {
-            handleSwitchScreen()    }, 3000);  
+            !showNewScore? changeScores(): handleSwitchScreen()    
+        }, 5000);  
         return () => {
             clearTimeout(timeout)
         };
-    },[]);
+    },[showNewScore]);
 
-    const handleSwitchScreen=()=>{
-        if(props.round==='round_1'){
-            props.setRound('round_2')
-            props.switchScreen('rounds')
-        }
-        else if(props.round ==='round_2'){
-            props.setRound('final_round')
-            props.switchScreen('rounds')
-        }
-        else{
-            props.switchScreen('winner')
-        }
-    }
+    
+    
     const sortedPlayers = players.sort((first,second)=>second.score - first.score )
     return(
         <div>
             MP Scoreboard!
-            {players &&  sortedPlayers.map(player=>{
+            {players &&  sortedPlayers.map((player, index)=>{
                 return (
                     <div key={player.user_name}>
+                        <img src={player.profileURL} alt={`${player.user_name}'s profile pic`} />
                         <h2>{player.user_name}</h2>
                         <p>{player.score}</p>
+                        {/* <h2>{index>1 && players[index-1].score === player.score? index: }</h2> */}
                     </div>
                 )
             })}

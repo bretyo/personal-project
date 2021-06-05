@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import MPVoteRes from "./MPVoteRes"
 
 const MPVoteResults=(props)=>{
-    const {answers, votes, nextScreen, switchScreen} = props
+    const {answers, votes, nextScreen, switchScreen, setPlayers} = props
     const [scores,setScores] = useState()
     useEffect(()=>{
         const timeout = setTimeout(()=>{
