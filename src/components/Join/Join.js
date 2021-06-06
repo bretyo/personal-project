@@ -68,24 +68,7 @@ const Join =()=>{
                 // socket.emit
             })
 
-            const addToStats=(game,score,win, user_id)=>{
-                axios.get(`/api/stats/${game}`)
-                .then(res=>{
-                    console.log(res.data)    
-                    if(res.data.length){
-                        axios.put(`/api/stats/${game}`, {wins: win, score, user_id})
-                        .then()
-                        .catch(err=>console.log(err))
-                    }
-                    else{
-                        axios.post(`/api/stats/${game}`, {wins: win, score, user_id})
-                        .then()
-                        .catch(err=>console.log(err))
-                    }
-                })
-                .catch(err=>console.log(err))
-                
-            }
+           
             socket.on('send-client-stats',(body)=>{
                 const{win} = body;
                 setWaitText(!win?'You lose!':'You win!');
@@ -124,7 +107,7 @@ const Join =()=>{
 
     const sendResponse=(response)=>{
         // emit to gameID the response, which will be the prompt with an added Answer key
-        socket.emit('client-send-response', {...prompt, response, user: {...user, user_name}})
+        !waiting && socket.emit('client-send-response', {...prompt, response, user: {...user, user_name}})
         setWaiting(true)
     }
 

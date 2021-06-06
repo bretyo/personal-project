@@ -5,21 +5,23 @@ import { setPrompts } from '../../../../redux/gameReducer'
 import axios from 'axios'
 
 const MPIntroScreen=(props)=>{
-    const{switchScreen, nextScreen, setRound} = props
+    const{switchScreen, nextScreen, setRound, setAnswers,setVotes} = props
     const{players, prompts} = useSelector(store=>store.gameReducer)
     const dispatch = useDispatch();
 
-    // const unsplash = createApi({ accessKey: MY_ACCESS_KEY });
-    const getImagesAndPrompts=()=>{
-        // console.log(MY_ACCESS_KEY)
-        axios.get('/api/images')
-          .then(res=>{
-              console.log(res.data.response)
-          })
-          .catch(err=>{
-              console.log(err)
-          })
-    }
+    useEffect(()=>{
+        setVotes({
+            round_1:[],
+            round_2: [],
+            final_round: []
+        })
+
+        setAnswers({
+            round_1:[],
+            round_2: [],
+            final_round: []
+        })
+    },[])
 
     useEffect(async()=>{
         setRound('round_1')

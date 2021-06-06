@@ -16,17 +16,7 @@ const MPCredits=(props)=>{
             console.log(prevPlayers)
         dispatch(setPlayers(prevPlayers))
 
-        setVotes({
-            round_1:[],
-            round_2: [],
-            final_round: []
-        })
-
-        setAnswers({
-            round_1:[],
-            round_2: [],
-            final_round: []
-        })
+        
         
         switchScreen('intro')
     }

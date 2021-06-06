@@ -82,11 +82,8 @@ const MPStartScreen=(props)=>{
     
         }
 
-
-        if(socket){
-            // Players on Join component attempt to join room
-            socket.on('attempt-join-room', (body)=>{
-                // console.log(body)
+        const handleJoinAttempt=(body)=>{
+            // console.log(body)
 
                 // Invokes login Attempts
                 const response = loginAttemptChecks(body.player);
@@ -99,7 +96,16 @@ const MPStartScreen=(props)=>{
                 }
                 
                 // console.log({...body, ...response});
-            })
+        }
+        if(socket){
+            // Players on Join component attempt to join room
+            socket.on('attempt-join-room', handleJoinAttempt)
+        }
+
+        return()=>{
+            if(socket){
+                socket.off('attempt-join-room' ,handleJoinAttempt) // <--- important, otherwise we have listeners adding on top of each other.
+            }
         }
     }, [socket])
 

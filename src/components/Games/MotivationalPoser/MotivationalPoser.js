@@ -21,7 +21,6 @@ const MotivationalPoser =()=>{
     const [screen,setScreen] = useState(null)
     const [socket, setSocket] = useState(null)
     const [room,setRoom] = useState('')
-    const [images,setImages] = useState('')
     const [answers, setAnswers] = useState({
         round_1:[],
         round_2: [],
@@ -63,9 +62,9 @@ const MotivationalPoser =()=>{
         
     const screens = {
         start:  {name: 'start', screen:<MPStartScreen setRoom={setRoom} setSocket={setSocket} socket={socket}  nextScreen='intro' switchScreen={switchScreen} />},
-        intro: {name: 'intro', screen: <MPIntroScreen setRound={setRound} nextScreen='tutorial' switchScreen={switchScreen}  />},
+        intro: {name: 'intro', screen: <MPIntroScreen setAnswers={setAnswers} setVotes={setVotes}  setRound={setRound} nextScreen='tutorial' switchScreen={switchScreen}  />},
         tutorial:  {name: 'tutorial', screen: <MPTutorialScreen nextScreen='rounds' switchScreen={switchScreen} />},
-        rounds: {name: 'rounds', screen: <MPRoundsScreen setAnswers={setAnswers} roomId={room} socket={socket} images={images} switchScreen={switchScreen} round={round} />},
+        rounds: {name: 'rounds', screen: <MPRoundsScreen setAnswers={setAnswers} roomId={room} socket={socket}  switchScreen={switchScreen} round={round} />},
         show: {name:'show', screen: <MPRoundShowPosts answers={round==='round_1'? answers.round_1 : round==='round_2' ? answers.round_2 : answers.final_round} nextScreen='vote' switchScreen={switchScreen} />},
         vote: {name:'vote', screen: <MPRoundVote setVotes={setVotes} setAnswers={setAnswers} round={round} socket={socket} answers={round==='round_1'? answers.round_1 : round==='round_2' ? answers.round_2 : answers.final_round} nextScreen='results' switchScreen={switchScreen} />},
         results: {name: 'results', screen: <MPVoteResults votes={round==='round_1'? votes.round_1 : round==='round_2' ? votes.round_2 : votes.final_round} answers={round==='round_1'? answers.round_1 : round==='round_2' ? answers.round_2 : answers.final_round} nextScreen='scoreboard' switchScreen={switchScreen} />},
@@ -73,7 +72,7 @@ const MotivationalPoser =()=>{
         finalshow: {name:'finalshow', screen: <MPFinalShowPosts nextScreen='finalvote' switchScreen={switchScreen} />},
         finalvote: {name:'finalvote', screen: <MPFinalVote  nextScreen='scoreboard' switchScreen={switchScreen} />},
         winner: {name:'winner', screen: <MPWinner socket={socket} nextScreen='credits' switchScreen={switchScreen} players={players} />},
-        credits: {name:'credits', screen: <MPCredits setAnswers={setAnswers} setVotes={setVotes} answers={answers} socket={socket} room={room} switchScreen={switchScreen} />}
+        credits: {name:'credits', screen: <MPCredits answers={answers} socket={socket} room={room} switchScreen={switchScreen} />}
     }
         
         

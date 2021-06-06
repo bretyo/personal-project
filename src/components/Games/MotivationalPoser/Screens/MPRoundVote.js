@@ -32,9 +32,8 @@ const MPRoundVote=(props)=>{
 
     // ------------SOCKET HANDLERS -------------
     useEffect(()=>{
-        if(socket){
-            socket.on('server-send-host-vote', vote=>{
-                const fromPlayer= players.find(pl=>pl.user_name === vote.fromUser)
+        const getVotes=vote=>{
+            const fromPlayer= players.find(pl=>pl.user_name === vote.fromUser)
                 // let roundEnd = false;
                 let end = false
                 console.log(fromPlayer)
@@ -61,7 +60,14 @@ const MPRoundVote=(props)=>{
                 // setVotes(prevVotes=>{
                 //     return [...prevVotes, prevVotes[player].votes = [...prevVotes[player].votes, players[fromPlayer]]]
                 // })
-            })
+        }
+        if(socket){
+            socket.on('server-send-host-vote', getVotes)
+        }
+        return()=>{
+            if(socket){
+                socket.off('server-send-host-vote',getVotes);
+            }
         }
     },[socket])
 

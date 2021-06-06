@@ -9,7 +9,7 @@ module.exports = (io,socket)=>{
     }
 
     const sendHostResponse=(body)=>{
-        io.to(body.gameSocketId).emit('send-host-response', body)
+        socket.to(body.gameSocketId).emit('send-host-response', body)
     }
 
     const serverSendClientsVotes=(body)=>{

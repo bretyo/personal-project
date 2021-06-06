@@ -15,9 +15,8 @@ const MPRoundsScreen=(props)=>{
     const {round, switchScreen, socket, roomId, setAnswers} = props
 
     useEffect(()=>{
-        if(socket){
-            socket.on('send-host-response', body=>{
-                const player= players.find(player=>body.user.user_name===player.user_name)
+        const getResponse=(body)=>{
+            const player= players.find(player=>body.user.user_name===player.user_name)
                 let roundEnd = false;
                 console.log(player)
                 console.log(body)
@@ -35,9 +34,16 @@ const MPRoundsScreen=(props)=>{
                     }
                 })
                 roundEnd && setCount(0)
-            })
         }
-    },[round])
+        if(socket){
+            socket.on('send-host-response', getResponse)
+        }
+        return()=>{
+            if(socket){
+                socket.off('send-host-response', getResponse);
+            }
+        }
+    },[])
 
     useEffect(() => {
         handleScreenLoad(round)
