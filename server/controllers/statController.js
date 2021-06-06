@@ -14,10 +14,10 @@ module.exports={
     },
     checkForStat: async(req,res)=>{
         const db = req.app.get('db');
-        const {game_id} = req.params
+        const {game_id, user_id} = req.params
         const {user} = req.session;
         try {
-            const stat = await db.stats.check_for_stat(user.user_id, game_id)
+            const stat = await db.stats.check_for_stat(user_id, game_id)
             res.status(200).send(stat)
         } catch (err) {
             console.log(err);
@@ -28,9 +28,9 @@ module.exports={
         const db = req.app.get('db');
         const {game_id} = req.params;
         const {user} = req.session;
-        const {wins, score} = req.body;
+        const {wins, score, user_id} = req.body;
         try {
-            await db.stats.add_new_stat(user.user_id, game_id, wins, score)
+            await db.stats.add_new_stat(user_id, game_id, wins, score)
             res.sendStatus(200);
         } catch (err) {
             console.log(err)
@@ -41,9 +41,9 @@ module.exports={
         const db = req.app.get('db');
         const {game_id} = req.params;
         const {user} = req.session;
-        const {wins, score} = req.body.stat;
+        const {wins, score, user_id} = req.body;
         try {
-            await db.stats.update_stat(user.user_id, game_id, wins, score)
+            await db.stats.update_stat(user_id, game_id, wins, score)
             res.sendStatus(200);
         } catch (err) {
             console.log(err)

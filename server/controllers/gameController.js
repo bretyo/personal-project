@@ -9,9 +9,9 @@ module.exports = {
     },
     addPlay: async(req,res, next)=>{
         const db = req.app.get('db')
-        const {id} = req.params
+        const {game_id} = req.params
         try {
-            await db.games.add_to_plays(id)
+            await db.games.add_to_plays(game_id)
         } catch (err) {
             console.log(err)
             return res.status(500).send(err)

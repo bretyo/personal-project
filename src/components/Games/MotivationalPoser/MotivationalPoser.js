@@ -72,8 +72,8 @@ const MotivationalPoser =()=>{
         scoreboard: {name:'scoreboard', screen: <MPScoreboard votes={round==='round_1'? votes.round_1 : round==='round_2' ? votes.round_2 : votes.final_round} switchScreen={switchScreen} setRound={setRound} round={round} />},
         finalshow: {name:'finalshow', screen: <MPFinalShowPosts nextScreen='finalvote' switchScreen={switchScreen} />},
         finalvote: {name:'finalvote', screen: <MPFinalVote  nextScreen='scoreboard' switchScreen={switchScreen} />},
-        winner: {name:'winner', screen: <MPWinner nextScreen='credits' switchScreen={switchScreen} players={players} />},
-        credits: {name:'credits', screen: <MPCredits answers={answers} socket={socket} room={room} switchScreen={switchScreen} />}
+        winner: {name:'winner', screen: <MPWinner socket={socket} nextScreen='credits' switchScreen={switchScreen} players={players} />},
+        credits: {name:'credits', screen: <MPCredits setAnswers={setAnswers} setVotes={setVotes} answers={answers} socket={socket} room={room} switchScreen={switchScreen} />}
     }
         
         

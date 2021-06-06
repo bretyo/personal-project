@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import {setSelectedGame, setPlayers} from '../../../../../redux/gameReducer'
+import { setGames,setSelectedGame, setPlayers} from '../../../../../redux/gameReducer'
 import axios from 'axios'
 import MPPlayerDisplay from "./MPPlayerDisplay"
 import badwordsRegExp from 'badwords/regexp'
@@ -131,6 +131,36 @@ const MPStartScreen=(props)=>{
         })
     }
 
+    const addToStats=(game,score,win, user_id)=>{
+        console.log(game)
+        axios.put(`/api/games/${game}`)
+        .then(res=>{
+            dispatch(setGames(res.data))
+        })
+        .catch(err=>console.log(err))
+        axios.get(`/api/stats/${game}/${user_id}`)
+        .then(res=>{
+            console.log(res.data)    
+            if(res.data.length){
+                axios.put(`/api/stats/${game}`, {wins: win, score, user_id})
+                .then()
+                .catch(err=>console.log(err))
+            }
+            else{
+                axios.post(`/api/stats/${game}`, {wins: win, score, user_id})
+                .then()
+                .catch(err=>console.log(err))
+            }
+        })
+        .catch(err=>console.log(err))
+    }
+    const handleSocketTest=()=>{
+        const winner = players.reduce((acc, curr)=>curr.score > acc.score? curr: acc ,{score:-1})
+        players.forEach(player=>{
+            player.user_id && addToStats(selectedGame.game_id, player.score, player===winner? 1:0, player.user_id)
+            socket.emit('game-end', {playerID: player.id, win: player===winner?true:false})
+        })
+    }
 
     // console.log(badwordsRegExp)
     // selectedGame && console.log(selectedGame.game_players_max)
@@ -159,7 +189,7 @@ const MPStartScreen=(props)=>{
                     <button onClick={()=>speechSynthesis.speak(utterance)}>Text to speech test</button>
                     <button onClick={()=>speechSynthesis.cancel()}>Cancel speech test</button>
                     {/* <button onClick={()=>audioatk.play()} >Audio Test</button> */}
-                    <button onClick={handlePromptsTest}>prompts Test</button>
+                    <button onClick={handleSocketTest}>socket win/lose test</button>
                 </div>
             ) : 
                 <h2>Loading...</h2>

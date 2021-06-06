@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {useState, useEffect} from 'react'
 import {useSelector} from 'react-redux'
 // import axios from 'axios'
@@ -67,6 +68,30 @@ const Join =()=>{
                 // socket.emit
             })
 
+            const addToStats=(game,score,win, user_id)=>{
+                axios.get(`/api/stats/${game}`)
+                .then(res=>{
+                    console.log(res.data)    
+                    if(res.data.length){
+                        axios.put(`/api/stats/${game}`, {wins: win, score, user_id})
+                        .then()
+                        .catch(err=>console.log(err))
+                    }
+                    else{
+                        axios.post(`/api/stats/${game}`, {wins: win, score, user_id})
+                        .then()
+                        .catch(err=>console.log(err))
+                    }
+                })
+                .catch(err=>console.log(err))
+                
+            }
+            socket.on('send-client-stats',(body)=>{
+                const{win} = body;
+                setWaitText(!win?'You lose!':'You win!');
+                // player.user_id && addToStats(game_id, score, win, player.user_id)
+            })
+
         }
 
         
@@ -109,6 +134,8 @@ const Join =()=>{
         console.log(vote)
     }
 
+    
+
     const screens = {
         MP_Prompt: {name: 'MP_Prompt', screen: <MPPrompt sendResponse={sendResponse} setWaiting={setWaiting} prompt={prompt} />},
         MP_Vote: {name: 'MP_Vote', screen: <MPVote my_name={user_name} handleVote={handleVote} answers={answers} />}
@@ -126,7 +153,7 @@ const Join =()=>{
             :
                 waiting? <h2>{waitText}</h2> : screens[screen].screen
             }
-            {/* <button onClick={handleUnsplashTest}>Testing the Unsplash get</button> */}
+            {/* <button onClick={()=>addToStats(2,200,1)}>Testing the Unsplash get</button> */}
 
         </div>
     )

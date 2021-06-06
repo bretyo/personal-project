@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { setPlayers, setPrompts } from "../../../../redux/gameReducer"
 
 const MPCredits=(props)=>{
-    const{switchScreen, socket, room} = props
+    const{switchScreen, socket, room, setVotes, setAnswers} = props
     const{players,prompts} = useSelector(store=>store.gameReducer)
     const dispatch = useDispatch()
     console.log(players)
@@ -15,6 +15,18 @@ const MPCredits=(props)=>{
             });
             console.log(prevPlayers)
         dispatch(setPlayers(prevPlayers))
+
+        setVotes({
+            round_1:[],
+            round_2: [],
+            final_round: []
+        })
+
+        setAnswers({
+            round_1:[],
+            round_2: [],
+            final_round: []
+        })
         
         switchScreen('intro')
     }

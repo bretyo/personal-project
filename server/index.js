@@ -87,6 +87,6 @@ app.get('/api/images', promptCtrl.getImages)
 
 // STATS
 app.get('/api/stats', statMiddleware.usersOnly,statCtrl.getStats)
-app.get('/api/stats/:game_id', statMiddleware.usersOnly,statCtrl.checkForStat)
-app.post('/api/stats/:game_id', statMiddleware.usersOnly, statCtrl.addNewStat)
-app.put('/api/stats/:game_id', statMiddleware.usersOnly, statCtrl.updateStat)
+app.get('/api/stats/:game_id/:user_id', statCtrl.checkForStat)
+app.post('/api/stats/:game_id',  statCtrl.addNewStat)
+app.put('/api/stats/:game_id',  statCtrl.updateStat)
