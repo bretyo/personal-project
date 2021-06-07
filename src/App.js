@@ -1,4 +1,3 @@
-import './App.scss';
 import {useEffect, useState} from 'react' //use Effect for import game data
 import Header from './components/Header/Header';
 import routes from './routes'
@@ -35,7 +34,7 @@ function App(props) {
 }, [dispatch])
   // console.log(user)
   return (
-    <div className="App">
+    <div className={`App `}>
       <Header/>
       {routes}
     </div>

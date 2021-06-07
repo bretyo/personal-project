@@ -1,0 +1,19 @@
+@mixin button-theme {
+    &:hover{
+        color: $highlight-color;
+        border: $highlight-color 1px solid;
+
+    }
+    border: $text-color 1px solid;
+    background: none ;
+    color: $text-color;
+      
+}
+
+@mixin a-theme{
+    &:hover{
+        color: $highlight-color;
+    }
+    color: $text-color;
+    text-decoration: none;
+}

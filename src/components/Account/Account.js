@@ -1,6 +1,6 @@
 const Account =()=>{
     return(
-        <div>
+        <div className='account-screen'>
             Account
         </div>
     )

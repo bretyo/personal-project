@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { setPlayers, setPrompts } from "../../../../redux/gameReducer"
+import { setPlayers, setPrompts, setPlaying } from "../../../../redux/gameReducer"
 
 const MPCredits=(props)=>{
     const{switchScreen, socket, room, setVotes, setAnswers} = props
@@ -27,6 +27,7 @@ const MPCredits=(props)=>{
     }
 
     useEffect(()=>{
+        dispatch(setPlaying(false))
         dispatch(setPrompts({...prompts, images: [...prompts.images.slice(players.length * 2 + 2)]}))// <-- the math takes into account the players amount for all three rounds as well as the intro picture
     },[])
 

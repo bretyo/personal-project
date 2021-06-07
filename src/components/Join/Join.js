@@ -1,9 +1,10 @@
 import axios from 'axios';
 import {useState, useEffect} from 'react'
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import {setPlaying} from '../../redux/gameReducer'
 // import axios from 'axios'
 import io from 'socket.io-client'
-import MPPrompt from './MotivationalPoser/MPPrompt';
+import MPPrompt from './MotivationalPoser/Prompts/MPPrompt';
 import MPVote from './MotivationalPoser/MPVote';
 
 
@@ -18,6 +19,7 @@ const Join =()=>{
     const {user} = useSelector(store=>store.authReducer)
     const [prompt, setPrompt] = useState({})
     const [answers, setAnswers] = useState([])
+    const dispatch = useDispatch();
 
     // ---------- SOCKET HANDLERS ------------
     const [socket, setSocket] = useState(null)
@@ -30,6 +32,7 @@ const Join =()=>{
             socket.on('join-room',(body)=>{
                 setWaitText('Successfully Joined!')
                 setJoined(true)
+                dispatch(setPlaying(true))
                 socket.emit('player-join', body.code)
             })
 
@@ -126,7 +129,7 @@ const Join =()=>{
 
     console.log(screen)
     return(
-        <div>
+        <div className={`${!joined && 'header-padded'}`}>
             {!joined?
                 (<div>
                     <input placeholder='username' value={user_name} onChange={e=>handleUsernameChanges(e.target.value.toUpperCase())}  />

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {useState, useEffect} from 'react'
 import MPOne from './MPOne'
-import './MPPrompt.css'
+// import './MPPrompt.css'
 import MPTwo from './MPTwo'
 const MPPrompt=(props)=>{
     const {setWaiting, prompt, sendResponse} = props
@@ -15,7 +15,7 @@ const MPPrompt=(props)=>{
     },[])
 
     return(
-        <div>
+        <div className={'mp-prompt'}>
             MP PROMPT!
             <img src={prompt.image} />
             {

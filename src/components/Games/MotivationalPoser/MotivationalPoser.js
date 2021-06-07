@@ -1,4 +1,4 @@
-import './MotivationalPoser.css'
+// import './MotivationalPoser.css'
 import {useEffect, useState} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import {setPlayers} from '../../../redux/gameReducer'
@@ -31,7 +31,7 @@ const MotivationalPoser =()=>{
         round_2:[],
         final_round:[]
     }) // THIS WILL KEEP TRACK OF HOW MANY PEOPLE VOTED FOR THE USER ON THE ROUND
-    const {selectedGame, players} = useSelector(store=>store.gameReducer)// This keeps track of players names, score
+    const {selectedGame, players, playing} = useSelector(store=>store.gameReducer)// This keeps track of players names, score
     const dispatch = useDispatch();
 
     
@@ -80,7 +80,7 @@ const MotivationalPoser =()=>{
     round && console.log('Votes: ', votes.round_1)
     round && console.log(`answers: `, answers.round_1)
     return(
-        <div>
+        <div className={`${!playing && 'header-padded'}`}>
             {screen && screens[screen].screen}
         </div>
     )

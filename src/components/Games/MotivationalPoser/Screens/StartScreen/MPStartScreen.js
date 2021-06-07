@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { setGames,setSelectedGame, setPlayers} from '../../../../../redux/gameReducer'
+import { setGames,setSelectedGame, setPlayers, setPlaying} from '../../../../../redux/gameReducer'
 import axios from 'axios'
 import MPPlayerDisplay from "./MPPlayerDisplay"
 import badwordsRegExp from 'badwords/regexp'
@@ -113,6 +113,7 @@ const MPStartScreen=(props)=>{
     // --------------FUNCTIONS---------------
 
     const startCountdown=()=>{
+        dispatch(setPlaying(true))
         switchScreen(nextScreen)
     }
 
@@ -176,14 +177,14 @@ const MPStartScreen=(props)=>{
 
     console.log(players)
     return(
-        <div>
+        <div >
             {selectedGame ? (
                 <div className='start-screen'>
                     <section className='room-info'>
                         <h2>Motivational Poser</h2>
                         <h3>Code: {code}</h3>
                         <h3>Players: {players.length}/{selectedGame.game_players_max}</h3>
-                        { /*players.length >= selectedGame.game_players_min &&*/ <button onClick={startCountdown}>Start Game</button> }
+                        { players.length >= selectedGame.game_players_min && <button onClick={startCountdown}>Start Game</button> }
                     </section>
                     <section className='player-display-section'>
                         {players && players.map(player=>{
@@ -192,10 +193,10 @@ const MPStartScreen=(props)=>{
                     </section>
                     {/* <button onClick={()=>socket.emit('start-room', {code})}>Join room test</button> */}
                     {/* <button onClick={()=>window.location.reload()}>Refresh page test</button> */}
-                    <button onClick={()=>speechSynthesis.speak(utterance)}>Text to speech test</button>
-                    <button onClick={()=>speechSynthesis.cancel()}>Cancel speech test</button>
+                    {/* <button onClick={()=>speechSynthesis.speak(utterance)}>Text to speech test</button> */}
+                    {/* <button onClick={()=>speechSynthesis.cancel()}>Cancel speech test</button> */}
                     {/* <button onClick={()=>audioatk.play()} >Audio Test</button> */}
-                    <button onClick={handleSocketTest}>socket win/lose test</button>
+                    {/* <button onClick={handleSocketTest}>socket win/lose test</button> */}
                 </div>
             ) : 
                 <h2>Loading...</h2>

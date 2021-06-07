@@ -1,0 +1,15 @@
+button{
+    @include button-theme;
+}
+
+.header-padded{
+    padding-top: 6rem;
+}
+
+.App{
+    // box-sizing: border-box;
+    // padding-top: 6rem;
+    background-color: $backgrounds;
+    height: 100vh;
+}
+

@@ -6,7 +6,8 @@ const initialState = {
     prompts: {
         prompts: [],
         images: []
-    }
+    },
+    playing: false
 }
 
 // Action Types
@@ -14,6 +15,7 @@ const SET_GAMES = 'SET_GAMES'
 const SET_SELECTED_GAME = 'SET_SELECTED_GAME'
 const SET_PLAYERS = 'SET_PLAYERS'
 const SET_PROMPTS = 'SET_PROMPTS'
+const SET_PLAYING = 'SET_PLAYING'
 
 // Action Builders
 export function setGames(games){
@@ -44,6 +46,13 @@ export function setPrompts(prompts){
     }
 }
 
+export function setPlaying(bool){
+    return{
+        type: SET_PLAYING,
+        payload: bool
+    }
+}
+
 // Reducer
 export default function gameReducer(state=initialState, action){
     // console.log('prompts state: ', state.prompts)
@@ -69,6 +78,9 @@ export default function gameReducer(state=initialState, action){
             else{
                 return {...state, prompts: {...state.prompts, prompts: action.payload.prompts}}
             }
+
+        case SET_PLAYING:
+            return {...state, playing: action.payload}
 
         default:
             return state;
