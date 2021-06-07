@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import {useEffect, useState} from 'react' //use Effect for import game data
 import Header from './components/Header/Header';
 import routes from './routes'

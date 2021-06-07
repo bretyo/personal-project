@@ -180,7 +180,7 @@ const MPStartScreen=(props)=>{
             {selectedGame ? (
                 <div className='start-screen'>
                     <section className='room-info'>
-                        <h2>Motivational Parsers</h2>
+                        <h2>Motivational Poser</h2>
                         <h3>Code: {code}</h3>
                         <h3>Players: {players.length}/{selectedGame.game_players_max}</h3>
                         { /*players.length >= selectedGame.game_players_min &&*/ <button onClick={startCountdown}>Start Game</button> }

@@ -66,3 +66,21 @@ user_name: "1"
 <prototype>: Object { … }
 ​
 length: 1
+
+id: "-t_5Rx90CdBl8bciAAAK"
+​​
+profileURL: "https://robohash.org/-t_5Rx90CdBl8bciAAAK.png"
+​​
+score: 0
+​​
+user_email: "test"
+​​
+user_id: 2
+​​
+user_name: "TESTBOI"
+
+
+// player foreach loop. sends every id an emit, but if the id===winner_id, then emit add win score
+
+
+Add a listener in gamehandler that will listen for update-user-starts. host will emit host-update-user-starts. same stuff for update-user-wins

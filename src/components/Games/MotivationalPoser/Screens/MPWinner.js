@@ -29,12 +29,12 @@ const MPWinner=(props)=>{
             })
             .catch(err=>console.log(err))
         }
+        axios.put(`/api/games/${selectedGame.game_id}`)
+        .then(res=>{
+            dispatch(setGames(res.data))
+        })
+        .catch(err=>console.log(err))
         players.forEach(player=>{
-            axios.put(`/api/games/${selectedGame.game_id}`)
-            .then(res=>{
-                dispatch(setGames(res.data))
-            })
-            .catch(err=>console.log(err))
             player.user_id && addToStats(selectedGame.game_id, player.score, player===winner? 1:0, player.user_id)
             socket.emit('game-end', {playerID: player.id, win: player===winner?true:false})
         })

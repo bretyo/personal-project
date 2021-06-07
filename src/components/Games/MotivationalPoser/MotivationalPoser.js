@@ -39,7 +39,7 @@ const MotivationalPoser =()=>{
     useEffect(()=>{
         if(!socket){
             setSocket(io.connect())
-
+            dispatch(setPlayers([]))
         } //<---- to check if socket is already connected
         return()=>{
             if(socket){
