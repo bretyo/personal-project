@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import MPAnswerOne from "./MPAnswerOne";
+import MPAnswer from "./MPAnswer";
 import MPAnswerTwo from "./MPAnswerTwo";
 
 const MPRoundShowPosts=(props)=>{
@@ -20,13 +20,12 @@ const MPRoundShowPosts=(props)=>{
     },[currentAns]);
 
     const displayAns= answers.map(answer=>{
-        return answer.prompt_type==='MPOne'? <MPAnswerOne  player={answer.player} image={answer.image} response={answer.response} /> : <MPAnswerTwo player={answer.player} image={answer.image} response={answer.response}/>
+        return <MPAnswer  player={answer.player} image={answer.image} response={answer.response} />
     })
 
     console.log(answers)
     return(
-        <div>
-            MP Round Show Posts!
+        <div className='display-posts'>
             {showAnswers && displayAns[currentAns]}
         </div>
     )

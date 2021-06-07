@@ -1,31 +1,26 @@
 import { useState } from "react"
 
 const Dash =(props)=>{
-    const [userInput, setUserInput] = useState('')
-    const [userInput2, setUserInput2] = useState('')
-    const {sendResponse} = props
+    const {image, player} = props
 
-    const handleSend=()=>{
-        sendResponse([
-            [promptArr[0],
-            userInput,
-            promptArr[1]].join(''),
-            [userInput2,
-            promptArr[2]].join('')
-        ])
-    }
-    const promptArr = 'Your future is created by ____, not ____.'.split('____')
+    //In life, you''ll meet two kinds of people. The ones who ____`, ` and the ones who ____`, `. In the end, you''ll thank them both.
+    //Convince yourself that you have the power to ____.
+    const resp = [`There’s no need to rush. What’s meant for you always will find you in your sleep. asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf ads fasd fasdf asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf `].join()//, ` Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam debitis`].join('')//`id deserunt officiis, repellat accusamus! Corporis, provident debitis est excepturi iusto maxime fugit eligendi vel culpa consequatur sunt, minus quis. `].join('')//.split('. ')
+    // const response = resp.map((response,index)=>{
+    //     return <p className={`${resp.join('').length > 150 && 'big-response'}`} key={index}>{`${response}`}</p>
+    // })
     return(
         <div className={'dash'}>
-            <img src={'https://images.unsplash.com/photo-1620572331975-8640a6a6cb6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzUyNjB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjMwMjgzNzY&ixlib=rb-1.2.1&q=80&w=1080'} />
-            <div>
-                <p>{promptArr[0]}</p>
-                <input size='30' value={userInput} onChange={(e)=>setUserInput(e.target.value)} />
-                <p>{promptArr[1]}</p>
-                <input size='30' value={userInput2} onChange={(e)=>setUserInput2(e.target.value)} />
-                <p>{promptArr[2]}</p> 
-                <button onClick={handleSend}>Send</button>
+            <div className='displayed-post'>
+                {/* https://images.unsplash.com/photo-1492681290082-e932832941e6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80 */}
+                {/* https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=633&q=80 */}
+                <img src={'https://images.unsplash.com/photo-1438283173091-5dbf5c5a3206?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'} alt='whoops' />
+                <section className='displayed-post-text'>
+                    <p className={`${resp.length > 150 && 'medium-response'} ${resp.length>210 && 'big-response'}`}>{resp}</p>
+                    {/* {response} */}
+                </section>
             </div>
+            
         </div>
     )
 }

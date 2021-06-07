@@ -13,7 +13,7 @@ const Header=(props)=>{
 
     // console.log(logging)
     return(
-        <header className={`${playing && 'header-hide'}`}>
+        <header className={`${playing && 'header-hide'} header-hide`}>
             <div className='header-container'>
                 <Link to='/'><h1>BretBox</h1></Link>
                 <Link to='/join'><h2>Join Game</h2></Link>
