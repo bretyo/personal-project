@@ -19,13 +19,13 @@ function App(props) {
 
     // }
 
-    axios.get('/api/games')
-    .then(res=>{
-      dispatch(setGames(res.data))
-    })
-    .catch(err=>{
-      console.log(err)
-    });
+    // axios.get('/api/games')
+    // .then(res=>{
+    //   dispatch(setGames(res.data))
+    // })
+    // .catch(err=>{
+    //   console.log(err)
+    // });
 
   //   return()=>{
   //     socket.disconnect()

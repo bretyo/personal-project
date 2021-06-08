@@ -42,10 +42,12 @@ const Join =()=>{
 
             socket.on('leave-room', ()=>{
                 socket.emit('leave-room-relay', code)
+                setPlaying(false)
                 setJoined(false)
             })
 
             socket.on('receive-prompt',(body)=>{
+                setWaitText('Waiting for Game')
                 console.log(body)
                 setPrompt(body)
                 if(body.game==='MP'){

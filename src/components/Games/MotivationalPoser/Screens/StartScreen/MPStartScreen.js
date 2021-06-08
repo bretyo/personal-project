@@ -75,7 +75,7 @@ const MPStartScreen=(props)=>{
 
     
             // Adds player to players array
-            dispatch(setPlayers([...playersRef.current, {...body, score: 0, profileURL : `https://robohash.org/${body.id}.png`}]))
+            dispatch(setPlayers([...playersRef.current, {...body, score: 0, profileURL : `https://robohash.org/${body.id}.png?`}]))
     
             // Returns confirmation for player to be added to room
             return {success: true, msg: 'Successfully Joined!'}

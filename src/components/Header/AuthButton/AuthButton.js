@@ -28,11 +28,11 @@ const AuthButton=(props)=>{
     }
 
     return(
-        <div>
+        <li className={`auth-menu-btn`}>
             <button onClick={handleLogToggle}>{logging || registering || signingIn? 'Cancel' : 'Sign In/Register'}</button>
             {
                 logging&&(
-                    <div>
+                    <div className='reg-sign-btns'>
                         <button onClick={toggleRegister}>Register New Account</button>
                         <button onClick={toggleSignIn} >Sign In with Existing</button>
                     </div>
@@ -44,7 +44,7 @@ const AuthButton=(props)=>{
             {
                 signingIn && <SignIn />
             }
-        </div>
+        </li>
     )
 }
 export default AuthButton;

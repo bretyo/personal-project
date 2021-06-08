@@ -11,15 +11,7 @@ const Dash =(props)=>{
     // })
     return(
         <div className={'dash'}>
-            <div className='displayed-post'>
-                {/* https://images.unsplash.com/photo-1492681290082-e932832941e6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80 */}
-                {/* https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=633&q=80 */}
-                <img src={'https://images.unsplash.com/photo-1438283173091-5dbf5c5a3206?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'} alt='whoops' />
-                <section className='displayed-post-text'>
-                    <p className={`${resp.length > 150 ? 'medium-response':resp.length>210 ? 'big-response': ''}`}>{resp}</p>
-                    {/* {response} */}
-                </section>
-            </div>
+            
             
         </div>
     )

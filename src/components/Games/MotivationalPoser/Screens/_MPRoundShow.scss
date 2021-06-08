@@ -1,54 +1,9 @@
 
 .display-posts{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    .displayed-post{
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        box-sizing: border-box;
-        img{
-            width: 600px;
-            height: 600px;
-            object-fit: cover;
-            border: white 2px solid;
-        }
-        
-
-    }
+    @include MP-Meme-Img(600px)
 
 }
 
 .displayed-post-text{
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    box-sizing: content-box;
-    p{
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        display: inline;
-        color: white;
-        font-size: 2.5rem;
-        width: 95%;
-        text-align: center;
-        -webkit-text-stroke: 1px black;
-        line-height: 7rem;
-        &.medium-response{
-            font-size: 2.5rem;
-            line-height: 6rem;
-        }
-        &.big-response{
-            line-height: 4.5rem;
-            font-size: 1.8rem;
-        }
-    }
+    @include MP-Meme-Text(1)
 }
