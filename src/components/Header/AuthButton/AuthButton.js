@@ -29,7 +29,7 @@ const AuthButton=(props)=>{
 
     return(
         <li className={`auth-menu-btn`}>
-            <button onClick={handleLogToggle}>{logging || registering || signingIn? 'Cancel' : 'Sign In/Register'}</button>
+            <li onClick={handleLogToggle}>{logging || registering || signingIn? 'Cancel' : 'Sign In/Register'}</li>
             {
                 logging&&(
                     <div className='reg-sign-btns'>

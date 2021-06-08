@@ -29,7 +29,7 @@ const Header=(props)=>{
                 <ul className={`nav-content-drop ${navShow? 'show':''}`}>
                     <Link onClick={()=>setNavShow(false)} to='/join'><li>Join Game</li></Link>
                     <Link onClick={()=>setNavShow(false)} to='/games'><li>Start Game</li></Link>
-                    {!user?<AuthButton  />: <UserDisplay user={user} />}
+                    {!user?<AuthButton  />: <UserDisplay setNavShow={setNavShow} user={user} />}
                 </ul>
             </nav>
             

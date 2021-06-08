@@ -35,12 +35,14 @@ const Register=()=>{
     }
 
     return(
-        <div>
-            <input value={email} onChange={(e)=>setEmail(e.target.value)} placeholder='email' />
-            <input type='password' value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='password' />
-            <input type='password' value={passConf} onChange={(e)=>setPassConf(e.target.value)} placeholder='confirm password' />
+        <section className={'register'}>
+            <div className={'register-inputs'}>
+                <input value={email} onChange={(e)=>setEmail(e.target.value)} placeholder='email' />
+                <input type='password' value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='password' />
+                <input type='password' value={passConf} onChange={(e)=>setPassConf(e.target.value)} placeholder='confirm password' />
+            </div>
             <button onClick={handleRegister}>Register</button>
-        </div>
+        </section>
     )
 }
 export default Register;

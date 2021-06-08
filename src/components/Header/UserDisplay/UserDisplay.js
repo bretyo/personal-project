@@ -5,6 +5,7 @@ import {setUser} from '../../../redux/authReducer'
 import axios from "axios"
 
 const UserDisplay =(props)=>{
+    const {setNavShow} = props;
     const [showOptions, setShowOptions] = useState(false)
     const [changeUsername, setChangeUsername] = useState(false);
     const [username, setUsername] = useState('')
@@ -28,9 +29,16 @@ const UserDisplay =(props)=>{
             window.alert('username must be 12 characters or less')
         }
     }
+
+    const handleLogout=()=>{
+        setNavShow(false);
+        setShowOptions(false);
+        axios.delete()
+    }
+
     console.log(user)
     return(
-        <section className='user-display'>
+        <li className='user-display'>
             <h4 onClick={()=>setShowOptions(!showOptions)} >Welcome, {props.user.user_name}</h4>
             {showOptions && <aside>
                 {!changeUsername? <button onClick={()=>setChangeUsername(!changeUsername)}>Change Username</button> : (
@@ -39,9 +47,10 @@ const UserDisplay =(props)=>{
                         <button onClick={updateUsername}>Confirm</button>
                     </div>
                 )}
-                {!changeUsername && <Link to='/account'><button onClick={()=>setShowOptions(!showOptions)}>Go to Account Details</button></Link>}
+                {!changeUsername && <Link onClick={()=>setNavShow(false)} to='/account'><button onClick={()=>setShowOptions(!showOptions)}>Go to Account Details</button></Link>}
+                {!changeUsername && <button onClick={handleLogout}>Logout</button>}
             </aside>}
-        </section>
+        </li>
     )
 }
 export default UserDisplay
