@@ -33,7 +33,12 @@ const UserDisplay =(props)=>{
     const handleLogout=()=>{
         setNavShow(false);
         setShowOptions(false);
-        axios.delete()
+        axios.delete(`/auth/logout`)
+        .then(res=>{
+            console.log(res)
+            dispatch(setUser(null))
+        })
+        .catch(err=>console.log)
     }
 
     console.log(user)
