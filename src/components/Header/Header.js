@@ -19,16 +19,16 @@ const Header=(props)=>{
     return(
         <header className={`${playing ? 'header-hide': ''} `}>
             <nav className='header-container'>
-                <Link to='/'><h1>BretBox</h1></Link>
+                <Link onClick={()=>setNavShow(false)} to='/'><h1>BretBox</h1></Link>
                 {menuBtnActive ? <MenuButton toggleNav={()=>setNavShow(!navShow)}/> : ''}
                 <ul className={`nav-content`}>
-                    <Link to='/join'><li>Join Game</li></Link>
-                    <Link to='/games'><li>Start Game</li></Link>
+                    <Link onClick={()=>setNavShow(false)} to='/join'><li>Join Game</li></Link>
+                    <Link onClick={()=>setNavShow(false)} to='/games'><li>Start Game</li></Link>
                     {!user?<AuthButton  />: <UserDisplay user={user} />}
                 </ul>
                 <ul className={`nav-content-drop ${navShow? 'show':''}`}>
-                    <Link to='/join'><li>Join Game</li></Link>
-                    <Link to='/games'><li>Start Game</li></Link>
+                    <Link onClick={()=>setNavShow(false)} to='/join'><li>Join Game</li></Link>
+                    <Link onClick={()=>setNavShow(false)} to='/games'><li>Start Game</li></Link>
                     {!user?<AuthButton  />: <UserDisplay user={user} />}
                 </ul>
             </nav>

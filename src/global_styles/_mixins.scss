@@ -1,4 +1,5 @@
 @mixin button-theme {
+    // font-family: 'Signika Negative', sans-serif;
     &:hover{
         color: $highlight-color;
         border: $highlight-color 1px solid;

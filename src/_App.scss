@@ -1,5 +1,6 @@
 button{
     @include button-theme;
+    font-family: 'Signika Negative', sans-serif;
 }
 
 .header-padded{
@@ -11,5 +12,9 @@ button{
     // padding-top: 6rem;
     background-color: $backgrounds;
     height: 100vh;
+}
+
+body{
+    font-family: 'Signika Negative', sans-serif;
 }
 

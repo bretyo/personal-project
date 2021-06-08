@@ -7,6 +7,10 @@ header{
   justify-content: center;
   align-items: center;
   
+  h1{
+    font-size: 2rem;
+  }
+
   .nav-content-drop{
     position: absolute;
     top: 100%;
@@ -39,6 +43,10 @@ header{
   }
 
   @media (min-width: 780px){
+    h1{
+      font-size: 3rem;
+    }
+
     .menu-btn{
       visibility: hidden;
     }
@@ -88,8 +96,12 @@ header{
     
   .menu-btn{
     display: flex;
+    align-items: center;
     justify-content: space-around;
-    width: 4rem;
+    border-radius: 5px;
+    // font-weight: 600;
+    width: 5rem;
+    height: 2rem;
     &:hover{
       .burger-bar{
         background-color: $highlight-color;
