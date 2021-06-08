@@ -7,7 +7,7 @@ const MPVote=(props)=>{
     })
     console.log(answers)
     return(
-        <div>
+        <div className='vote-screen display-posts'>
             {answMap}
         </div>
     )

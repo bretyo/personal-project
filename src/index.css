@@ -85,13 +85,13 @@ button {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center; }
-  .dash .displayed-post {
+  .dash div {
     position: relative;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     box-sizing: border-box; }
-    .dash .displayed-post img {
+    .dash div img {
       width: 600px;
       height: 600px;
       object-fit: cover;

@@ -137,7 +137,7 @@ const Join =()=>{
                     <button onClick={handleJoin} >Join Game</button>
                 </div>)
             :
-                waiting? <h2>{waitText}</h2> : screens[screen].screen
+                waiting? <h2 className='wait-text'>{waitText}</h2> : screens[screen].screen
             }
             {/* <button onClick={()=>addToStats(2,200,1)}>Testing the Unsplash get</button> */}
 
