@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {setSelectedGame} from '../../redux/gameReducer'
 
@@ -7,6 +7,12 @@ const GameEntry=(props)=>{
     const dispatch = useDispatch();
     console.log(props)
     const {game} = props
+
+    useEffect(()=>{
+        return()=>{
+            dispatch(setSelectedGame(-1))
+        }
+    },[])
     
 //     game_name: "Motivational Poser"
 // ​​
@@ -23,6 +29,11 @@ const GameEntry=(props)=>{
                 selectedGame.game_name === game.game_name && (
                     <div className='game-info'>
                         <p>{game.game_description}</p>
+                        <section className='game-details'>
+                            <aside>Min Players: {game.game_players_min}</aside>
+                            <aside>Max Players: {game.game_players_max}</aside>
+                            <aside>Total Plays: {game.game_total_plays}</aside>
+                        </section>
                         <button onClick={props.push}>Play</button>
                     </div>
                 )

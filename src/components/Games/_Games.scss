@@ -9,7 +9,7 @@
     justify-content: flex-start;
     width: 90%;
     height: 70%;
-    border: black 1px solid;
+    // border: black 1px solid;
 }
 .game-list{
     // border: black 1px inset;
@@ -34,11 +34,11 @@
             color: white;
         }
         h3{
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 600;
         }
         button{
-
+            font-size: 1.2rem;
         }
     }
 
@@ -47,7 +47,13 @@
         flex-direction: column;
         p{
             margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
+    }
+
+    .game-details{
+        display: flex;
+        justify-content: space-between;
     }
 
 }

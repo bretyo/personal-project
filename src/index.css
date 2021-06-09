@@ -374,8 +374,7 @@ header {
   align-items: center;
   justify-content: flex-start;
   width: 90%;
-  height: 70%;
-  border: black 1px solid; }
+  height: 70%; }
 
 .game-list {
   width: 50%;
@@ -395,13 +394,19 @@ header {
       cursor: pointer;
       color: white; }
     .game-list li h3 {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-weight: 600; }
+    .game-list li button {
+      font-size: 1.2rem; }
   .game-list .game-info {
     display: flex;
     flex-direction: column; }
     .game-list .game-info p {
-      margin-bottom: 1rem; }
+      margin-bottom: 1rem;
+      font-size: 1.2rem; }
+  .game-list .game-details {
+    display: flex;
+    justify-content: space-between; }
 
 .selected-game-display {
   border: black 1px solid;
