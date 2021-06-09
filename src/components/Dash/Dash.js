@@ -1,13 +1,8 @@
-import { useState } from "react"
+// import { useState } from "react"
 import MPPlayerDisplay from '../Games/MotivationalPoser/Screens/StartScreen/MPPlayerDisplay'
+import MPVoteEntry from '../Join/MotivationalPoser/MPVoteEntry'
 
-const Dash =(props)=>{
-    const selectedGame = {
-        game_players_max: 6,
-        game_players_min: 3
-
-    }
-    const code = 'ASDFGH'
+const Dash =()=>{
 
      const players = [
          {
@@ -28,25 +23,26 @@ const Dash =(props)=>{
          },
      ]
 
-    const startCountdown=()=>{
+     const answers=[
+         {image: 'https://images.unsplash.com/photo-1621414130936-6f0c63360ec2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzUyNjB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjMyNjk0OTk&ixlib=rb-1.2.1&q=80&w=1080', response: ['The truest indication of gratitude is ddd.'], user: {user_name: 'fart'}},
+         {image: 'https://images.unsplash.com/photo-1621414130936-6f0c63360ec2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzUyNjB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjMyNjk0OTk&ixlib=rb-1.2.1&q=80&w=1080', response: ['The truest indication of gratitude is ddd.'], user: {user_name: 'fart'}},
+         {image: 'https://images.unsplash.com/photo-1621414130936-6f0c63360ec2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzUyNjB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjMyNjk0OTk&ixlib=rb-1.2.1&q=80&w=1080', response: ['The truest indication of gratitude is ddd.'], user: {user_name: 'fart'}},
+         {image: 'https://images.unsplash.com/photo-1621414130936-6f0c63360ec2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzUyNjB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjMyNjk0OTk&ixlib=rb-1.2.1&q=80&w=1080', response: ['The truest indication of gratitude is ddd.'], user: {user_name: 'fart'}},
+     ]
 
-    }
+     const handleVote=(answer)=>{
+         console.log(answer)
+     }
+
+     const answMap = answers && answers.map(answer=>{
+        return <MPVoteEntry key={answer.user.user_name} answer={answer} handleVote={handleVote} />
+    })
+
     return(
-        <div className='header-padded'>
-                <div className='start-screen'>
-                    <section className='room-info'>
-                        <h2>Motivational Poser</h2>
-                        <h3>Code: {code} </h3>
-                        <h4>--- Join online at bretboxgames.com/join ---</h4>
-                        <h3>Players: {players.length}/{selectedGame.game_players_max}</h3>
-                        { players.length >= selectedGame.game_players_min && <button onClick={startCountdown}>Start Game</button> }
-                    </section>
-                    <section className='player-display-section'>
-                        {players && players.map(player=>{
-                            return <MPPlayerDisplay key={player.user_name} profileURL={player.profileURL} user_name={player.user_name} />
-                        })}
-                    </section>
-                </div>
+        <div className='join'>
+            <div className='vote-screen display-votes'>
+                {answMap}
+            </div>
         </div>
     )
 }

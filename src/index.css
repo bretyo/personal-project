@@ -85,6 +85,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center; }
+  .account-screen .delete-entry:hover {
+    cursor: pointer;
+    color: #ffffff; }
   .account-screen .acc-details {
     margin-bottom: 2rem; }
     .account-screen .acc-details h2 {
@@ -131,6 +134,144 @@ body {
     font-size: 1.5rem; }
   td {
     min-width: 9rem; } }
+
+.display-votes {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center; }
+  .display-votes div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    box-sizing: border-box; }
+    .display-votes div img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border: white 2px solid; }
+
+.displayed-vote-text {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  box-sizing: content-box; }
+  .displayed-vote-text p {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: inline;
+    color: white;
+    font-size: 1.25rem;
+    width: 95%;
+    text-align: center;
+    -webkit-text-stroke: 1px black;
+    line-height: 3.5rem; }
+    .displayed-vote-text p.medium-response {
+      font-size: 1.25rem;
+      line-height: 3rem; }
+    .displayed-vote-text p.big-response {
+      line-height: 2.25rem;
+      font-size: 0.9rem; }
+
+.vote-entry {
+  margin: 1.5rem; }
+  .vote-entry button {
+    font-size: 1rem; }
+
+@media (min-width: 780px) {
+  .display-votes {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center; }
+    .display-votes div {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      box-sizing: border-box; }
+      .display-votes div img {
+        width: 450px;
+        height: 450px;
+        object-fit: cover;
+        border: white 2px solid; }
+  .displayed-vote-text {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    box-sizing: content-box; }
+    .displayed-vote-text p {
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      display: inline;
+      color: white;
+      font-size: 1.875rem;
+      width: 95%;
+      text-align: center;
+      -webkit-text-stroke: 1px black;
+      line-height: 5.25rem; }
+      .displayed-vote-text p.medium-response {
+        font-size: 1.875rem;
+        line-height: 4.5rem; }
+      .displayed-vote-text p.big-response {
+        line-height: 3.375rem;
+        font-size: 1.35rem; } }
+
+@media (min-width: 1200px) {
+  .display-votes {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row; }
+    .display-votes div {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      box-sizing: border-box; }
+      .display-votes div img {
+        width: 400px;
+        height: 400px;
+        object-fit: cover;
+        border: white 2px solid; }
+  .displayed-vote-text {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    box-sizing: content-box; }
+    .displayed-vote-text p {
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      display: inline;
+      color: white;
+      font-size: 1.65rem;
+      width: 95%;
+      text-align: center;
+      -webkit-text-stroke: 1px black;
+      line-height: 4.62rem; }
+      .displayed-vote-text p.medium-response {
+        font-size: 1.65rem;
+        line-height: 3.96rem; }
+      .displayed-vote-text p.big-response {
+        line-height: 2.97rem;
+        font-size: 1.188rem; } }
 
 header {
   position: fixed;
@@ -274,7 +415,8 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  background-color: #919191; }
 
 #join-signin-msg {
   font-size: 1rem;
@@ -508,3 +650,141 @@ header {
     width: 400px; }
   .mp-prompt input {
     font-size: 1.3rem; } }
+
+.display-votes {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center; }
+  .display-votes div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    box-sizing: border-box; }
+    .display-votes div img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border: white 2px solid; }
+
+.displayed-vote-text {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  box-sizing: content-box; }
+  .displayed-vote-text p {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: inline;
+    color: white;
+    font-size: 1.25rem;
+    width: 95%;
+    text-align: center;
+    -webkit-text-stroke: 1px black;
+    line-height: 3.5rem; }
+    .displayed-vote-text p.medium-response {
+      font-size: 1.25rem;
+      line-height: 3rem; }
+    .displayed-vote-text p.big-response {
+      line-height: 2.25rem;
+      font-size: 0.9rem; }
+
+.vote-entry {
+  margin: 1.5rem; }
+  .vote-entry button {
+    font-size: 1rem; }
+
+@media (min-width: 780px) {
+  .display-votes {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center; }
+    .display-votes div {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      box-sizing: border-box; }
+      .display-votes div img {
+        width: 450px;
+        height: 450px;
+        object-fit: cover;
+        border: white 2px solid; }
+  .displayed-vote-text {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    box-sizing: content-box; }
+    .displayed-vote-text p {
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      display: inline;
+      color: white;
+      font-size: 1.875rem;
+      width: 95%;
+      text-align: center;
+      -webkit-text-stroke: 1px black;
+      line-height: 5.25rem; }
+      .displayed-vote-text p.medium-response {
+        font-size: 1.875rem;
+        line-height: 4.5rem; }
+      .displayed-vote-text p.big-response {
+        line-height: 3.375rem;
+        font-size: 1.35rem; } }
+
+@media (min-width: 1200px) {
+  .display-votes {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row; }
+    .display-votes div {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      box-sizing: border-box; }
+      .display-votes div img {
+        width: 400px;
+        height: 400px;
+        object-fit: cover;
+        border: white 2px solid; }
+  .displayed-vote-text {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    box-sizing: content-box; }
+    .displayed-vote-text p {
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      display: inline;
+      color: white;
+      font-size: 1.65rem;
+      width: 95%;
+      text-align: center;
+      -webkit-text-stroke: 1px black;
+      line-height: 4.62rem; }
+      .displayed-vote-text p.medium-response {
+        font-size: 1.65rem;
+        line-height: 3.96rem; }
+      .displayed-vote-text p.big-response {
+        line-height: 2.97rem;
+        font-size: 1.188rem; } }

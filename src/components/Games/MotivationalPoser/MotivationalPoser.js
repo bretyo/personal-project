@@ -31,7 +31,7 @@ const MotivationalPoser =()=>{
         round_2:[],
         final_round:[]
     }) // THIS WILL KEEP TRACK OF HOW MANY PEOPLE VOTED FOR THE USER ON THE ROUND
-    const {selectedGame, players, playing} = useSelector(store=>store.gameReducer)// This keeps track of players names, score
+    const {players, playing} = useSelector(store=>store.gameReducer)// This keeps track of players names, score
     const dispatch = useDispatch();
 
     
@@ -50,7 +50,7 @@ const MotivationalPoser =()=>{
                 setSocket(null)
             }
         }
-    }, [socket, room])
+    }, [socket, room,dispatch])
         
     useEffect(()=>{
         setScreen('start')

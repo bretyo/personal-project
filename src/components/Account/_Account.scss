@@ -7,6 +7,11 @@
     flex-direction: column;
     align-items: center;
 
+    .delete-entry:hover{
+        cursor: pointer;
+        color: $highlight-color;
+    }
+
     .acc-details{
         margin-bottom: 2rem;
         h2{

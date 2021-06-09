@@ -7,21 +7,6 @@ const Account =(props)=>{
     const[data, setData] = useState([])
     const {user} = useSelector(store=>store.authReducer)
     const {history} = props
-    // let user={
-    //     user_email : 'test@email.com',
-    //     user_name : 'testboi'
-    //}
-
-    // let data = //[
-    // //     {
-    // //         game_name: "Motivational Poser",
-    // //         high_score: 600,
-    // //         times_played: 7,
-    // //         total_wins: 6,
-    // //         stat_id: 1
-    // //     },
-    // //    
-    // //]
 
     //pushes user back to dashboard if they're not logged in
     useEffect(()=>{
@@ -40,7 +25,7 @@ const Account =(props)=>{
             getData();
         }
 
-    },[user])
+    },[user,history])
 
     
 
@@ -67,9 +52,9 @@ const Account =(props)=>{
             </section>}
             <section className='acc-stats'>
                 
-                    <table className='stat-chart'>
+                    <table className='stat-chart table-scroll'>
                         <caption>User's gameplay statistics.</caption>
-                        <div className='table-scroll'>
+                        
                         <thead>
                             <tr className='top-row'>
                                 <td>Title of Game</td>
@@ -83,7 +68,6 @@ const Account =(props)=>{
                         <tbody>
                             {dataChart} {/* <<<<<<<<<<<<<<< THIS IS WHERE THE DYNAMIC DATA IS */}
                         </tbody>
-                        </div>
                     </table>
                 
             </section>

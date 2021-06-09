@@ -1,5 +1,5 @@
 const MPAnswer=(props)=>{
-    const {image, response, player} = props
+    const {image, response} = props
     const joinedResp = response.join('')
     return(
         <div className='displayed-post'>
