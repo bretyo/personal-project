@@ -1,18 +1,52 @@
 import { useState } from "react"
+import MPPlayerDisplay from '../Games/MotivationalPoser/Screens/StartScreen/MPPlayerDisplay'
 
 const Dash =(props)=>{
-    const {image, player} = props
+    const selectedGame = {
+        game_players_max: 6,
+        game_players_min: 3
 
-    //In life, you''ll meet two kinds of people. The ones who ____`, ` and the ones who ____`, `. In the end, you''ll thank them both.
-    //Convince yourself that you have the power to ____.
-    const resp = [`There’s no need to rush. What’s meant for you always will find you in your sleep.`].join()//, ` Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam debitis`].join('')//`id deserunt officiis, repellat accusamus! Corporis, provident debitis est excepturi iusto maxime fugit eligendi vel culpa consequatur sunt, minus quis. `].join('')//.split('. ')
-    // const response = resp.map((response,index)=>{
-    //     return <p className={`${resp.join('').length > 150 && 'big-response'}`} key={index}>{`${response}`}</p>
-    // })
+    }
+    const code = 'ASDFGH'
+
+     const players = [
+         {
+             user_name: 'bart',
+             profileURL:'https://robohash.org/-t_5Rx90CdBl8bciAAAK.png'
+         },
+         {
+             user_name: 'bart',
+             profileURL:'https://robohash.org/-t_5Rx90CdBl8bciAAAK.png'
+         },
+         {
+             user_name: 'bart',
+             profileURL:'https://robohash.org/-t_5Rx90CdBl8bciAAAK.png'
+         },
+         {
+             user_name: 'bart',
+             profileURL:'https://robohash.org/-t_5Rx90CdBl8bciAAAK.png'
+         },
+     ]
+
+    const startCountdown=()=>{
+
+    }
     return(
-        <div className={'dash'}>
-            
-            
+        <div className='header-padded'>
+                <div className='start-screen'>
+                    <section className='room-info'>
+                        <h2>Motivational Poser</h2>
+                        <h3>Code: {code} </h3>
+                        <h4>--- Join online at bretboxgames.com/join ---</h4>
+                        <h3>Players: {players.length}/{selectedGame.game_players_max}</h3>
+                        { players.length >= selectedGame.game_players_min && <button onClick={startCountdown}>Start Game</button> }
+                    </section>
+                    <section className='player-display-section'>
+                        {players && players.map(player=>{
+                            return <MPPlayerDisplay key={player.user_name} profileURL={player.profileURL} user_name={player.user_name} />
+                        })}
+                    </section>
+                </div>
         </div>
     )
 }

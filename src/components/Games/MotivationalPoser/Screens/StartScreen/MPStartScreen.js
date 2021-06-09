@@ -7,7 +7,7 @@ import badwordsRegExp from 'badwords/regexp'
 import atk from './Atk_DM004.mp3'
 
 const MPStartScreen=(props)=>{
-    const {setRoom,socket, setRound, switchScreen, nextScreen} = props
+    const {setRoom,socket, switchScreen, nextScreen} = props
     const {selectedGame, games, players} = useSelector(store=>store.gameReducer)
     const dispatch = useDispatch();
 
@@ -117,64 +117,6 @@ const MPStartScreen=(props)=>{
         switchScreen(nextScreen)
     }
 
-    const handleUnsplashTest=()=>{
-        // console.log(MY_ACCESS_KEY)
-        axios.get('/api/images')
-          .then(res=>{
-              console.log(res.data.response)
-          })
-          .catch(err=>{
-              console.log(err)
-          })
-    }
-
-    const handlePromptsTest=()=>{
-        axios.get('/api/prompts/1')
-        .then(res=>{
-            console.log(res.data)
-        })
-        .catch(err=>{
-            console.log(err)
-        })
-    }
-
-    const addToStats=(game,score,win, user_id)=>{
-        console.log(game)
-        axios.put(`/api/games/${game}`)
-        .then(res=>{
-            dispatch(setGames(res.data))
-        })
-        .catch(err=>console.log(err))
-        axios.get(`/api/stats/${game}/${user_id}`)
-        .then(res=>{
-            console.log(res.data)    
-            if(res.data.length){
-                axios.put(`/api/stats/${game}`, {wins: win, score, user_id})
-                .then()
-                .catch(err=>console.log(err))
-            }
-            else{
-                axios.post(`/api/stats/${game}`, {wins: win, score, user_id})
-                .then()
-                .catch(err=>console.log(err))
-            }
-        })
-        .catch(err=>console.log(err))
-    }
-    const handleSocketTest=()=>{
-        const winner = players.reduce((acc, curr)=>curr.score > acc.score? curr: acc ,{score:-1})
-        players.forEach(player=>{
-            player.user_id && addToStats(selectedGame.game_id, player.score, player===winner? 1:0, player.user_id)
-            socket.emit('game-end', {playerID: player.id, win: player===winner?true:false})
-        })
-    }
-
-    // console.log(badwordsRegExp)
-    // selectedGame && console.log(selectedGame.game_players_max)
-    let utterance = new SpeechSynthesisUtterance("If i wasn't human, don't you think i'd tell you?");
-    utterance.rate= 1.25;
-    const audioatk=new Audio(atk)
-
     console.log(players)
     return(
         <div >
@@ -182,7 +124,7 @@ const MPStartScreen=(props)=>{
                 <div className='start-screen'>
                     <section className='room-info'>
                         <h2>Motivational Poser</h2>
-                        <h3>Code: {code}</h3>
+                        <h3>Code: {code} --- Join online at bretboxgames.com/join</h3>
                         <h3>Players: {players.length}/{selectedGame.game_players_max}</h3>
                         { players.length >= selectedGame.game_players_min && <button onClick={startCountdown}>Start Game</button> }
                     </section>
@@ -191,12 +133,6 @@ const MPStartScreen=(props)=>{
                             return <MPPlayerDisplay key={player.user_name} profileURL={player.profileURL} user_name={player.user_name} />
                         })}
                     </section>
-                    {/* <button onClick={()=>socket.emit('start-room', {code})}>Join room test</button> */}
-                    {/* <button onClick={()=>window.location.reload()}>Refresh page test</button> */}
-                    {/* <button onClick={()=>speechSynthesis.speak(utterance)}>Text to speech test</button> */}
-                    {/* <button onClick={()=>speechSynthesis.cancel()}>Cancel speech test</button> */}
-                    {/* <button onClick={()=>audioatk.play()} >Audio Test</button> */}
-                    {/* <button onClick={handleSocketTest}>socket win/lose test</button> */}
                 </div>
             ) : 
                 <h2>Loading...</h2>

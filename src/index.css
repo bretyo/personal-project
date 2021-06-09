@@ -132,50 +132,6 @@ body {
   td {
     min-width: 9rem; } }
 
-.dash {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center; }
-  .dash div {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    box-sizing: border-box; }
-    .dash div img {
-      width: 600px;
-      height: 600px;
-      object-fit: cover;
-      border: white 2px solid; }
-
-.displayed-post-text {
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  box-sizing: content-box; }
-  .displayed-post-text p {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    display: inline;
-    color: white;
-    font-size: 2.5rem;
-    width: 95%;
-    text-align: center;
-    -webkit-text-stroke: 1px black;
-    line-height: 7rem; }
-    .displayed-post-text p.medium-response {
-      font-size: 2.5rem;
-      line-height: 6rem; }
-    .displayed-post-text p.big-response {
-      line-height: 4.5rem;
-      font-size: 1.8rem; }
-
 header {
   position: fixed;
   width: 100%;
@@ -413,31 +369,48 @@ header {
   width: 50%;
   height: 80%; }
 
-.player-display-section {
+.start-screen {
   display: flex;
-  flex-wrap: wrap; }
+  flex-direction: column;
+  align-items: center; }
+  .start-screen h2 {
+    font-size: 3rem; }
+  .start-screen h3 {
+    font-size: 1.5rem;
+    margin-top: .5rem; }
+  .start-screen button {
+    margin: .5rem;
+    font-size: 1.2rem; }
 
 .player-display {
   margin: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center; }
+  .player-display img {
+    box-sizing: border-box;
+    background-color: lightblue;
+    border: black 1px solid;
+    width: 12rem; }
+  .player-display h3 {
+    box-sizing: border-box;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    width: 12rem;
+    color: white;
+    background-color: black;
+    text-align: center;
+    margin: 0;
+    padding: 0.5rem; }
 
-.player-display > img {
-  box-sizing: border-box;
-  background-color: lightblue;
-  border: black 1px solid;
-  height: 10rem; }
+.player-display-section {
+  justify-content: space-evenly;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 900px; }
 
-.player-display > h3 {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  letter-spacing: 1px;
-  width: 10rem;
-  color: white;
-  background-color: black;
-  text-align: center; }
-
-.start-screen {
+.room-info {
   display: flex;
   flex-direction: column;
   align-items: center; }
