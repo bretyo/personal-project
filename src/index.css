@@ -314,6 +314,36 @@ header {
   .user-display h4 {
     margin: 0; } }
 
+.join {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+
+#join-signin-msg {
+  font-size: 1rem;
+  position: absolute;
+  top: 6rem;
+  right: 8%;
+  text-align: center; }
+
+.join-room-screen {
+  margin: 5rem;
+  display: flex;
+  flex-direction: column; }
+  .join-room-screen input {
+    margin-bottom: 1rem; }
+  .join-room-screen button, .join-room-screen input {
+    font-size: 1.5rem; }
+
+@media (min-width: 780px) {
+  .join-room-screen {
+    font-size: 2rem; }
+    .join-room-screen input, .join-room-screen button {
+      font-size: 2rem; }
+  #join-signin-msg {
+    font-size: 1.2rem; } }
+
 .register {
   display: flex;
   width: 220px;

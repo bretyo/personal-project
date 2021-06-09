@@ -42,7 +42,7 @@ const Join =()=>{
 
             socket.on('leave-room', ()=>{
                 socket.emit('leave-room-relay', code)
-                setPlaying(false)
+                dispatch(setPlaying(false))
                 setJoined(false)
             })
 
@@ -131,9 +131,10 @@ const Join =()=>{
 
     console.log(screen)
     return(
-        <div className={`${!joined && 'header-padded'}`}>
+        <div className={`join ${!joined && 'header-padded'}`}>
+            {!joined &&<h4 id='join-signin-msg'>Sign in to keep track of wins!⬆</h4>}
             {!joined?
-                (<div>
+                (<div className='join-room-screen'>
                     <input placeholder='username' value={user_name} onChange={e=>handleUsernameChanges(e.target.value.toUpperCase())}  />
                     <input placeholder='code' value={code} onChange={e=>setCode(e.target.value.toUpperCase())}  />
                     <button onClick={handleJoin} >Join Game</button>

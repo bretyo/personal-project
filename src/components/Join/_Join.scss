@@ -1,0 +1,38 @@
+.join{
+    // position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#join-signin-msg{
+    font-size: 1rem;
+    position: absolute;
+    top: 6rem;
+    right: 8%;
+    text-align: center;
+}
+
+.join-room-screen{
+    margin: 5rem;
+    display: flex;
+    flex-direction: column;
+    input{
+        margin-bottom: 1rem;
+    }
+    button, input{
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 780px) {
+    .join-room-screen{
+        font-size: 2rem;
+        input, button{
+            font-size: 2rem;
+        }
+    }
+    #join-signin-msg{
+        font-size: 1.2rem;
+    }
+}
