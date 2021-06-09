@@ -15,7 +15,6 @@ module.exports={
     checkForStat: async(req,res)=>{
         const db = req.app.get('db');
         const {game_id, user_id} = req.params
-        const {user} = req.session;
         try {
             const stat = await db.stats.check_for_stat(user_id, game_id)
             res.status(200).send(stat)
@@ -49,5 +48,10 @@ module.exports={
             console.log(err)
             res.status(409).send('Something went wrong when changing player stats. Error: ', err)
         }
+    },
+    deleteStat: async (req,res,next)=>{
+        const db= req.app.get('db')
+        const {stat_id} = req.params;
+        await db.stats.delete_stat(stat_id);
     }
 }

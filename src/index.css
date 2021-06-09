@@ -81,7 +81,56 @@ body {
 .account-screen {
   box-sizing: border-box;
   width: 100%;
-  padding-top: 6rem; }
+  padding-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .account-screen .acc-details {
+    margin-bottom: 2rem; }
+    .account-screen .acc-details h2 {
+      font-size: 2rem;
+      margin: 2rem 0 1rem 0;
+      font-weight: 600; }
+    .account-screen .acc-details h3 {
+      font-size: 1.3rem; }
+      .account-screen .acc-details h3 span {
+        font-weight: 600; }
+  .account-screen .acc-stats .table-scroll {
+    overflow-y: auto;
+    max-height: 25rem; }
+  .account-screen .acc-stats table {
+    border: black 4px solid;
+    box-sizing: border-box;
+    width: 25rem;
+    font-size: 1.2rem; }
+  .account-screen .acc-stats caption {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1.5rem; }
+  .account-screen .acc-stats th {
+    font-weight: 700; }
+  .account-screen .acc-stats .top-row {
+    position: relative;
+    text-align: center;
+    font-weight: 600; }
+    .account-screen .acc-stats .top-row td {
+      border-bottom: black 5px solid;
+      box-sizing: border-box; }
+  .account-screen .acc-stats td {
+    border: black 1px solid;
+    box-sizing: border-box;
+    padding: 5px;
+    text-align: center; }
+  .account-screen .acc-stats tbody tr {
+    background-color: gray; }
+  .account-screen .acc-stats tbody tr:nth-of-type(2n) {
+    background-color: #919191; }
+
+@media (min-width: 780px) {
+  table {
+    font-size: 1.5rem; }
+  td {
+    min-width: 9rem; } }
 
 .dash {
   height: 100%;
