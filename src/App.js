@@ -1,8 +1,8 @@
-import {useEffect, useState} from 'react' //use Effect for import game data
+import {useEffect} from 'react' //use Effect for import game data
 import Header from './components/Header/Header';
 import routes from './routes'
 import axios from 'axios';
-import {useSelector, useDispatch} from 'react-redux'
+import { useDispatch} from 'react-redux'
 import { setGames } from './redux/gameReducer'
 // GLOBAL STATE FOR GAME
 

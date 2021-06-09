@@ -18,8 +18,9 @@ const Games =(props)=>{
             {
                 games ?(
                 <ul className='game-list'>
+                    <li><h2>GAMES</h2></li>
                     <GameEntry game={games[0]} push={()=>props.history.push('/games/m_poser')} />
-                    <GameEntry game={games[1]} push={()=>props.history.push('/games/m_poser')} />
+                    {/* <GameEntry game={games[1]} push={()=>props.history.push('/games/m_poser')} /> */}
                 </ul>
 
                 )

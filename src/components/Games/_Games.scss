@@ -1,21 +1,59 @@
 .games-container{
+    position: absolute;
+    left: 5%;
+    top: 6rem;
     padding-top: 6rem;
     display: flex;
+    flex-direction: column ;
     align-items: center;
-    justify-content: center;
-    width: 100%;
+    justify-content: flex-start;
+    width: 90%;
+    height: 70%;
+    border: black 1px solid;
 }
 .game-list{
+    // border: black 1px inset;
+
     width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     li{
+        
+        &:nth-of-type(1){
+            font-size: 2rem;
+            cursor:default;
+        }
         margin-bottom: 1rem;
         display: flex;
         flex-direction: column;
         align-items: center;
+        h3:hover{
+            cursor: pointer;
+            color: white;
+        }
+        h3{
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        button{
+
+        }
+    }
+
+    .game-info{
+        display: flex;
+        flex-direction: column;
+        p{
+            margin-bottom: 1rem;
+        }
+    }
+
 }
 
+.selected-game-display{
+    border: black 1px solid;
+    width: 50%;
+    height: 80%;
 }

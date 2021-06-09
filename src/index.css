@@ -249,10 +249,10 @@ header {
       flex-direction: column; }
       header .auth-menu-btn button {
         margin: .2rem; }
-      header .auth-menu-btn li {
+      header .auth-menu-btn h4 {
         color: #f9c74f;
         text-decoration: none; }
-        header .auth-menu-btn li:hover {
+        header .auth-menu-btn h4:hover {
           color: #ffffff;
           cursor: pointer; }
       header .auth-menu-btn .reg-sign-btns {
@@ -365,11 +365,17 @@ header {
       margin-bottom: 0; }
 
 .games-container {
+  position: absolute;
+  left: 5%;
+  top: 6rem;
   padding-top: 6rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 100%; }
+  justify-content: flex-start;
+  width: 90%;
+  height: 70%;
+  border: black 1px solid; }
 
 .game-list {
   width: 50%;
@@ -382,6 +388,25 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center; }
+    .game-list li:nth-of-type(1) {
+      font-size: 2rem;
+      cursor: default; }
+    .game-list li h3:hover {
+      cursor: pointer;
+      color: white; }
+    .game-list li h3 {
+      font-size: 1.2rem;
+      font-weight: 600; }
+  .game-list .game-info {
+    display: flex;
+    flex-direction: column; }
+    .game-list .game-info p {
+      margin-bottom: 1rem; }
+
+.selected-game-display {
+  border: black 1px solid;
+  width: 50%;
+  height: 80%; }
 
 .player-display-section {
   display: flex;

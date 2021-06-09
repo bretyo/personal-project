@@ -6,21 +6,31 @@ const GameEntry=(props)=>{
     const {selectedGame} = useSelector(store=>store.gameReducer)
     const dispatch = useDispatch();
     console.log(props)
+    const {game} = props
+    
+//     game_name: "Motivational Poser"
+// ​​
+// game_players_max: 6
+// ​​
+// game_players_min: 3
+// ​​
+// game_total_plays: 30
     return(
-        <li>
-            {props.game&&(
-                <div>
-                    <h2 onClick={()=>dispatch(setSelectedGame(props.game.game_id-1))} >{props.game.game_name}</h2>
-                    {
-                        selectedGame.game_name === props.game.game_name && (
-                            <div>
-                                <button onClick={props.push}>Play</button>
-                            </div>
-                        )
-                    }
-                </div>
-            )}
+        props.game?<li>
+           
+            <h3 onClick={()=>dispatch(setSelectedGame(game.game_id-1))} >{game.game_name}</h3>
+            {
+                selectedGame.game_name === game.game_name && (
+                    <div className='game-info'>
+                        <p>{game.game_description}</p>
+                        <button onClick={props.push}>Play</button>
+                    </div>
+                )
+            }
+                
         </li>
+        :
+        <h3>Loading...</h3>
     )
 }
 
