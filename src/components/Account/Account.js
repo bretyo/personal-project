@@ -26,17 +26,32 @@ const Account =(props)=>{
     //pushes user back to dashboard if they're not logged in
     useEffect(()=>{
         !user && history.push('/')
+        const getData=()=>{
+            axios.get('/api/stats')
+            .then(res=>{
+                setData(res.data)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+        }
+
+        if(user){
+            getData();
+        }
+
     },[user])
 
-    const getDataTemp=()=>{
-        axios.get('/api/stats')
-        .then(res=>{
-            setData(res.data)
-        })
-    }
+    
 
     const handleDelete=(stat_id)=>{
         axios.delete(`/api/stats/${stat_id}`)
+        .then(res=>{
+            setData(res.data)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
     }
 
     console.log(data)
@@ -72,7 +87,6 @@ const Account =(props)=>{
                     </table>
                 
             </section>
-            <button onClick={getDataTemp}>Temp get data button</button>
         </div>
     )
 }

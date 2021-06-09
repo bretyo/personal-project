@@ -53,5 +53,6 @@ module.exports={
         const db= req.app.get('db')
         const {stat_id} = req.params;
         await db.stats.delete_stat(stat_id);
+        next();
     }
 }
