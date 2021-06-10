@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import MPVoteRes from "./MPVoteRes"
 
 const MPVoteResults=(props)=>{

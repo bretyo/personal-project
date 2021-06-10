@@ -80,7 +80,23 @@ user_id: 2
 user_name: "TESTBOI"
 
 
+
+GAME DATA
+game_name: "Motivational Poser"
+​​
+high_score: 600
+​​
+times_played: 7
+​​
+total_wins: 6
+
+
 // player foreach loop. sends every id an emit, but if the id===winner_id, then emit add win score
 
 
 Add a listener in gamehandler that will listen for update-user-starts. host will emit host-update-user-starts. same stuff for update-user-wins
+
+itnro screen
+tutorial screen // no timer, just a start round button. 1. get prompt with picture, fill in the blank, make in motivational. Then vote on the most inspired post. that's it! highest score wins!
+Join wait text center
+Fix vote result screen. 
