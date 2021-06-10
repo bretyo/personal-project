@@ -17,7 +17,7 @@ const Header=(props)=>{
 
     // console.log(logging)
     return(
-        <header className={`${playing ? 'header-hide': ''} header-hide`}>
+        <header className={`${playing ? 'header-hide': ''} `}>
             <nav className='header-container'>
                 <Link onClick={()=>setNavShow(false)} to='/'><h1>BretBox</h1></Link>
                 {menuBtnActive ? <MenuButton toggleNav={()=>setNavShow(!navShow)}/> : ''}

@@ -693,6 +693,56 @@ header {
   .credits h2 {
     font-size: 2rem; }
 
+.intro-screen {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center; }
+  .intro-screen div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    box-sizing: border-box; }
+    .intro-screen div img {
+      width: 0.5;
+      height: 0.5;
+      object-fit: cover;
+      border: white 2px solid; }
+  .intro-screen img {
+    height: 400px;
+    width: 400px;
+    object-fit: cover;
+    border: white 2px solid; }
+  .intro-screen section {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    box-sizing: content-box; }
+    .intro-screen section p {
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      display: inline;
+      color: white;
+      font-size: 3.75rem;
+      width: 90%;
+      height: 95%;
+      text-align: center;
+      -webkit-text-stroke: 1px black;
+      line-height: 9rem; }
+      .intro-screen section p.medium-response {
+        font-size: 3.75rem;
+        line-height: 9rem; }
+      .intro-screen section p.big-response {
+        font-size: 2.7rem;
+        line-height: 6.75rem; }
+
 .mp-prompt {
   height: 100%;
   display: flex;

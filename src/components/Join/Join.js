@@ -44,6 +44,9 @@ const Join =()=>{
                 socket.emit('leave-room-relay', code)
                 dispatch(setPlaying(false))
                 setJoined(false)
+                setPrompt({});
+                setAnswers([]);
+                setWaiting(true);
             })
 
             socket.on('receive-prompt',(body)=>{
@@ -67,8 +70,10 @@ const Join =()=>{
             })
 
             socket.on('round-end-client',()=>{
-                !waiting && setWaiting(true);
-                socket.emit('client-send-response', {...prompt, user: {...user, user_name}})
+                if(!waiting){
+                    setWaiting(true);
+                }
+                socket.emit('client-send-response', {...prompt, response:[prompt.prompt], user: {...user, user_name}})
                 //I will emit the image and prompt with no answer
                 // socket.emit
             })

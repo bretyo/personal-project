@@ -1,0 +1,13 @@
+.intro-screen{
+    @include MP-Meme-Img(.5);
+    img{
+        height: 400px;
+        width: 400px;
+        object-fit: cover;
+        border: white 2px solid;
+    }
+
+    section{
+        @include MP-Meme-Text(1.5);
+    }
+}
