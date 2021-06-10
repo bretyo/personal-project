@@ -138,7 +138,7 @@ const MPRoundsScreen=(props)=>{
     return (
         <div>
             {screenRound && screens[screenRound].screen}
-            {roundStarted && <h4>{count}</h4>}
+            {(roundStarted&&!roundEnded) && <h4>{count}</h4>}
             {roundEnded && <h2>ROUND OVER</h2>}
         </div>
     )
