@@ -16,14 +16,14 @@
 }
 
 .player-display{
-    @include player-display(1);
+    @include player-display(.80);
 }
 
 .player-display-section{
     justify-content: space-evenly;
     display: flex;
     flex-wrap: wrap;
-    max-width: 900px;
+    max-width: 50%
 }
 
 .room-info{

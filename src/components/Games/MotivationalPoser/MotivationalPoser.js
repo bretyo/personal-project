@@ -80,7 +80,7 @@ const MotivationalPoser =()=>{
     round && console.log('Votes: ', votes.round_1)
     round && console.log(`answers: `, answers.round_1)
     return(
-        <div className={`${!playing && 'header-padded'}`}>
+        <div className={`m-poser ${!playing && 'header-padded'}`}>
             {screen && screens[screen].screen}
         </div>
     )

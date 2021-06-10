@@ -1,6 +1,7 @@
 // import { useState } from "react"
 import MPPlayerDisplay from '../Games/MotivationalPoser/Screens/StartScreen/MPPlayerDisplay'
 import MPVoteEntry from '../Join/MotivationalPoser/MPVoteEntry'
+import MPVoteRes from '../Games/MotivationalPoser/Screens/MPVoteRes'
 
 const Dash =()=>{
 
@@ -24,25 +25,43 @@ const Dash =()=>{
      ]
 
      const answers=[
-         {image: 'https://images.unsplash.com/photo-1621414130936-6f0c63360ec2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzUyNjB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjMyNjk0OTk&ixlib=rb-1.2.1&q=80&w=1080', response: ['The truest indication of gratitude is ddd.'], user: {user_name: 'fart'}},
-         {image: 'https://images.unsplash.com/photo-1621414130936-6f0c63360ec2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzUyNjB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjMyNjk0OTk&ixlib=rb-1.2.1&q=80&w=1080', response: ['The truest indication of gratitude is ddd.'], user: {user_name: 'fart'}},
-         {image: 'https://images.unsplash.com/photo-1621414130936-6f0c63360ec2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzUyNjB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjMyNjk0OTk&ixlib=rb-1.2.1&q=80&w=1080', response: ['The truest indication of gratitude is ddd.'], user: {user_name: 'fart'}},
-         {image: 'https://images.unsplash.com/photo-1621414130936-6f0c63360ec2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzUyNjB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjMyNjk0OTk&ixlib=rb-1.2.1&q=80&w=1080', response: ['The truest indication of gratitude is ddd.'], user: {user_name: 'fart'}},
+         {image: 'https://images.unsplash.com/photo-1621414130936-6f0c63360ec2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzUyNjB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjMyNjk0OTk&ixlib=rb-1.2.1&q=80&w=1080', response: [`In life, you''ll meet two kinds of people. The ones who punch buggy you and the ones who fuck your momsdffffffff. lkj lkj lkj klj ljk  In the end, you''ll thank them both.`], user: {profileURL: 'https://robohash.org/VIzXjd-1TmHJyAm3A.png',user_name: 'wwwwwwwwww'}},
+         {image: 'https://images.unsplash.com/photo-1621414130936-6f0c63360ec2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzUyNjB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjMyNjk0OTk&ixlib=rb-1.2.1&q=80&w=1080', response: ['The truest bart of gratitude is ddd.'], user: {profileURL: 'https://robohash.org/VIzXjd-1TmHJyAm3AAAQ.png',user_name: 'bart'}},
+         {image: 'https://images.unsplash.com/photo-1621414130936-6f0c63360ec2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzUyNjB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjMyNjk0OTk&ixlib=rb-1.2.1&q=80&w=1080', response: ['The truest cart of gratitude is ddd.'], user: {id: 'asdfasdf', profileURL: 'https://robohash.org/VIzXjd-1TmHJyAm3AAA.png',user_name: 'cart'}},
+         {image: 'https://images.unsplash.com/photo-1621414130936-6f0c63360ec2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzUyNjB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjMyNjk0OTk&ixlib=rb-1.2.1&q=80&w=1080', response: ['The truest dart of gratitude is ddd.'], user: {profileURL: 'https://robohash.org/VIzXjd-1TmHJyAm3AA.png',user_name: 'dart'}},
+         {image: 'https://images.unsplash.com/photo-1621414130936-6f0c63360ec2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzUyNjB8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjMyNjk0OTk&ixlib=rb-1.2.1&q=80&w=1080', response: ['The truest dart of gratitude is ddd.'], user: {profileURL: 'https://robohash.org/VIzXjd-1TmHJyAm3AA.png',user_name: 'dart'}},
      ]
 
-     const handleVote=(answer)=>{
-         console.log(answer)
+     const votes = {
+         wwwwwwwwww:[
+             {id: 'asdfasdf', profileURL: 'https://robohash.org/VIzXjd-1TmHJyAm3AAAQ.png', score: 100, user_name: 'bart'}
+         ],
+         bart:[
+             {id: 'asdfasdf', profileURL: 'https://robohash.org/VIzXjd-1TmHJyAm3AAA.png', score: 100, user_name: 'cart'},
+         ],
+         cart:[
+             {id: 'asdfasdf', profileURL: 'https://robohash.org/VIzXjd-1TmHJyAm3AA.png', score: 100, user_name: 'dart'}
+         ],
+         dart:[
+             {id: 'asdfasdf', profileURL: 'https://robohash.org/VIzXjd-1TmHJyAm3A.png', score: 100, user_name: 'fart'}
+         ],
      }
 
-     const answMap = answers && answers.map(answer=>{
-        return <MPVoteEntry key={answer.user.user_name} answer={answer} handleVote={handleVote} />
-    })
+     
+
+    //  const answMap = answers && answers.map(answer=>{
+    //     return <MPVoteEntry key={answer.user.user_name} answer={answer} handleVote={handleVote} />
+    // })
+
+    // const results = answers.map(answer=>{
+    //     console.log('Vote result Anwer: ', answer)
+    //     const votesFrom = votes[answer.user.user_name]?[...votes[answer.user.user_name]]: 0
+    //     return <MPVoteRes key={answer.user.user_name} votes={votesFrom} answer={answer} />
+    // })
 
     return(
-        <div className='join'>
-            <div className='vote-screen display-votes'>
-                {answMap}
-            </div>
+        <div id='display-vote-results'>
+            {/* {results && results} */}
         </div>
     )
 }

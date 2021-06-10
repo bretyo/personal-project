@@ -1,34 +1,69 @@
-.display-votes{
-    @include MP-Meme-Img(300px);
+.display-vote-results{
+    @include MP-Meme-Img(275px);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    img{
+        margin: 0 1rem 0 1rem
+    }
+    justify-content: center;
 }
 
-.displayed-vote-text{
+
+.displayed-vote-result{
+    .votes-from{
+        @include player-display(.2);
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        img{margin: 0;}
+        left: 5%;
+        width: 80%;
+        align-items: flex-end;
+        bottom: 5%;
+        justify-content: space-around
+    }
+
+}
+.displayed-result-text{
     @include MP-Meme-Text(.5);
+    // width: 90%;
+    padding:5px;
 }
 
-.vote-entry{
-    margin: 1.5rem;
-    button{
-        font-size: 1rem;
+.result-wrapper{
+    width: min-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 2rem;
+    h2{
+        color: $text-color
     }
 }
 
-@media (min-width: 780px) {
-    .display-votes{
-        @include MP-Meme-Img(450px);
-    }
-    .displayed-vote-text{
-        @include MP-Meme-Text(.75);
-    }
-    
+#display-vote-results{
+    // padding-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    // width: 70%;
+    left: 50%;
 }
 
-@media  (min-width: 1200px) {
-    .display-votes{
-        @include MP-Meme-Img(400px);
-        flex-direction: row
-    }
-    .displayed-vote-text{
-        @include MP-Meme-Text(.66);
+.submission-profile-pic{
+    @include player-display(.45);
+    // font-size: 1rem;
+    position: relative;
+    margin: 0;
+    h2{
+        position: absolute;
+        bottom: 0;
+        background-color: black;
+        min-width: 100%;
+        text-align: center;
+        border-radius: 5px;
     }
 }
