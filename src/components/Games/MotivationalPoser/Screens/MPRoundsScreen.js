@@ -7,8 +7,9 @@ import {setPrompts} from '../../../../redux/gameReducer'
 
 const MPRoundsScreen=(props)=>{
     const [screenRound, setScreenRound] = useState()
-    const [count, setCount] = useState(90); // <-- default value of count = 90
+    const [count, setCount] = useState(5); // <-- default value of count = 90
     const[roundStarted, setRoundStarted] = useState(false)
+    const[roundEnded,setRoundEnded] = useState(false)
     const{prompts, players} = useSelector(store=>store.gameReducer)
     const dispatch = useDispatch();
 
@@ -57,9 +58,11 @@ const MPRoundsScreen=(props)=>{
     useEffect(()=>{
         const timeout = setTimeout(()=>{
             (roundStarted&& count > 0) && setCount(count-1)
-            if(!count){
+            if(!count && !roundEnded){
                 socket.emit('round-end-server', {roomId})
-                switchScreen('show')//<-- NEED TO FIX THIS, BECAUSE ON THE FINAL ROUND IT DOESN'T GO TO THE CORRECT SCREEN AFTER FINAL ROUND. ALSO NEED TO ADD A TRANSITION STATE
+                setRoundStarted(false)
+                setRoundEnded(true);
+                //<-- NEED TO FIX THIS, BECAUSE ON THE FINAL ROUND IT DOESN'T GO TO THE CORRECT SCREEN AFTER FINAL ROUND. ALSO NEED TO ADD A TRANSITION STATE
             }
         }, 1000)
         console.log(count)
@@ -67,6 +70,16 @@ const MPRoundsScreen=(props)=>{
             clearTimeout(timeout)
         }
     })
+
+    useEffect(()=>{
+        const timeout=setTimeout(() => {
+            roundEnded && switchScreen('show')
+        }, 3000);
+
+        return()=>{
+            clearTimeout(timeout)
+        }
+    },[roundEnded])
 
     const handleScreenLoad=(round)=>{
         console.log({round})
@@ -124,10 +137,9 @@ const MPRoundsScreen=(props)=>{
     
     return (
         <div>
-            MP ROUNDS: <br/>
-            {roundStarted && <h4>{count}</h4>}
             {screenRound && screens[screenRound].screen}
-            {round==='final-round' && <img src={prompts.images[players.length*2 + 1].urls.regular} />}
+            {roundStarted && <h4>{count}</h4>}
+            {roundEnded && <h2>ROUND OVER</h2>}
         </div>
     )
 }

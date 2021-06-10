@@ -10,7 +10,7 @@ const MPRoundShowPosts=(props)=>{
     useEffect(() => {
         const timeout = setTimeout(() => {
             setCurrentAns(currentAns + 1)
-            if(currentAns >= answers.length){
+            if(currentAns >= answers.length-1){
                 switchScreen(nextScreen) 
             }
         }, 5000);  

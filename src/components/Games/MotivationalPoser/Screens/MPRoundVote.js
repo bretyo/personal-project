@@ -74,7 +74,8 @@ const MPRoundVote=(props)=>{
     // console.log(votes)
     return(
         <div>
-            MP Round Vote!
+            <h2>VOTE</h2>
+            <h4>{count}</h4>
         </div>
     )
 }

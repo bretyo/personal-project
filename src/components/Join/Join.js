@@ -68,16 +68,6 @@ const Join =()=>{
                 }
                 setWaiting(false)
             })
-
-            socket.on('round-end-client',()=>{
-                if(!waiting){
-                    setWaiting(true);
-                }
-                socket.emit('client-send-response', {...prompt, response:[prompt.prompt], user: {...user, user_name}})
-                //I will emit the image and prompt with no answer
-                // socket.emit
-            })
-
            
             socket.on('send-client-stats',(body)=>{
                 const{win} = body;
@@ -130,8 +120,8 @@ const Join =()=>{
     
 
     const screens = {
-        MP_Prompt: {name: 'MP_Prompt', screen: <MPPrompt sendResponse={sendResponse} setWaiting={setWaiting} prompt={prompt} />},
-        MP_Vote: {name: 'MP_Vote', screen: <MPVote my_name={user_name} handleVote={handleVote} answers={answers} />}
+        MP_Prompt: {name: 'MP_Prompt', screen: <MPPrompt user_name={user_name} socket={socket} sendResponse={sendResponse} setWaiting={setWaiting} prompt={prompt} />},
+        MP_Vote: {name: 'MP_Vote', screen: <MPVote socket={socket} setWaiting={setWaiting} my_name={user_name} handleVote={handleVote} answers={answers} />}
     }
 
     console.log(screen)
