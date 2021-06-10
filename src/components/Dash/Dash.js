@@ -7,20 +7,34 @@ const Dash =()=>{
 
      const players = [
          {
-             user_name: 'bart',
-             profileURL:'https://robohash.org/-t_5Rx90CdBl8bciAAAK.png'
+             user_name: 'dart',
+             profileURL:'https://robohash.org/-t_5Rx90CdBl8bciAAK.png',
+             score: 100
          },
          {
-             user_name: 'bart',
-             profileURL:'https://robohash.org/-t_5Rx90CdBl8bciAAAK.png'
+             user_name: 'cart',
+             profileURL:'https://robohash.org/-t_5Rx9CdBl8bciAAAK.png',
+             score: 105
          },
          {
-             user_name: 'bart',
-             profileURL:'https://robohash.org/-t_5Rx90CdBl8bciAAAK.png'
+             user_name: 'fart',
+             profileURL:'https://robohash.org/-t_5Rx90CdB8bciAAAK.png',
+             score: 110
          },
          {
-             user_name: 'bart',
-             profileURL:'https://robohash.org/-t_5Rx90CdBl8bciAAAK.png'
+             user_name: 'yart',
+             profileURL:'https://robohash.org/-t_5Rx90CdBl8bciAK.png',
+             score: 150
+         },
+         {
+             user_name: 'yart',
+             profileURL:'https://robohash.org/-t_5Rx90CdBl8bciAK.png',
+             score: 150
+         },
+         {
+             user_name: 'yart',
+             profileURL:'https://robohash.org/-t_5Rx90CdBl8bciAK.png',
+             score: 150
          },
      ]
 
@@ -59,9 +73,19 @@ const Dash =()=>{
     //     return <MPVoteRes key={answer.user.user_name} votes={votesFrom} answer={answer} />
     // })
 
+    const sortedPlayers = players.sort((first,second)=>second.score - first.score )
     return(
-        <div id='display-vote-results'>
-            {/* {results && results} */}
+        <div className='scoreboard'>
+            <h2>SCOREBOARD</h2>
+            {players &&  sortedPlayers.map((player, index)=>{
+                return (
+                    <div className='player-score' key={player.user_name}>
+                        <img src={player.profileURL} alt={`${player.user_name}'s profile pic`} />
+                        <h2>{player.user_name}</h2>
+                        <p>{player.score}</p>
+                    </div>
+                )
+            })}
         </div>
     )
 }

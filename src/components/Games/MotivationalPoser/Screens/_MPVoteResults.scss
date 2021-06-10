@@ -1,0 +1,69 @@
+.display-vote-results{
+    @include MP-Meme-Img(275px);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    img{
+        margin: 0 1rem 0 1rem
+    }
+    justify-content: center;
+}
+
+
+.displayed-vote-result{
+    .votes-from{
+        @include player-display(.2);
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        img{margin: 0;}
+        left: 5%;
+        width: 80%;
+        align-items: flex-end;
+        bottom: 5%;
+        justify-content: space-around
+    }
+
+}
+.displayed-result-text{
+    @include MP-Meme-Text(.5);
+    // width: 90%;
+    padding:5px;
+}
+
+.result-wrapper{
+    width: min-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 2rem;
+    h2{
+        color: $text-color
+    }
+}
+
+#display-vote-results{
+    // padding-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    // width: 70%;
+    left: 50%;
+}
+
+.submission-profile-pic{
+    @include player-display(.45);
+    // font-size: 1rem;
+    position: relative;
+    margin: 0;
+    h2{
+        position: absolute;
+        bottom: 0;
+        background-color: black;
+        min-width: 100%;
+        text-align: center;
+        border-radius: 5px;
+    }
+}

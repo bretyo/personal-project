@@ -4,7 +4,6 @@ import {setPlayers} from '../../../../redux/gameReducer'
 
 const MPScoreboard=(props)=>{
     const {players} = useSelector(store=>store.gameReducer)
-    const [newScores,setNewScores] = useState({})
     const [showNewScore, setShowNewScore] = useState(false)
     const {round, setRound, switchScreen, votes} = props
     const dispatch= useDispatch()
@@ -63,15 +62,14 @@ const MPScoreboard=(props)=>{
     
     const sortedPlayers = players.sort((first,second)=>second.score - first.score )
     return(
-        <div>
-            MP Scoreboard!
+        <div className='scoreboard'>
+            <h2>SCOREBOARD</h2>
             {players &&  sortedPlayers.map((player, index)=>{
                 return (
-                    <div key={player.user_name}>
+                    <div className='player-score' key={player.user_name}>
                         <img src={player.profileURL} alt={`${player.user_name}'s profile pic`} />
                         <h2>{player.user_name}</h2>
                         <p>{player.score}</p>
-                        {/* <h2>{index>1 && players[index-1].score === player.score? index: }</h2> */}
                     </div>
                 )
             })}

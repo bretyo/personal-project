@@ -135,140 +135,46 @@ body {
   td {
     min-width: 9rem; } }
 
-.display-vote-results {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center; }
-  .display-vote-results div {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    box-sizing: border-box; }
-    .display-vote-results div img {
-      width: 275px;
-      height: 275px;
-      object-fit: cover;
-      border: white 2px solid; }
-  .display-vote-results img {
-    margin: 0 1rem 0 1rem; }
-
-.displayed-vote-result .votes-from {
-  margin: 0.4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  left: 5%;
-  width: 80%;
-  align-items: flex-end;
-  bottom: 5%;
-  justify-content: space-around; }
-  .displayed-vote-result .votes-from img {
-    box-sizing: border-box;
-    background-color: lightblue;
-    border: black 1px solid;
-    width: 2.4rem;
-    height: 2.4rem; }
-  .displayed-vote-result .votes-from h3 {
-    box-sizing: border-box;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 0.24rem;
-    letter-spacing: 1px;
-    width: 2.4rem;
-    color: white;
-    background-color: black;
-    text-align: center;
-    margin: 0;
-    padding: 0.1rem; }
-  .displayed-vote-result .votes-from img {
-    margin: 0; }
-
-.displayed-result-text {
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+.scoreboard {
   width: 100%;
-  box-sizing: content-box;
-  padding: 5px; }
-  .displayed-result-text p {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    display: inline;
-    color: white;
-    font-size: 1.25rem;
-    width: 90%;
-    height: 95%;
-    text-align: center;
-    -webkit-text-stroke: 1px black;
-    line-height: 3rem; }
-    .displayed-result-text p.medium-response {
-      font-size: 1.25rem;
-      line-height: 3rem; }
-    .displayed-result-text p.big-response {
-      font-size: 0.9rem;
-      line-height: 2.25rem; }
-
-.result-wrapper {
-  width: min-content;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 2rem; }
-  .result-wrapper h2 {
-    color: #f9c74f; }
-
-#display-vote-results {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  left: 50%; }
-
-.submission-profile-pic {
-  margin: 0.9rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  margin: 0; }
-  .submission-profile-pic img {
+  justify-content: space-around; }
+  .scoreboard h2 {
+    font-size: 2rem; }
+
+.player-score {
+  width: 30%;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: .4rem; }
+  .player-score img {
     box-sizing: border-box;
     background-color: lightblue;
     border: black 1px solid;
-    width: 5.4rem;
-    height: 5.4rem; }
-  .submission-profile-pic h3 {
+    width: 6rem;
+    height: 6rem; }
+  .player-score h3 {
     box-sizing: border-box;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 0.54rem;
+    font-size: 0.6rem;
     letter-spacing: 1px;
-    width: 5.4rem;
+    width: 6rem;
     color: white;
     background-color: black;
     text-align: center;
     margin: 0;
-    padding: 0.225rem; }
-  .submission-profile-pic h2 {
-    position: absolute;
-    bottom: 0;
-    background-color: black;
-    min-width: 100%;
-    text-align: center;
-    border-radius: 5px; }
+    padding: 0.25rem; }
+  .player-score h2 {
+    font-size: 1.4rem; }
+  .player-score p {
+    font-size: 1.5rem; }
 
 header {
   position: fixed;
@@ -603,6 +509,182 @@ header {
     .displayed-post-text p.big-response {
       font-size: 1.8rem;
       line-height: 4.5rem; }
+
+.display-vote-results {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center; }
+  .display-vote-results div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    box-sizing: border-box; }
+    .display-vote-results div img {
+      width: 275px;
+      height: 275px;
+      object-fit: cover;
+      border: white 2px solid; }
+  .display-vote-results img {
+    margin: 0 1rem 0 1rem; }
+
+.displayed-vote-result .votes-from {
+  margin: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  left: 5%;
+  width: 80%;
+  align-items: flex-end;
+  bottom: 5%;
+  justify-content: space-around; }
+  .displayed-vote-result .votes-from img {
+    box-sizing: border-box;
+    background-color: lightblue;
+    border: black 1px solid;
+    width: 2.4rem;
+    height: 2.4rem; }
+  .displayed-vote-result .votes-from h3 {
+    box-sizing: border-box;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 0.24rem;
+    letter-spacing: 1px;
+    width: 2.4rem;
+    color: white;
+    background-color: black;
+    text-align: center;
+    margin: 0;
+    padding: 0.1rem; }
+  .displayed-vote-result .votes-from img {
+    margin: 0; }
+
+.displayed-result-text {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: content-box;
+  padding: 5px; }
+  .displayed-result-text p {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: inline;
+    color: white;
+    font-size: 1.25rem;
+    width: 90%;
+    height: 95%;
+    text-align: center;
+    -webkit-text-stroke: 1px black;
+    line-height: 3rem; }
+    .displayed-result-text p.medium-response {
+      font-size: 1.25rem;
+      line-height: 3rem; }
+    .displayed-result-text p.big-response {
+      font-size: 0.9rem;
+      line-height: 2.25rem; }
+
+.result-wrapper {
+  width: min-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 2rem; }
+  .result-wrapper h2 {
+    color: #f9c74f; }
+
+#display-vote-results {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  left: 50%; }
+
+.submission-profile-pic {
+  margin: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 0; }
+  .submission-profile-pic img {
+    box-sizing: border-box;
+    background-color: lightblue;
+    border: black 1px solid;
+    width: 5.4rem;
+    height: 5.4rem; }
+  .submission-profile-pic h3 {
+    box-sizing: border-box;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 0.54rem;
+    letter-spacing: 1px;
+    width: 5.4rem;
+    color: white;
+    background-color: black;
+    text-align: center;
+    margin: 0;
+    padding: 0.225rem; }
+  .submission-profile-pic h2 {
+    position: absolute;
+    bottom: 0;
+    background-color: black;
+    min-width: 100%;
+    text-align: center;
+    border-radius: 5px; }
+
+.scoreboard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around; }
+  .scoreboard h2 {
+    font-size: 2rem; }
+
+.player-score {
+  width: 30%;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: .4rem; }
+  .player-score img {
+    box-sizing: border-box;
+    background-color: lightblue;
+    border: black 1px solid;
+    width: 6rem;
+    height: 6rem; }
+  .player-score h3 {
+    box-sizing: border-box;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    width: 6rem;
+    color: white;
+    background-color: black;
+    text-align: center;
+    margin: 0;
+    padding: 0.25rem; }
+  .player-score h2 {
+    font-size: 1.4rem; }
+  .player-score p {
+    font-size: 1.5rem; }
 
 .mp-prompt {
   height: 100%;
