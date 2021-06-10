@@ -135,47 +135,6 @@ body {
   td {
     min-width: 9rem; } }
 
-.scoreboard {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around; }
-  .scoreboard h2 {
-    font-size: 2rem; }
-
-.player-score {
-  width: 30%;
-  margin: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin: .4rem; }
-  .player-score img {
-    box-sizing: border-box;
-    background-color: lightblue;
-    border: black 1px solid;
-    width: 6rem;
-    height: 6rem; }
-  .player-score h3 {
-    box-sizing: border-box;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 0.6rem;
-    letter-spacing: 1px;
-    width: 6rem;
-    color: white;
-    background-color: black;
-    text-align: center;
-    margin: 0;
-    padding: 0.25rem; }
-  .player-score h2 {
-    font-size: 1.4rem; }
-  .player-score p {
-    font-size: 1.5rem; }
-
 header {
   position: fixed;
   width: 100%;
@@ -685,6 +644,33 @@ header {
     font-size: 1.4rem; }
   .player-score p {
     font-size: 1.5rem; }
+
+.winner {
+  display: flex;
+  flex-direction: column;
+  margin: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .winner img {
+    box-sizing: border-box;
+    background-color: lightblue;
+    border: black 1px solid;
+    width: 18rem;
+    height: 18rem; }
+  .winner h3 {
+    box-sizing: border-box;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    width: 18rem;
+    color: white;
+    background-color: black;
+    text-align: center;
+    margin: 0;
+    padding: 0.75rem; }
+  .winner h2 {
+    font-size: 3rem; }
 
 .mp-prompt {
   height: 100%;

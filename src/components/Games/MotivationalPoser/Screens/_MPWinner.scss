@@ -1,0 +1,9 @@
+.winner{
+    display: flex;
+    flex-direction: column;
+    @include player-display(1.5);
+    h2{
+        font-size: 3rem;
+        
+    }
+}

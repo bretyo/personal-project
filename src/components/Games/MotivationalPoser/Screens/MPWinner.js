@@ -51,10 +51,10 @@ const MPWinner=(props)=>{
     
     return(
         winner ? 
-        <div>
-            MP Winner!
+        <div className='winner'>
+            <h2>WINNER!</h2>
             <img src={winner.profileURL} />
-            <h2>{winner.user_name}</h2>
+            <h3>{winner.user_name}</h3>
             
         </div>
         :
