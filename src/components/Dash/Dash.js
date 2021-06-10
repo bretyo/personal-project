@@ -77,9 +77,9 @@ const Dash =()=>{
     const winner = players.reduce((acc, curr)=>curr.score > acc.score? curr: acc ,{score:0})
     return(
         <div className='winner'>
-            <h2>WINNER!</h2>
+            <h2>WINNER!</h2> 
             <img src={winner.profileURL} />
-            <h3>{winner.user_name}</h3>
+             <h3>{winner.user_name}</h3>
             
         </div>
     )
