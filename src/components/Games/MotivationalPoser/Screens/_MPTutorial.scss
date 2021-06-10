@@ -1,0 +1,46 @@
+.tutorial{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+
+    .mp-prompt{
+        // border: black 3px inset;
+        box-sizing: border-box;
+        button:hover{
+            color: $text-color;
+            border-color: $text-color;
+            cursor: default;
+        }
+    }
+}
+
+.tut-image{
+    display: flex;
+}
+
+.tut-text{
+    padding: 1rem;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 15px 1px #000000; 
+    box-shadow: 0px 0px 15px 1px #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 90%;
+    font-size: 1.2rem;
+    max-width: 50rem;
+
+    p{
+        text-align: center;
+    }
+
+    button{
+        font-size: 1.5rem;
+        
+    }
+    h2{
+        font-size: 2rem;
+    }
+}

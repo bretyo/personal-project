@@ -117,7 +117,6 @@ const MPStartScreen=(props)=>{
         switchScreen(nextScreen)
     }
 
-    console.log(players)
     return(
         <div >
             {selectedGame ? (
