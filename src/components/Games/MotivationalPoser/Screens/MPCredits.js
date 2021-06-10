@@ -32,8 +32,8 @@ const MPCredits=(props)=>{
     },[])
 
     return(
-        <div>
-            CREDITS SCREEN YO
+        <div className='credits'>
+            <h2>CREDITS</h2>
             
             <button onClick={newGame}>Start Over? (New Players)</button>
             <button onClick={playAgain}>Play Again? (Same Players)</button>

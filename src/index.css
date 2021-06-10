@@ -135,35 +135,14 @@ body {
   td {
     min-width: 9rem; } }
 
-.winner {
+.credits {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0;
-  padding-top: 3rem; }
-  .winner img {
-    box-sizing: border-box;
-    background-color: lightblue;
-    border: black 1px solid;
-    width: 18rem;
-    height: 18rem; }
-  .winner h3 {
-    box-sizing: border-box;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 1.8rem;
-    letter-spacing: 1px;
-    width: 18rem;
-    color: white;
-    background-color: black;
-    text-align: center;
-    margin: 0;
-    padding: 0.75rem; }
-  .winner h2 {
-    font-size: 3rem; }
+  align-items: center; }
+  .credits button {
+    margin-top: 1rem; }
+  .credits h2 {
+    font-size: 2rem; }
 
 header {
   position: fixed;
@@ -704,6 +683,15 @@ header {
     padding: 0.75rem; }
   .winner h2 {
     font-size: 3rem; }
+
+.credits {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .credits button {
+    margin-top: 1rem; }
+  .credits h2 {
+    font-size: 2rem; }
 
 .mp-prompt {
   height: 100%;

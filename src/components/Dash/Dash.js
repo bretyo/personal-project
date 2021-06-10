@@ -76,11 +76,11 @@ const Dash =()=>{
     const sortedPlayers = players.sort((first,second)=>second.score - first.score )
     const winner = players.reduce((acc, curr)=>curr.score > acc.score? curr: acc ,{score:0})
     return(
-        <div className='winner'>
-            <h2>WINNER!</h2> 
-            <img src={winner.profileURL} />
-             <h3>{winner.user_name}</h3>
+        <div className='credits'>
+            <h2>CREDITS</h2>
             
+            <button >Start Over? (New Players)</button>
+            <button >Play Again? (Same Players)</button>
         </div>
     )
 }
