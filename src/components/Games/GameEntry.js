@@ -24,7 +24,7 @@ const GameEntry=(props)=>{
     return(
         props.game?<li>
            
-            <h3 onClick={()=>dispatch(setSelectedGame(game.game_id-1))} >{game.game_name}</h3>
+            <h3 onClick={()=>dispatch(setSelectedGame(selectedGame.game_name === game.game_name?-1: game.game_id-1))} >{game.game_name}</h3>
             {
                 selectedGame.game_name === game.game_name && (
                     <div className='game-info'>

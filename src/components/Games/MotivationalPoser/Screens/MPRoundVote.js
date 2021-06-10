@@ -20,7 +20,7 @@ const MPRoundVote=(props)=>{
         const timeout = setTimeout(()=>{
             (count > 0) && (setCount(count-1))
             if(!count){
-                socket.emit('round-end-server', {roomId: answers.roomId})
+                socket.emit('round-end-server', {roomId: answers[0].roomId})
                 switchScreen(nextScreen)//<-- NEED TO FIX THIS, BECAUSE ON THE FINAL ROUND IT DOESN'T GO TO THE CORRECT SCREEN AFTER FINAL ROUND. ALSO NEED TO ADD A TRANSITION STATE
             }
         }, 1000)
@@ -71,7 +71,7 @@ const MPRoundVote=(props)=>{
         }
     },[socket])
 
-    // console.log(votes)
+    console.log(answers)
     return(
         <div>
             <h2>VOTE</h2>
