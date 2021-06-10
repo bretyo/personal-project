@@ -11,9 +11,7 @@ const MPRoundTwo=(props)=>{
     // },[]);
 
     return(
-        <div>
-            MP Round Two!
-        </div>
+        <h2>ROUND TWO</h2>
     )
 }
 export default MPRoundTwo;

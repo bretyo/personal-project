@@ -11,9 +11,7 @@ const MPRoundOne =(props)=>{
     // },[]);
 
     return(
-        <div>
-            MP Round One!
-        </div>
+        <h2>ROUND ONE</h2>
     )
 }
 export default MPRoundOne;

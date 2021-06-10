@@ -11,9 +11,7 @@ const MPFinalRound=(props)=>{
     // },[]);
 
     return(
-        <div>
-            MP Final Round!
-        </div>
+        <h2>FINAL ROUND</h2>
     )
 }
 export default MPFinalRound;
