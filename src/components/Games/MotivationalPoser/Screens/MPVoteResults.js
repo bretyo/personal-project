@@ -19,7 +19,7 @@ const MPVoteResults=(props)=>{
         return <MPVoteRes key={answer.user.user_name} votes={votesFrom} answer={answer} />
     })
     return (
-        <div className='display-vote-results'>
+        <div id='display-vote-results'>
             {results && results}
         </div>
     )
