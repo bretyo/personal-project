@@ -8,9 +8,9 @@ const Dash =()=>{
     const[roundEnded,setRoundEnded] = useState(false)
     const [showIntro,setShowIntro]=useState(true)
 
-    const intro = useSpring({
-        config:config.molasses,
-        from: { opacity: 0, transform: "translate3d(-25%, 0px, 0px)", reverse: false, reset: false },
+    const join = useSpring({
+        config:config.wobbly,
+        from: { opacity: 0, transform: "translate3d(25%, 0px, 0px)", reverse: false, reset: false },
         to: { opacity: 1, transform: "translate3d(0%, 0px, 0px)" },
     })
 
@@ -21,16 +21,13 @@ const Dash =()=>{
     const changeStuff=()=>{
         setShowIntro(t=>!t)
     }
-
+    const   profileURL="https://robohash.org/VIzXjd-1TmHJyAm3AAQ.png";
+    const user_name = 'ASDF'
     return(
-        <div className='intro-screen'>
-            {showIntro &&<animated.div style={intro} className='intro-wrapper'>
-                <img src={image} />
-                <section >
-                    <p>Motivational Poser</p>
-                </section>
-            </animated.div>}
-        </div>
+        <animated.div style={join} className='player-display'>
+            <img src={profileURL} alt={`${user_name}'s Profile Pic`} />
+            <h3>{user_name}</h3>
+        </animated.div>
     )
 }
 export default Dash;

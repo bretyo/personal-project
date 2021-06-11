@@ -11,13 +11,13 @@ function App() {
 
   useEffect(()=>{
 
-    // axios.get('/api/games')
-    // .then(res=>{
-    //   dispatch(setGames(res.data))
-    // })
-    // .catch(err=>{
-    //   console.log(err)
-    // });
+    axios.get('/api/games')
+    .then(res=>{
+      dispatch(setGames(res.data))
+    })
+    .catch(err=>{
+      console.log(err)
+    });
 
 }, [dispatch])
   // console.log(user)
