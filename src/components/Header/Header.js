@@ -4,6 +4,7 @@ import AuthButton from './AuthButton/AuthButton';
 import UserDisplay from './UserDisplay/UserDisplay';
 import { useState } from 'react';
 import MenuButton from './MenuButton/MenuButton';
+import {useSpring, animated, config} from 'react-spring'
 
 const Header=(props)=>{
     
@@ -13,11 +14,12 @@ const Header=(props)=>{
     const [navShow,setNavShow] = useState(false)
     const [menuBtnActive, setMenuBtnActive] = useState(true)
 
+    const headerLoad = useSpring({config:config.slow, from:{transform: 'translateY(-500px)'}, to:{transform: 'translateY(0)'}})
     
 
     // console.log(logging)
     return(
-        <header className={`${playing ? 'header-hide': ''} `}>
+        <animated.header style={headerLoad} className={`${playing ? 'header-hide': ''} `}>
             <nav className='header-container'>
                 <Link onClick={()=>setNavShow(false)} to='/'><h1>BretBox</h1></Link>
                 {menuBtnActive ? <MenuButton toggleNav={()=>setNavShow(!navShow)}/> : ''}
@@ -33,7 +35,7 @@ const Header=(props)=>{
                 </ul>
             </nav>
             
-        </header>
+        </animated.header>
     )
 }
 export default Header
