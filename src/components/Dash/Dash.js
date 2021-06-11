@@ -1,13 +1,14 @@
 import MPAnswer from "../Games/MotivationalPoser/Screens/MPAnswer"
 import MPVoteRes from "../Games/MotivationalPoser/Screens/MPVoteRes"
-import { useSpring,useTransition, animated } from 'react-spring'
+import { useSpring,useTransition, animated, config } from 'react-spring'
 import { useState } from "react";
+// import { config } from "dotenv";
 
 const Dash =()=>{
     const count =10;
     const[roundEnded,setRoundEnded] = useState(false)
 
-    const outOfTime = useSpring({enter:{transform: 'translateY(1000px)'}, to: {transform: 'translateY(0)'}, from: 'translateY(1000px)' })
+    const outOfTime = useSpring({config:config.slow, to: {transform: roundEnded?'translateY(0)':'translateY(1000px)'}, from: 'translateY(1000px)' })
     
     const image=`https://images.unsplash.com/photo-1614595402938-ecee8416e6b5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTcyfHxmdW5ueXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60`
 

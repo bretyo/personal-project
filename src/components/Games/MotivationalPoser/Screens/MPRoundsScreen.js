@@ -4,6 +4,7 @@ import MPFinalRound from "./Rounds/MPFinalRound";
 import MPRoundOne from "./Rounds/MPRoundOne";
 import MPRoundTwo from "./Rounds/MPRoundTwo";
 import {setPrompts} from '../../../../redux/gameReducer'
+import { useSpring, animated, config } from 'react-spring'
 
 const MPRoundsScreen=(props)=>{
     const [screenRound, setScreenRound] = useState()
@@ -134,12 +135,15 @@ const MPRoundsScreen=(props)=>{
         round_2: {name:'round_2', screen: <MPRoundTwo nextScreen='show' switchScreen={props.switchScreen} />},
         final_round: {name:'final_round', screen: <MPFinalRound nextScreen='finalshow' switchScreen={props.switchScreen} /> }
     }
+
+    const outOfTime = useSpring({config:config.slow, to: {transform: roundEnded?'translateY(0)':'translateY(1000px)'}, from: 'translateY(1000px)' })
+
     
     return (
-        <div>
+        <div className='round-screen'>
             {screenRound && screens[screenRound].screen}
-            {(roundStarted&&!roundEnded) && <h4>{count}</h4>}
-            {roundEnded && <h2>ROUND OVER</h2>}
+            {(roundStarted&&!roundEnded) && <h4 className={`${count <=10? 'time-low': ''}`}>{count}</h4>}
+            {roundEnded && < animated.h2 style={outOfTime}>OUT OF TIME</animated.h2>}
         </div>
     )
 }
