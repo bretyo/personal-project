@@ -135,14 +135,54 @@ body {
   td {
     min-width: 9rem; } }
 
-.credits {
+.dashboard {
   display: flex;
   flex-direction: column;
-  align-items: center; }
-  .credits button {
-    margin-top: 1rem; }
-  .credits h2 {
-    font-size: 2rem; }
+  align-items: center;
+  justify-content: space-evenly;
+  height: 85%; }
+  .dashboard h2 {
+    padding: 1rem;
+    font-size: 3rem;
+    text-align: center; }
+
+.dash-desc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%; }
+  .dash-desc p {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.4rem; }
+  .dash-desc h2 {
+    color: #f9c74f; }
+
+.dash-newgame {
+  display: flex;
+  flex-direction: column;
+  width: 50%; }
+  .dash-newgame p {
+    text-align: center;
+    margin-bottom: .5rem; }
+  .dash-newgame button {
+    padding: .5rem; }
+
+@media (min-width: 780px) {
+  .dash-desc {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .dash-desc p {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      line-height: 2rem; }
+  .dash-newgame button {
+    font-size: 1.5rem;
+    margin: .5rem;
+    padding: 1rem; } }
 
 header {
   position: fixed;
@@ -151,7 +191,8 @@ header {
   background-color: #f72585;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  z-index: 1; }
   header h1 {
     font-size: 2rem; }
   header .nav-content-drop {
@@ -169,13 +210,14 @@ header {
       align-items: flex-start;
       margin-left: 0;
       width: 100%; }
-      header .nav-content-drop .auth-menu-btn li {
+      header .nav-content-drop .auth-menu-btn h4 {
         color: #f9c74f;
-        text-decoration: none;
-        margin-bottom: .2rem; }
-        header .nav-content-drop .auth-menu-btn li:hover {
+        text-decoration: none; }
+        header .nav-content-drop .auth-menu-btn h4:hover {
           color: #ffffff;
           cursor: pointer; }
+      header .nav-content-drop .auth-menu-btn li {
+        margin-bottom: .2rem; }
         header .nav-content-drop .auth-menu-btn li:hover {
           cursor: pointer; }
       header .nav-content-drop .auth-menu-btn .reg-sign-btns {

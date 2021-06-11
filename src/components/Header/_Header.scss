@@ -6,6 +6,7 @@ header{
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
   
   h1{
     font-size: 2rem;
@@ -27,8 +28,11 @@ header{
       align-items: flex-start;
       margin-left: 0;
       width: 100%;
-      li{
+      h4{
         @include a-theme;
+        
+      }
+      li{
         margin-bottom: .2rem;
         &:hover{
           cursor: pointer;
