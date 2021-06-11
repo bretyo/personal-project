@@ -24,10 +24,9 @@ const Dash =()=>{
     const   profileURL="https://robohash.org/VIzXjd-1TmHJyAm3AAQ.png";
     const user_name = 'ASDF'
     return(
-        <animated.div style={join} className='player-display'>
-            <img src={profileURL} alt={`${user_name}'s Profile Pic`} />
-            <h3>{user_name}</h3>
-        </animated.div>
+        <div>
+            
+        </div>
     )
 }
 export default Dash;

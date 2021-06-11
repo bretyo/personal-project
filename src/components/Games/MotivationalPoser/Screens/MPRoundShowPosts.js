@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import MPAnswer from "./MPAnswer";
-import MPAnswerTwo from "./MPAnswerTwo";
 
 const MPRoundShowPosts=(props)=>{
     const {answers, switchScreen, nextScreen} = props
@@ -13,7 +12,7 @@ const MPRoundShowPosts=(props)=>{
             if(currentAns >= answers.length-1){
                 switchScreen(nextScreen) 
             }
-        }, 5000);  
+        }, 9000);  
         return () => {
             clearTimeout(timeout)
         };
@@ -24,6 +23,9 @@ const MPRoundShowPosts=(props)=>{
     })
 
     console.log(answers)
+
+   
+
     return(
         <div className='display-posts'>
             {showAnswers && displayAns[currentAns]}

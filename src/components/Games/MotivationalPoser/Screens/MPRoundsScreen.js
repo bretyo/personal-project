@@ -8,7 +8,7 @@ import { useSpring, animated, config } from 'react-spring'
 
 const MPRoundsScreen=(props)=>{
     const [screenRound, setScreenRound] = useState()
-    const [count, setCount] = useState(5); // <-- default value of count = 90
+    const [count, setCount] = useState(90); // <-- default value of count = 90
     const[roundStarted, setRoundStarted] = useState(false)
     const[roundEnded,setRoundEnded] = useState(false)
     const{prompts, players} = useSelector(store=>store.gameReducer)
