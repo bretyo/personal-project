@@ -30,7 +30,6 @@ const MPPrompt=(props)=>{
 
     return(
         <div className={'mp-prompt'}>
-            MP PROMPT!
             <img src={prompt.image} />
             {
                 prompt.prompt_type === 'MPOne'? 

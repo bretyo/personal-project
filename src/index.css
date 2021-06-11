@@ -104,8 +104,8 @@ body {
   .account-screen .acc-stats table {
     border: black 4px solid;
     box-sizing: border-box;
-    width: 25rem;
-    font-size: 1.2rem; }
+    width: 20rem;
+    font-size: .8rem; }
   .account-screen .acc-stats caption {
     margin-bottom: 1rem;
     font-weight: 600;
@@ -131,9 +131,14 @@ body {
 
 @media (min-width: 780px) {
   table {
-    font-size: 1.5rem; }
+    font-size: 1.5rem;
+    width: 20rem; }
   td {
-    min-width: 9rem; } }
+    min-width: 8rem; }
+  .acc-stats table {
+    width: 20rem; }
+  .acc-stats td {
+    font-size: 1.2rem; } }
 
 .dashboard {
   display: flex;
@@ -423,6 +428,9 @@ header {
   border: black 1px solid;
   width: 50%;
   height: 80%; }
+
+.game-entry section {
+  margin-bottom: .5rem; }
 
 .m-poser {
   background-color: #919191; }
@@ -844,6 +852,7 @@ header {
       color: red; }
 
 .mp-prompt {
+  padding-top: 1rem;
   height: 100%;
   display: flex;
   flex-direction: column;

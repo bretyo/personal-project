@@ -22,7 +22,7 @@ const GameEntry=(props)=>{
 // ​​
 // game_total_plays: 30
     return(
-        props.game?<li>
+        props.game?<li className='game-entry'>
            
             <h3 onClick={()=>dispatch(setSelectedGame(selectedGame.game_name === game.game_name?-1: game.game_id-1))} >{game.game_name}</h3>
             {

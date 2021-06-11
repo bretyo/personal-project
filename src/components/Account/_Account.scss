@@ -37,8 +37,8 @@
         table{
             border: black 4px solid;
             box-sizing: border-box;
-            width: 25rem;
-            font-size: 1.2rem;
+            width: 20rem;
+            font-size: .8rem;
         }
         caption{
             margin-bottom: 1rem;
@@ -88,8 +88,18 @@
 @media (min-width: 780px) {
     table{
         font-size: 1.5rem;
+        width: 20rem;
     }
     td{
-        min-width: 9rem;
+        min-width: 8rem;
+    }
+    .acc-stats{
+        table{
+            width: 20rem;
+        }
+        td{
+            font-size: 1.2rem;
+
+        }
     }
 }
