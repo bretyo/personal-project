@@ -19,8 +19,8 @@ const Dash =()=>{
     return(
         <div className='round-screen'>
             <h2>ROUND ONE</h2>
-            {!roundEnded&&<h4 className={`${count <=10? 'time-low': ''}`}>{count}</h4>}
-            {roundEnded&&< animated.h2 style={outOfTime}>OUT OF TIME</animated.h2>}
+            {!roundEnded&&<h4  className={`${count <=10? 'time-low': ''}`}>{count}</h4>}
+            {roundEnded&&< animated.h2 style={outOfTime}>LET'S SEE YOUR POSTS</animated.h2>}
             <button onClick={changeStuff}>change </button>
         </div>
     )

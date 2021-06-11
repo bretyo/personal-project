@@ -143,7 +143,7 @@ const MPRoundsScreen=(props)=>{
         <div className='round-screen'>
             {screenRound && screens[screenRound].screen}
             {(roundStarted&&!roundEnded) && <h4 className={`${count <=10? 'time-low': ''}`}>{count}</h4>}
-            {roundEnded && < animated.h2 style={outOfTime}>OUT OF TIME</animated.h2>}
+            {roundEnded && < animated.h2 style={outOfTime}>LET'S SEE YOUR POSTS</animated.h2>}
         </div>
     )
 }
