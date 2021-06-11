@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setPrompts } from '../../../../redux/gameReducer'
 import axios from 'axios'
+import { useSpring, animated, config } from 'react-spring'
+
 
 const MPIntroScreen=(props)=>{
-    const[showIntro,setShowIntro] = useState(false)
     const{switchScreen, nextScreen, setRound, setAnswers,setVotes} = props
     const{players, prompts} = useSelector(store=>store.gameReducer)
     const dispatch = useDispatch();
@@ -54,7 +55,6 @@ const MPIntroScreen=(props)=>{
         if(prompts.prompts.length < players.length * 2 + 1){
             await handlePromptLoad()
         }
-        setShowIntro(true)
     },[])
 
 
@@ -66,15 +66,22 @@ const MPIntroScreen=(props)=>{
             clearTimeout(timeout)
         };
     },[]);
+
+    const intro = useSpring({
+        config:config.molasses,
+        from: { opacity: 0, transform: "translate3d(-25%, 0px, 0px)", reverse: false, reset: false },
+        to: { opacity: 1, transform: "translate3d(0%, 0px, 0px)" },
+    })
+
     console.log(prompts)
     return(
         <div className='intro-screen'>
-            {prompts.images[0] && <div className='intro-wrapper'>
+            {prompts.images[0] && <animated.div style={intro} className='intro-wrapper'>
                 <img src={prompts.images[0].urls.regular} />
                 <section >
                     <p>Motivational Poser</p>
                 </section>
-            </div>}
+            </animated.div>}
         </div>
     )
 }

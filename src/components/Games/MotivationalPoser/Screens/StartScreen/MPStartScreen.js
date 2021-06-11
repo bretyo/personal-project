@@ -1,10 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { setGames,setSelectedGame, setPlayers, setPlaying} from '../../../../../redux/gameReducer'
-import axios from 'axios'
+import { setSelectedGame, setPlayers, setPlaying} from '../../../../../redux/gameReducer'
 import MPPlayerDisplay from "./MPPlayerDisplay"
 import badwordsRegExp from 'badwords/regexp'
-import atk from './Atk_DM004.mp3'
 
 const MPStartScreen=(props)=>{
     const {setRoom,socket, switchScreen, nextScreen} = props
