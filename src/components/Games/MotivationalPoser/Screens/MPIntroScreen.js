@@ -69,8 +69,10 @@ const MPIntroScreen=(props)=>{
 
     const intro = useSpring({
         config:config.molasses,
-        from: { opacity: 0, transform: "translate3d(-25%, 0px, 0px)", reverse: false, reset: false },
-        to: { opacity: 1, transform: "translate3d(0%, 0px, 0px)" },
+        from: { opacity: 0.05, transform: "translate3d(-25%, 0px, 0px)" },
+        to: 
+            { opacity: 1, transform: "translate3d(0px, 0px, 0px)" },
+        delay: 200
     })
 
     console.log(prompts)
