@@ -24,7 +24,7 @@ const Dash =()=>{
     const   profileURL="https://robohash.org/VIzXjd-1TmHJyAm3AAQ.png";
     const user_name = 'ASDF'
     return(
-        <div>
+        <div >
             
         </div>
     )

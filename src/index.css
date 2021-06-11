@@ -383,8 +383,9 @@ header {
   height: 80%; }
 
 .m-poser {
-  background-color: #919191;
-  height: 100%; }
+  background-color: #919191; }
+  .m-poser.m-poser-resize {
+    height: 100%; }
 
 .start-screen {
   display: flex;

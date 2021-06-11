@@ -73,7 +73,7 @@ const MPRoundVote=(props)=>{
 
     console.log(answers)
     return(
-        <div>
+        <div className='round-screen'>
             <h2>VOTE</h2>
             <h4>{count}</h4>
         </div>

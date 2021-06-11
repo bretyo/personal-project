@@ -1,4 +1,6 @@
 .m-poser{
     background-color: $backgrounds;
-    height: 100%;
+    &.m-poser-resize{
+        height: 100%;
+    }
 }
