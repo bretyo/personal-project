@@ -28,7 +28,7 @@ const MPTutorialScreen=(props)=>{
                 <p>At the start of the round, you will receive a random image (provided by Unsplash.com)</p> 
                 <p>You will also receive an inspirational, and unfinished, quote!</p>
                 <p>Fill in the blanks and send it before the timer runs out!</p> 
-                <p>Once the round is over, you and your fellow players will vote for the most motivating poster. </p>
+                <p>Once the round is over, you and your fellow players will vote for the most inspiring poster. </p>
                 <p>The first two rounds, everyone will have a prompt of their own. But the third round, everybody has the same prompt.</p>
                 <p>After three rounds, the player with the highest score wins!</p>
                 <button onClick={()=>switchScreen(nextScreen)}>Start Round One</button>

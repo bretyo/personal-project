@@ -71,7 +71,7 @@ const MPIntroScreen=(props)=>{
         config:config.molasses,
         from: { opacity: 0.05, transform: "translate3d(-25%, 0px, 0px)" },
         to: 
-            { opacity: 1, transform: "translate3d(0px, 0px, 0px)" },
+            prompts.images?{ opacity: 1, transform: "translate3d(0px, 0px, 0px)" }: {opacity: 0.05, transform: "translate3d(-25%, 0px, 0px)"},
         delay: 200
     })
 
