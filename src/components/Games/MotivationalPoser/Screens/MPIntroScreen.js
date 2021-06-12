@@ -71,15 +71,21 @@ const MPIntroScreen=(props)=>{
         config:config.molasses,
         from: { opacity: 0.05, transform: "translate3d(-25%, 0px, 0px)" },
         to: 
-            prompts.images?{ opacity: 1, transform: "translate3d(0px, 0px, 0px)" }: {opacity: 0.05, transform: "translate3d(-25%, 0px, 0px)"},
+            { opacity: 1, transform: "translate3d(0px, 0px, 0px)" },
         delay: 200
+    })
+
+    const introImg = useSpring({
+        from: {opacity:0},
+        to: {opacity:1},
+        delay:2000
     })
 
     console.log(prompts)
     return(
         <div className='intro-screen'>
             {prompts.images[0] && <animated.div style={intro} className='intro-wrapper'>
-                <img src={prompts.images[0].urls.regular} />
+                <animated.img style={introImg} src={prompts.images[0].urls.regular} />
                 <section >
                     <p>Motivational Poser</p>
                 </section>
