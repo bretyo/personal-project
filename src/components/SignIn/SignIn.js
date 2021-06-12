@@ -14,6 +14,7 @@ const SignIn=()=>{
             dispatch(setUser(res.data))
         })
         .catch(err=>{
+            window.alert(err)
             console.log(err)
         })
     }

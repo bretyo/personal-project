@@ -17,10 +17,13 @@ const Register=()=>{
             if(password === passConf){
                 axios.post('/auth/register', {email, password})
                 .then(res=>{
-                    console.log(res.data)
+                    // console.log(res.data)
                     dispatch(setUser(res.data))
                 })
                 .catch(err=>{
+                    if(err.message.includes('409')){
+                        window.alert('email taken!')
+                    }
                     console.log(err)
                 })
                 
