@@ -3,8 +3,9 @@ import MPAnswer from "./MPAnswer";
 
 const MPRoundShowPosts=(props)=>{
     const {answers, switchScreen, nextScreen} = props
-    const [showAnswers, setShowAnswers] = useState(true)
     const [currentAns, setCurrentAns] = useState(0);
+
+    
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -23,12 +24,9 @@ const MPRoundShowPosts=(props)=>{
     })
 
     console.log(answers)
-
-   
-
     return(
         <div className='display-posts'>
-            {showAnswers && displayAns[currentAns]}
+            {displayAns[currentAns]}
         </div>
     )
 }

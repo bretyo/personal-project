@@ -54,8 +54,9 @@
     width: 100%;
     box-sizing: content-box;
     p{
+        padding: .5rem;
         display: flex;
-        align-items: center;
+        align-items: space-between;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         // display: inline;
         color: white;

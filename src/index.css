@@ -514,8 +514,9 @@ header {
   width: 100%;
   box-sizing: content-box; }
   .displayed-post-text p {
+    padding: .5rem;
     display: flex;
-    align-items: center;
+    align-items: space-between;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: white;
     font-size: 2.5rem;
@@ -602,8 +603,9 @@ header {
   box-sizing: content-box;
   padding: 5px; }
   .displayed-result-text p {
+    padding: .5rem;
     display: flex;
-    align-items: center;
+    align-items: space-between;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: white;
     font-size: 1.25rem;
@@ -781,8 +783,9 @@ header {
     width: 100%;
     box-sizing: content-box; }
     .intro-screen section p {
+      padding: .5rem;
       display: flex;
-      align-items: center;
+      align-items: space-between;
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       color: white;
       font-size: 3.75rem;
@@ -932,8 +935,9 @@ header {
   width: 100%;
   box-sizing: content-box; }
   .displayed-vote-text p {
+    padding: .5rem;
     display: flex;
-    align-items: center;
+    align-items: space-between;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: white;
     font-size: 1.25rem;
@@ -984,8 +988,9 @@ header {
     width: 100%;
     box-sizing: content-box; }
     .displayed-vote-text p {
+      padding: .5rem;
       display: flex;
-      align-items: center;
+      align-items: space-between;
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       color: white;
       font-size: 1.875rem;
@@ -1032,8 +1037,9 @@ header {
     width: 100%;
     box-sizing: content-box; }
     .displayed-vote-text p {
+      padding: .5rem;
       display: flex;
-      align-items: center;
+      align-items: space-between;
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       color: white;
       font-size: 1.65rem;
