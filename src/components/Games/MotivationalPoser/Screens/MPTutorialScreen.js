@@ -4,15 +4,12 @@ import { useSpring, animated } from 'react-spring'
 const MPTutorialScreen=(props)=>{
     const {switchScreen, nextScreen} = props
     const slideIn= useSpring({from:  {transform: 'translateX(2000px)'}, to:{transform: 'translateX(0)'} }  )
-    
-    const image=`https://images.unsplash.com/photo-1614595402938-ecee8416e6b5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTcyfHxmdW5ueXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60`
 
     return(
         <animated.div style={slideIn} className='tutorial'>
             <div className='mp-prompt'>
                 
-                <img src={`https://images.unsplash.com/photo-1601902322950-cb5182a20b34?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE0fHxmdW5ueXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60`} />
-                {/* <p>At the start of the round, you will receive a random image (provided by Unsplash.com)</p> */}
+                <img src={`https://images.unsplash.com/photo-1601902322950-cb5182a20b34?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE0fHxmdW5ueXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60`} alt='A picture of a woman who vaguely looks like she is going to eat a cat' />
             
                 <div>
                     <p>You miss 100% of the </p>

@@ -52,7 +52,7 @@ const MPStartScreen=(props)=>{
             setRoom(code)
             socket.emit('start-room', {code})
         }
-    }, [socket, code]) // <--- 
+    }, [socket, code, selectedGame]) // <--- 
 
     useEffect(()=>{
         //function 
@@ -105,7 +105,7 @@ const MPStartScreen=(props)=>{
                 socket.off('attempt-join-room' ,handleJoinAttempt) // <--- important, otherwise we have listeners adding on top of each other.
             }
         }
-    }, [socket])
+    }, [socket, dispatch])
 
 
     // --------------FUNCTIONS---------------

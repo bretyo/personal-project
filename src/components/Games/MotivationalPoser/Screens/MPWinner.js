@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {setGames} from '../../../../redux/gameReducer'
 
 const MPWinner=(props)=>{
-    const{socket} = props
+    const{socket, switchScreen, nextScreen} = props
     const {players, selectedGame} = useSelector(store=>store.gameReducer)
     const winner = players.reduce((acc, curr)=>curr.score > acc.score? curr: acc ,{score:0})
     const dispatch = useDispatch();
@@ -39,15 +39,15 @@ const MPWinner=(props)=>{
             socket.emit('game-end', {playerID: player.id, win: player===winner?true:false})
         })
 
-    },[])
+    },[winner, players, socket])
 
     useEffect(() => {
         const timeout = setTimeout(() => {
-            props.switchScreen(props.nextScreen)    }, 3000);  
+            switchScreen(nextScreen)    }, 3000);  
         return () => {
             clearTimeout(timeout)
         };
-    },[]);
+    },[nextScreen, switchScreen]);
     
     return(
         winner ? 

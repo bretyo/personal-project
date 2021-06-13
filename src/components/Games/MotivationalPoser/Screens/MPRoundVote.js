@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const MPRoundVote=(props)=>{
-    const {answers, socket, setAnswers,round, setVotes, nextScreen, switchScreen} = props;
+    const {answers, socket, round, setVotes, nextScreen, switchScreen} = props;
     const{players} = useSelector(store=>store.gameReducer)
-    const [roundEnd,setRoundEnd] = useState(false)
     const [count, setCount] = useState(20); // <-- default value of count = 20
 
     useEffect(()=>{
@@ -14,7 +13,7 @@ const MPRoundVote=(props)=>{
                 return {...prevVotes, [round]: {...prevVotes[round], [player.user_name]: []}}
             })
         })
-    },[])
+    },[answers, players, round, socket, setVotes])
 
     useEffect(()=>{
         const timeout = setTimeout(()=>{
@@ -51,15 +50,7 @@ const MPRoundVote=(props)=>{
                 })
                 if(end){
                     setCount(0)
-                    setRoundEnd(true)
                 } 
-                // setAnswers(prevAns=>{
-                //     const username = vote.user.user_name
-                //     return {...prevAns, [round]: [...prevAns[round], {votes: {...prevAns[round].votes, [username]: prevAns[round].votes[username]? [...prevAns[round].votes[username], fromPlayer] : [fromPlayer] }}  ]}
-                // })
-                // setVotes(prevVotes=>{
-                //     return [...prevVotes, prevVotes[player].votes = [...prevVotes[player].votes, players[fromPlayer]]]
-                // })
         }
         if(socket){
             socket.on('server-send-host-vote', getVotes)
@@ -69,7 +60,7 @@ const MPRoundVote=(props)=>{
                 socket.off('server-send-host-vote',getVotes);
             }
         }
-    },[socket])
+    },[socket, players, round, setVotes])
 
     console.log(answers)
     return(

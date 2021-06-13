@@ -12,7 +12,7 @@ const MPPrompt=(props)=>{
 
     useEffect(()=>{
         setPromptArr(prompt.prompt.split('____'))
-    },[])
+    },[prompt])
 
     useEffect(()=>{
 
@@ -26,7 +26,7 @@ const MPPrompt=(props)=>{
     return()=>{
         socket.off('round-end-client', roundEnd)
     }
-    },[])
+    },[prompt, user, user_name])
 
     return(
         <div className={'mp-prompt'}>

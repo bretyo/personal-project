@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {setPlaying} from '../../redux/gameReducer'

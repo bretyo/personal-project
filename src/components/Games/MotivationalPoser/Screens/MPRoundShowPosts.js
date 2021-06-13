@@ -17,7 +17,7 @@ const MPRoundShowPosts=(props)=>{
         return () => {
             clearTimeout(timeout)
         };
-    },[currentAns]);
+    },[currentAns, answers.length, nextScreen,switchScreen]);
 
     const displayAns= answers.map(answer=>{
         return <MPAnswer  player={answer.player} image={answer.image} response={answer.response} />

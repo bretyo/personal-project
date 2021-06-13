@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useSpring,animated,config } from "react-spring";
 const Dash =(props)=>{
     const loadDash = useSpring({config:config.slow, from:{transform: 'translateY(-500px)'}, to:{transform: 'translateY(0)'}})

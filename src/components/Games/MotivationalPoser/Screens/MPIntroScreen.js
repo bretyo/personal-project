@@ -22,9 +22,9 @@ const MPIntroScreen=(props)=>{
             round_2: [],
             final_round: []
         })
-    },[])
+    },[setVotes, setAnswers])
 
-    useEffect(async()=>{
+    useEffect(()=>{
         setRound('round_1')
         const handleImageLoad=()=>{
             axios.get('/api/images')
@@ -49,13 +49,13 @@ const MPIntroScreen=(props)=>{
         // checks if there's enough images for the game
         if(prompts.images.length < players.length * 2 + 2){
             // Gets the images from the api ** TEMP GETTING TEST DATA TO PREVENT API CHOKE
-            await handleImageLoad();
+            handleImageLoad();
         }
         // Same stuff as above, but for prompts
         if(prompts.prompts.length < players.length * 2 + 1){
-            await handlePromptLoad()
+            handlePromptLoad()
         }
-    },[])
+    },[dispatch, players.length, prompts, setRound])
 
 
     useEffect(() => {
@@ -65,7 +65,7 @@ const MPIntroScreen=(props)=>{
 
             clearTimeout(timeout)
         };
-    },[]);
+    },[switchScreen, nextScreen]);
 
     const intro = useSpring({
         config:config.molasses,
