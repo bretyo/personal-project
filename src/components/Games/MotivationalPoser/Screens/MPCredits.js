@@ -6,16 +6,14 @@ const MPCredits=(props)=>{
     const{switchScreen, socket, room} = props
     const{players,prompts} = useSelector(store=>store.gameReducer)
     const dispatch = useDispatch()
-    console.log(players)
 
     const playAgain=()=>{
         let prevPlayers = [...players]
             prevPlayers.forEach(player => {
                 player.score=0
             });
-            console.log(prevPlayers)
         dispatch(setPlayers(prevPlayers))
-
+        dispatch(setPlaying(true))
         
         
         switchScreen('intro')

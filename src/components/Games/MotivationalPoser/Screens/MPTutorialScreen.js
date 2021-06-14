@@ -13,9 +13,9 @@ const MPTutorialScreen=(props)=>{
             
                 <div>
                     <p>You miss 100% of the </p>
-                    <input value='cats'/>
+                    <input readOnly={true} value='cats'/>
                     <p> that you don't </p>
-                    <input value='eat'/>
+                    <input readOnly={true} value='eat'/>
                     <p>.</p>
                     <button>Send</button>
                 </div>
