@@ -23,7 +23,6 @@ const MPRoundVote=(props)=>{
                 switchScreen(nextScreen)//<-- NEED TO FIX THIS, BECAUSE ON THE FINAL ROUND IT DOESN'T GO TO THE CORRECT SCREEN AFTER FINAL ROUND. ALSO NEED TO ADD A TRANSITION STATE
             }
         }, 1000)
-        console.log(count)
         return()=>{
             clearTimeout(timeout)
         }
@@ -35,13 +34,9 @@ const MPRoundVote=(props)=>{
             const fromPlayer= players.find(pl=>pl.user_name === vote.fromUser)
                 // let roundEnd = false;
                 let end = false
-                console.log(fromPlayer)
-                console.log(vote.user)
                 setVotes(prevVotes=>{
                     let voteNum=0;
                     for (const key in prevVotes[round]) {
-                        console.log('Length of vote array, in theory: ', prevVotes[round][key].length)
-                        console.log('prevVotes: ', prevVotes)
                         voteNum +=prevVotes[round][key].length
                     }
                     (voteNum === players.length-1) && (end=true)
@@ -62,7 +57,6 @@ const MPRoundVote=(props)=>{
         }
     },[socket, players, round, setVotes])
 
-    console.log(answers)
     return(
         <div className='round-screen'>
             <h2>VOTE</h2>

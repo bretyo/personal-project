@@ -20,12 +20,9 @@ const MPRoundsScreen=(props)=>{
         const getResponse=(body)=>{
             const player= players.find(player=>body.user.user_name===player.user_name)
                 let roundEnd = false;
-                console.log(player)
-                console.log(body)
                 setAnswers(prevAnswers=>{
                     prevAnswers[round].length=== players.length-1 && (roundEnd = true);
                     if(round==='round_1'){
-                        console.log(prevAnswers)
                         return {...prevAnswers, round_1: [...prevAnswers.round_1, {...body, user: {...player } } ] }
                     }
                     if(round==='round_2'){
@@ -49,7 +46,6 @@ const MPRoundsScreen=(props)=>{
 
     useEffect(() => {
         handleScreenLoad(round)
-        // console.log(round)
     },[]);
 
     useEffect(()=>{
@@ -66,7 +62,6 @@ const MPRoundsScreen=(props)=>{
                 //<-- NEED TO FIX THIS, BECAUSE ON THE FINAL ROUND IT DOESN'T GO TO THE CORRECT SCREEN AFTER FINAL ROUND. ALSO NEED TO ADD A TRANSITION STATE
             }
         }, 1000)
-        console.log(count)
         return()=>{
             clearTimeout(timeout)
         }
@@ -83,7 +78,6 @@ const MPRoundsScreen=(props)=>{
     },[roundEnded])
 
     const handleScreenLoad=(round)=>{
-        console.log({round})
         setScreenRound(round)
     }
 
@@ -117,7 +111,6 @@ const MPRoundsScreen=(props)=>{
     
                 }
             });
-            console.log(prompts.prompts)
         }
         const timeout= setTimeout(()=>{
             startRound();

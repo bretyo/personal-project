@@ -16,7 +16,6 @@ const Header=()=>{
     const headerLoad = useSpring({config:config.slow, from:{transform: 'translateY(-500px)'}, to:{transform: 'translateY(0)'}})
     
 
-    // console.log(logging)
     return(
         <animated.header style={headerLoad} className={`${playing ? 'header-hide': ''} `}>
             <nav className='header-container'>

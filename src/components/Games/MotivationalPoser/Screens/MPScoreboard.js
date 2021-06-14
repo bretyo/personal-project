@@ -15,21 +15,16 @@ const MPScoreboard=(props)=>{
             const baseScore = 200
             let winner = []
             for (const key in votes) {
-                console.log(votes)
-                console.log(key)
                 if(!winner[0])  {winner.push(key);continue}
-                console.log(winner)
                 votes[key].length > votes[winner[0]].length ? winner = [key] : votes[key].length === votes[winner[0]].length ? winner= [...winner, key]: winner=[...winner];
             }   
 
             let newPlayers=[]
             players.forEach((player)=>{
                 let newScore = votes[player.user_name].length * (round==='round_1'? baseScore : round==='round_2'? baseScore * 2 : baseScore * 3)
-                console.log(newScore)
                 if(winner.includes(player.user_name)) newScore = newScore*2;
                 const newPlayer = {...player, score: player.score + newScore}
                 newPlayers=[...newPlayers, newPlayer]
-                console.log(newPlayers)
             })
             dispatch(setPlayers(newPlayers))
             

@@ -29,7 +29,6 @@ const MPIntroScreen=(props)=>{
         const handleImageLoad=()=>{
             axios.get('/api/images')
                 .then(res=>{
-                    console.log(res.data.response)
                     dispatch(setPrompts({images: [...prompts.images, ...res.data.response]}))
                 })
                 .catch(err=>{
@@ -81,7 +80,6 @@ const MPIntroScreen=(props)=>{
         delay:2000
     })
 
-    console.log(prompts)
     return(
         <div className='intro-screen'>
             {prompts.images[0] && <animated.div style={intro} className='intro-wrapper'>

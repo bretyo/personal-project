@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import {useState} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import {setUser} from '../../../redux/authReducer'
 import axios from "axios"
 
@@ -9,7 +9,6 @@ const UserDisplay =(props)=>{
     const [showOptions, setShowOptions] = useState(false)
     const [changeUsername, setChangeUsername] = useState(false);
     const [username, setUsername] = useState('')
-    const {user} = useSelector(store=>store.authReducer)
     const dispatch = useDispatch();
 
     const updateUsername=()=>{
@@ -38,10 +37,9 @@ const UserDisplay =(props)=>{
             console.log(res)
             dispatch(setUser(null))
         })
-        .catch(err=>console.log)
+        .catch(err=>console.log(err))
     }
 
-    console.log(user)
     return(
         <li className='user-display'>
             <h4 onClick={()=>setShowOptions(!showOptions)} >Welcome, {props.user.user_name}</h4>

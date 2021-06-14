@@ -10,7 +10,6 @@ const SignIn=()=>{
     const handleLogin=()=>{
         axios.post('/auth/login', {email, password})
         .then(res=>{
-            console.log(res.data)
             dispatch(setUser(res.data))
         })
         .catch(err=>{

@@ -5,7 +5,6 @@ import {setSelectedGame} from '../../redux/gameReducer'
 const GameEntry=(props)=>{
     const {selectedGame} = useSelector(store=>store.gameReducer)
     const dispatch = useDispatch();
-    console.log(props)
     const {game} = props
 
     useEffect(()=>{
@@ -14,13 +13,6 @@ const GameEntry=(props)=>{
         }
     },[dispatch])
     
-//     game_name: "Motivational Poser"
-// ​​
-// game_players_max: 6
-// ​​
-// game_players_min: 3
-// ​​
-// game_total_plays: 30
     return(
         props.game?<li className='game-entry'>
            

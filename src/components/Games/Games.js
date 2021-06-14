@@ -12,7 +12,6 @@ const Games =(props)=>{
         dispatch(setSelectedGame(-1))
     }, [dispatch])
 
-    // console.log(games)
     return(
         <div className='games-container'>
             {

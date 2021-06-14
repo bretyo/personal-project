@@ -17,7 +17,6 @@ const Register=()=>{
             if(password === passConf){
                 axios.post('/auth/register', {email, password})
                 .then(res=>{
-                    // console.log(res.data)
                     dispatch(setUser(res.data))
                 })
                 .catch(err=>{

@@ -11,11 +11,9 @@ const MPWinner=(props)=>{
 
     useEffect(()=>{
         const addToStats=(game,score,win, user_id)=>{
-            console.log(game)
             
             axios.get(`/api/stats/${game}/${user_id}`)
             .then(res=>{
-                console.log(res.data)    
                 if(res.data.length){
                     axios.put(`/api/stats/${game}`, {wins: win, score, user_id})
                     .then()

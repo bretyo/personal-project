@@ -2,7 +2,7 @@ import { useSpring,animated,config } from "react-spring";
 const Dash =(props)=>{
     const loadDash = useSpring({config:config.slow, from:{transform: 'translateY(-500px)'}, to:{transform: 'translateY(0)'}})
     
-    console.log(props.history)
+    // console.log(props.history)
     return(
         <animated.div style={loadDash} className='header-padded dashboard'>
             <section className='dash-desc'>

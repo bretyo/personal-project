@@ -20,7 +20,6 @@ function App() {
     });
 
 }, [dispatch])
-  // console.log(user)
   return (
     <div className={`App `}>
       <Header/>

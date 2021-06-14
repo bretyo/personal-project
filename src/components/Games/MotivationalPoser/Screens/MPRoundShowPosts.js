@@ -23,7 +23,6 @@ const MPRoundShowPosts=(props)=>{
         return <MPAnswer  player={answer.player} image={answer.image} response={answer.response} />
     })
 
-    console.log(answers)
     return(
         <div className='display-posts'>
             {displayAns[currentAns]}

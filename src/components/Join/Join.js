@@ -50,7 +50,6 @@ const Join =()=>{
 
             socket.on('receive-prompt',(body)=>{
                 setWaitText('Waiting for Game')
-                console.log(body)
                 setPrompt(body)
                 if(body.game==='MP'){
                     setScreen('MP_Prompt')
@@ -60,7 +59,6 @@ const Join =()=>{
             })
 
             socket.on('server-send-clients-votes',body=>{
-                console.log(body)
                 setAnswers(body.answers)
                 if(body.answers[0].game==='MP'){
                     setScreen('MP_Vote')
@@ -113,7 +111,6 @@ const Join =()=>{
     const handleVote=(vote)=>{
         socket.emit('client-send-vote', {vote: {...vote, fromUser: user_name}, hostId: prompt.gameSocketId})
         setWaiting(true)
-        console.log(vote)
     }
 
     
@@ -123,7 +120,6 @@ const Join =()=>{
         MP_Vote: {name: 'MP_Vote', screen: <MPVote socket={socket} setWaiting={setWaiting} my_name={user_name} handleVote={handleVote} answers={answers} />}
     }
 
-    console.log(screen)
     return(
         <div className={`join ${!joined && 'header-padded'}`}>
             {!joined &&<h4 id='join-signin-msg'>Sign in to keep track of wins!⬆</h4>}

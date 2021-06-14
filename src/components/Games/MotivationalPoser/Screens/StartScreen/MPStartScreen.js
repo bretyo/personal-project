@@ -31,7 +31,6 @@ const MPStartScreen=(props)=>{
     useEffect(()=>{
         
         const generateCode=(_code, num)=>{
-            // console.log('code: ' + _code, 'num: ' + num)
             if(num<=0){
                 if(_code.match(badwordsRegExp)){
                     return generateCode('', 6)
@@ -81,11 +80,9 @@ const MPStartScreen=(props)=>{
         }
 
         const handleJoinAttempt=(body)=>{
-            // console.log(body)
 
                 // Invokes login Attempts
                 const response = loginAttemptChecks(body.player);
-                // console.log(response)
                 if(response.success===true){
                     socket.emit('confirm-join', {...body, ...response}) 
                 } 
@@ -93,7 +90,6 @@ const MPStartScreen=(props)=>{
                     socket.emit('reject-join', {...body, ...response})
                 }
                 
-                // console.log({...body, ...response});
         }
         if(socket){
             // Players on Join component attempt to join room
