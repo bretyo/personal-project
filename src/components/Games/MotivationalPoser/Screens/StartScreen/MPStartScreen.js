@@ -117,8 +117,9 @@ const MPStartScreen=(props)=>{
                 <div className='start-screen'>
                     <section className='room-info'>
                         <h2>Motivational Poser</h2>
-                        <h3>Code: {code}</h3>
-                        <h3>Players: {players.length}/{selectedGame.game_players_max}</h3>
+                        <h3><span>Code: {code}</span></h3>
+                        <h3>-- Join game from any device at <span>bretboxgames.com/join</span> --</h3>
+                        <h3 id='mp_players'>Players: {players.length}/{selectedGame.game_players_max}</h3>
                         { players.length >= selectedGame.game_players_min && <button onClick={startCountdown}>Start Game</button> }
                     </section>
                     <section className='player-display-section'>

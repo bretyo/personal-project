@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
 const session = require('express-session')
+const path = require('path')
 
 const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env;
 
@@ -91,3 +92,8 @@ app.get('/api/stats/:game_id/:user_id', statCtrl.checkForStat)
 app.post('/api/stats/:game_id',  statCtrl.addNewStat)
 app.put('/api/stats/:game_id',  statCtrl.updateStat)
 app.delete('/api/stats/:stat_id', statMiddleware.usersOnly,statCtrl.deleteStat, statCtrl.getStats)
+
+app.use(express.static(__dirname + '/../build'))
+app.get('*', (req,res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'))
+})
