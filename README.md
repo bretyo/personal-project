@@ -1,6 +1,6 @@
 # Personal Project -- Bretbox Games
 
-This was a project I built by myself over the course of 3 weeks while learning Web Development at Dev Mountain. I was inspired by the makers of Jackbox to create my own website that would be a hub of games, starting with one - Motivational Poser, a game of my own creation.
+This was a project I built by myself over the course of 3 weeks while learning Web Development at DevMountain. I was inspired by the makers of Jackbox to create my own website that would be a hub of games, starting with one - Motivational Poser, a game of my own creation.
 
 ## Technologies I used
 
