@@ -33,7 +33,8 @@ app.use(
         cookie:{maxAge: 1000 * 60 * 60 *24}
     })
 )
-
+app.use(express.static(__dirname + '/../build'))
+    
 // Database connection
 massive({
     connectionString: CONNECTION_STRING,
@@ -93,7 +94,6 @@ app.post('/api/stats/:game_id',  statCtrl.addNewStat)
 app.put('/api/stats/:game_id',  statCtrl.updateStat)
 app.delete('/api/stats/:stat_id', statMiddleware.usersOnly,statCtrl.deleteStat, statCtrl.getStats)
 
-app.use(express.static(__dirname + '/../build'))
 app.get('*', (req,res)=>{
     res.sendFile(path.join(__dirname, '../build/index.html'))
 })

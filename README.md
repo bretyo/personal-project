@@ -1,18 +1,16 @@
-# Getting Started with Create React App
+# Personal Project -- Bretbox Games
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This was a project I built by myself over the course of 3 weeks while learning Web Development at Dev Mountain. I was inspired by the makers of Jackbox to create my own website that would be a hub of games, starting with one - Motivational Poser, a game of my own creation.
 
-## Available Scripts
+## Technologies I used
 
-In the project directory, you can run:
+Here is a list of all the technologies I used to make the app.
 
-### `npm start`
+### `React/React Hooks`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Most of my time at Devmountain has been spent within the React Library. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Until the start of this project I and my cohort utilized class components for our assignments and projects. For this project I decided to familiarize myself with React Hooks - a decision I am very thankful for, as it made the large amount of components more manageable. As well, functional components are said to be faster than class components, so it made more sense to use them, as I needed the game to run as smoothly as possible.
 
 ### `npm test`
 
