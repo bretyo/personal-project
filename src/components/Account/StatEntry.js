@@ -8,7 +8,7 @@ const StatEntry=(props)=>{
             <td>{total_wins}</td>
             <td>{times_played-total_wins}</td>
             <td>{high_score}</td>
-            <td className='delete-entry' onClick={()=>handleDelete(stat_id)}>X</td>
+            {/* <td className='delete-entry' onClick={()=>handleDelete(stat_id)}>X</td> */}
         </tr>
     )
 }

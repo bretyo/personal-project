@@ -62,7 +62,7 @@ const Account =(props)=>{
                                 <td># of Wins</td>
                                 <td># of Losses</td>
                                 <td>Highest Score</td>
-                                <td>Delete</td>
+                                {/* <td>Delete</td> */}
                             </tr>
                         </thead>
                         <tbody>

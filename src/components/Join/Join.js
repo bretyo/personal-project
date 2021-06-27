@@ -121,7 +121,7 @@ const Join =()=>{
     }
 
     return(
-        <div className={`join ${!joined && 'header-padded'}`}>
+        <div className={`join ${!joined && 'header-padded'} ${waiting && joined ? 'join-wait' : ''}`}>
             {!joined &&<h4 id='join-signin-msg'>Sign in to keep track of wins!⬆</h4>}
             {!joined?
                 (<div className='join-room-screen'>

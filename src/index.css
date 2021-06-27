@@ -67,13 +67,18 @@ button {
     color: #ffffff;
     border: #ffffff 1px solid;
     cursor: pointer; }
+  @media (min-width: 780px) {
+    button {
+      border-width: 4px; }
+      button:hover {
+        border-width: 4px; } }
 
 .header-padded {
   padding-top: 6rem; }
 
 .App {
   background-color: #919191;
-  height: 100vh; }
+  min-height: 100vh; }
 
 body {
   font-family: 'Signika Negative', sans-serif; }
@@ -172,7 +177,8 @@ body {
     text-align: center;
     margin-bottom: .5rem; }
   .dash-newgame button {
-    padding: .5rem; }
+    padding: .5rem;
+    margin: .5rem; }
 
 @media (min-width: 780px) {
   .dash-desc {
@@ -209,7 +215,7 @@ header {
     display: none;
     max-height: 0px;
     overflow: hidden;
-    transition: max-height 0.2s ease-in;
+    transition: max-height 0.4s ease-in;
     padding-left: 10%; }
     header .nav-content-drop .auth-menu-btn {
       align-items: flex-start;
@@ -293,6 +299,11 @@ header {
         color: #ffffff;
         border: #ffffff 1px solid;
         cursor: pointer; }
+      @media (min-width: 780px) {
+        header .header-container button {
+          border-width: 4px; }
+          header .header-container button:hover {
+            border-width: 4px; } }
   header .menu-btn {
     display: flex;
     align-items: center;
@@ -342,6 +353,9 @@ header {
   top: 6rem;
   right: 8%;
   text-align: center; }
+
+.join-wait {
+  height: 100vh; }
 
 .join-room-screen {
   margin: 5rem;
@@ -435,7 +449,7 @@ header {
 .m-poser {
   background-color: #919191; }
   .m-poser.m-poser-resize {
-    height: 100%; }
+    height: 100vh; }
 
 .start-screen {
   display: flex;
@@ -751,7 +765,8 @@ header {
   flex-direction: column;
   align-items: center; }
   .credits button {
-    margin-top: 1rem; }
+    margin-top: 1rem;
+    font-size: 1.5rem; }
   .credits h2 {
     font-size: 2rem; }
 
@@ -899,6 +914,11 @@ header {
       color: #ffffff;
       border: #ffffff 1px solid;
       cursor: pointer; }
+    @media (min-width: 780px) {
+      .mp-prompt button {
+        border-width: 4px; }
+        .mp-prompt button:hover {
+          border-width: 4px; } }
 
 @media (min-width: 500px) {
   .mp-prompt img {

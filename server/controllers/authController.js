@@ -37,15 +37,15 @@ module.exports={
         res.sendStatus(200);
     },
 
-    // getUser: (req,res)=>{
-    //     const db = req.app.get('db');
-    //     const {user} = req.session;
-    //     if(!user){
-    //         return res.status(511).send('User not logged in')
-    //     }
+    getUser: (req,res)=>{
+        const db = req.app.get('db');
+        const {user} = req.session;
+        if(!user){
+            return res.status(401).send('User not logged in')
+        }
+        res.status(200).send(user)
 
-
-    // },
+    },
     deleteUser:async (req,res)=>{
         const db = req.app.get('db')
         const {user_id} = req.session.user;

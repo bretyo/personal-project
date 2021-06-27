@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 const MPRoundVote=(props)=>{
     const {answers, socket, round, setVotes, nextScreen, switchScreen} = props;
     const{players} = useSelector(store=>store.gameReducer)
-    const [count, setCount] = useState(20); // <-- default value of count = 20
+    const [count, setCount] = useState(30); // <-- default value of count = 30
 
     useEffect(()=>{
         players.forEach(player=>{

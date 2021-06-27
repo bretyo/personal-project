@@ -9,6 +9,12 @@
     background: none ;
     color: $text-color;
     
+    @media (min-width: 780px) {
+        border-width: 4px;
+        &:hover{
+            border-width: 4px;
+        }
+    }
 }
 
 @mixin a-theme{

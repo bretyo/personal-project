@@ -70,6 +70,7 @@ massive({
 // --------------------ENDPOINTS---------------------
 
 // AUTH
+app.get('/auth/user', authCtrl.getUser)
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login',authCtrl.login)
 // app.get('/auth/me', authCtrl.getUser)  -- potentially don't need this one. if logged in still, i'll still have that info.
