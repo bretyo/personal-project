@@ -10,60 +10,32 @@ Here is a list of all the technologies I used to make the app.
 
 Most of my time at Devmountain has been spent within the React Library. 
 
-Until the start of this project I and my cohort utilized class components for our assignments and projects. For this project I decided to familiarize myself with React Hooks - a decision I am very thankful for, as it made the large amount of components more manageable. As well, functional components are said to be faster than class components, so it made more sense to use them, as I needed the game to run as smoothly as possible.
+Until the start of this project, I and my cohort utilized class components for our assignments and projects. For this project I decided to familiarize myself with React Hooks - a decision I am very thankful for, as it made the large amount of components more manageable. As well, functional components are said to be faster than class components, so it made more sense to use them, as I needed the game to run as smoothly as possible.
 
-### `npm test`
+### `Socket.IO`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Bretbox games heavily utilize sockets, since Motivational Poser needs to send players images and prompts to go along with them. I also decided to use Socket.IO's Rooms for keeping separate games from communicating with each other.
 
-### `npm run build`
+### `Redux`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I needed to keep track of user information as well as game information (how many times a game is played, what the current game in play is, how many unused prompts are left, etc)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `Unsplash API`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+For Motivational Poser, I needed random images to send to players, and unsplash has a free API as well as an npm package ('unsplash-js') for fetching from it. I have a collection of various images which the game will randomly select from [here.](https://unsplash.com/collections/vRNcKbAK9uQ/motivational-posers)
 
-### `npm run eject`
+### `Sass`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+All styling was done with .scss. I used a few mixins and variables, and heavily utilized nested styling - which in hindsight I would have used less because it made it more difficult to apply to different elements.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `PostgreSQL`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+For keeping track of user and game information. I use `massive` for communicating to my database.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### `Express`
 
-## Learn More
+Used to create the server. I also use `express-session` for cookies.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Conclusion
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# personal-project
+I am very proud of completing as much as I did within the time-frame that was established, but there is still more that I would like to do with it. Namely animations, sound effects, perhaps a few style touch-ups, and a text-to-speech announcer. As for adding future games, I am far more tempted to rebuild this entire project from scratch, as I feel that I've learned how to do it better over the course of the completion of it. Either way, I hope you enjoy it!
