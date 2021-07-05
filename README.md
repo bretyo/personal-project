@@ -4,13 +4,13 @@ This was a project I built by myself over the course of 3 weeks while learning W
 
 ## Technologies I used
 
-Here is a list of all the technologies I used to make the app.
+Here is a list of the more important technologies I used to make the app.
 
 ### `React/React Hooks`
 
 Most of my time at Devmountain has been spent within the React Library. 
 
-Until the start of this project, I and my cohort utilized class components for our assignments and projects. For this project I decided to familiarize myself with React Hooks - a decision I am very thankful for, as it made the large amount of components more manageable. As well, functional components are said to be faster than class components, so it made more sense to use them, as I needed the game to run as smoothly as possible.
+Until the start of this project, I and my cohort utilized class components for our assignments and projects. For this project I decided to familiarize myself with React Hooks - a decision I am very thankful for, as it made the large amount of components more manageable. 
 
 ### `Socket.IO`
 
@@ -22,7 +22,7 @@ I needed to keep track of user information as well as game information (how many
 
 ### `Unsplash API`
 
-For Motivational Poser, I needed random images to send to players, and unsplash has a free API as well as an npm package ('unsplash-js') for fetching from it. I have a collection of various images which the game will randomly select from [here.](https://unsplash.com/collections/vRNcKbAK9uQ/motivational-posers)
+For Motivational Poser, I needed random images to send to players, and unsplash has a free API as well as an npm package ('unsplash-js') for fetching from it (node-fetch was also required to be used in conjunction with the server-side api). I have a collection of various images which the game will randomly select from [here.](https://unsplash.com/collections/vRNcKbAK9uQ/motivational-posers)
 
 ### `Sass`
 
